@@ -25,17 +25,12 @@ public class Ball{
     
   }
     
-    
   public int getHealth(){
-      
+      return health;
   }
     
   public int getWindCount(){
-      
-  }
-    
-  public void getWindCount(){
-      
+      return windCount;
   }
     
     
