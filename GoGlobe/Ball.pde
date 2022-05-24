@@ -15,8 +15,6 @@ public class Ball{
     health = 1000;
     windCount = 1;
     speed = 20;
-    //startX = random coordinate from array list
-    //startX = random coordinate from array list
     
     size = 40;
     color_ = 0;
@@ -35,7 +33,8 @@ public class Ball{
     
     
   public void setStartPos(int x, int y){
-      
+      startX = x;
+      startY = y;
   }
     
   public void move(){
