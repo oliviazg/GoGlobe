@@ -4,12 +4,17 @@ public class Ball{
   private double speed;
   private int startX;
   private int startY;
+  private int direction = 0;
+  private int up = 1;
+  private int down = 2;
+  private int right = 3;
+  private int left = 4;
     
   private double size;
   private color color_;
     
   private boolean gravity;
-  private int setGravity;
+  private int setGravity = 0;
     
   public ball{
     health = 1000;
@@ -58,7 +63,18 @@ public class Ball{
   }
     
   public void keyPressed(){
-      
+      if (keyPressed == 24){
+        direction = up;
+      }
+      if (keyPressed == 25){
+        direction = down;
+      }
+      if (keyPressed == 26){
+        direction = left;
+      }
+      if (keyPressed == 27){
+        direction = right;
+      }
   }
   
   
