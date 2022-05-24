@@ -8,6 +8,9 @@ public class Obstacle{
     
   }
   
+  public void getColor(){
+  }
+  
   public void move(){
     
   }

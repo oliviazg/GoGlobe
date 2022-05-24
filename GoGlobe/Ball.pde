@@ -44,29 +44,36 @@ public class Ball{
   }
   
   public void setStartPos(int x, int y){
-      xPos = x;
-      yPos = y;
+    xPos = x;
+    yPos = y;
   }
     
   public void move(){
-      xPos += move * direction[1];
-      yPos += move * direction[0];
+    xPos += move * direction[1];
+    yPos += move * direction[0];
   }
     
   public boolean die(){
-      
+    if (health == 0 || millis() - 100000000 == 0){
+      color_ = 0;
+      size = 0;
+    }
   }
     
-  public boolean touchingObs(){
-      
+  public boolean touchingObs(Obstacle obs, int xObs, int yObs){
+    if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
+      //if (obs.getColor() == 0){ // replace with proper color once subclasses exist
+        health -= 20;
+      //}
+    }
   }
     
   public boolean addWind(){
-      
+    
   }
     
   public boolean changeGravity(){
-      
+    gravity = (setGravity % 2 == 0);
   }
     
   public void keyPressed(){
@@ -89,51 +96,51 @@ public class Ball{
   }
   
   
-  public class Original extends Ball{
+  //public class Original extends Ball{
     
-    public Original{
-      super();
-    } 
+  //  public Original{
+  //    super();
+  //  } 
      
-    public boolean touchingObs(){
+  //  public boolean touchingObs(){
       
-    }
+  //  }
   
-  }
+  //}
   
-  public class Droplet extends Ball{
+  //public class Droplet extends Ball{
     
-    public Original{
-      super();
-    } 
+  //  public Original{
+  //    super();
+  //  } 
      
-    public boolean touchingObs(){
+  //  public boolean touchingObs(){
       
-    }
+  //  }
   
-  }
+  //}
   
-  public class Snitch extends Ball{
+  //public class Snitch extends Ball{
     
-    public Original{
-      super();
-    } 
+  //  public Original{
+  //    super();
+  //  } 
      
-    public boolean touchingObs(){
+  //  public boolean touchingObs(){
       
-    }
+  //  }
   
-  }
+  //}
   
-  public class Stone extends Ball{
+  //public class Stone extends Ball{
     
-    public Original{
-      super();
-    } 
+  //  public Original{
+  //    super();
+  //  } 
      
-    public boolean touchingObs(){
+  //  public boolean touchingObs(){
       
-    }
+  //  }
   
-  }
+  //}
 }
