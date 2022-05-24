@@ -37,9 +37,6 @@ PImage img;
  r=right gravity
  d=down gravity
  l=left gravity
- g=gate (key required)
- k=key (used to open gate)
- h=slow block
  */
 
 Ball p;
@@ -47,9 +44,6 @@ int u=10;
 int r=11;
 int d=12;
 int l=13;
-int g=14;
-int k=15;
-int h=16;
 int hitboxCheck=2;
 int[][][] level= 
   {
@@ -491,6 +485,8 @@ int[] key_log;
 int[] skip={1,3,1,3,2,4,2,4,5,5};
 float[] ball_size={10, 10, 10, 10, 10, 10, 10, 5, 10, 10, 10, 10, 10, 10, 10, 10, 10};
 int mode=1;
+
+
 void setup() {
   size(500, 500);
   key_log=new int[10];
@@ -498,6 +494,7 @@ void setup() {
   p.prep();
   frameRate(60);
 }
+
 void draw() {
   background(51);
   p.move();
@@ -516,43 +513,18 @@ void draw() {
     win=0;
     p.prep();
   }
+  int time = 59;
+  println(second());
+  if (second() == time){
+    println("TIME HAS RUN OUT");
+  }
 }
+
+//movement of ball using arrow keys
 void keyReleased() {
   if (key==' ') {
     s_s=0;
     p.sd=1;
-  }
-  if (key=='a') {
-    a_a=0;
-    key_logAdd(2);
-  }
-  if (key=='w') {
-    w_w=0;
-    key_logAdd(1);
-  }
-  if (key=='s') {
-    s_sp=0;
-    key_logAdd(3);
-  }
-  if (key=='d') {
-    d_d=0;
-    key_logAdd(4);
-  }
-  if (key=='A') {
-    a_a=0;
-    key_logAdd(2);
-  }
-  if (key=='W') {
-    w_w=0;
-    key_logAdd(1);
-  }
-  if (key=='S') {
-    s_sp=0;
-    key_logAdd(3);
-  }
-  if (key=='D') {
-    d_d=0;
-    key_logAdd(4);
   }
   if (keyCode==LEFT) {
     a_a=0;
@@ -577,36 +549,6 @@ void keyReleased() {
 void keyPressed() {
   if (key==' ') {
     s_s=1;
-  }
-  if (key=='r') {
-    p.prep();
-  }
-  if (key=='R') {
-    p.prep();
-  }
-  if (key=='a') {
-    a_a=1;
-  }
-  if (key=='d') {
-    d_d=1;
-  }
-  if (key=='w') {
-    w_w=1;
-  }
-  if (key=='s') {
-    s_sp=1;
-  }
-  if (key=='A') {
-    a_a=1;
-  }
-  if (key=='D') {
-    d_d=1;
-  }
-  if (key=='W') {
-    w_w=1;
-  }
-  if (key=='S') {
-    s_sp=1;
   }
   if (keyCode==LEFT) {
     a_a=1;
