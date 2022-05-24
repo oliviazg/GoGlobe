@@ -2,13 +2,13 @@ public class Ball{
   private int health;
   private int windCount;
   private double speed;
-  private int startX;
-  private int startY;
-  private int direction = 0;
-  private int up = 1;
-  private int down = 2;
-  private int right = 3;
-  private int left = 4;
+  private int xPos;
+  private int yPOs;
+  private int[] direction;
+  private int[] up = {1, 0};
+  private int[] down = {-1, 0};
+  private int[] right = {0, 1};
+  private int[] left = {0, -1};
     
   private double size;
   private color color_;
@@ -38,12 +38,13 @@ public class Ball{
     
     
   public void setStartPos(int x, int y){
-      startX = x;
-      startY = y;
+      xPos = x;
+      yPos = y;
   }
     
   public void move(){
-      
+      xPos += move(direction);
+      yPos += move(direction);
   }
     
   public boolean die(){
@@ -74,6 +75,10 @@ public class Ball{
       }
       if (keyPressed == 27){
         direction = right;
+      }
+      
+      if (keyPressed == 255){
+        setGravity++;
       }
   }
   
