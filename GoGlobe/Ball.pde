@@ -3,7 +3,7 @@ public class Ball{
   private int windCount;
   private double speed;
   private int xPos;
-  private int yPOs;
+  private int yPos;
   private int[] direction;
   private int[] up = {1, 0};
   private int[] down = {-1, 0};
@@ -37,6 +37,12 @@ public class Ball{
   }
     
     
+  public void display(){
+    noStroke();
+    fill(color_, 100);
+    ellipse(xPos, yPos, size * 2, size * 2);
+  }
+  
   public void setStartPos(int x, int y){
       xPos = x;
       yPos = y;
