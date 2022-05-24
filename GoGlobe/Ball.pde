@@ -43,8 +43,8 @@ public class Ball{
   }
     
   public void move(){
-      xPos += move(direction);
-      yPos += move(direction);
+      xPos += move * direction[1];
+      yPos += move * direction[0];
   }
     
   public boolean die(){
