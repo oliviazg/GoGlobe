@@ -55,3 +55,16 @@ public boolean changeGravity(){
 public void keyPressed(){
     
 }
+
+
+public class Original extends Ball{
+  
+  public Original{
+    super();
+  } 
+   
+  public boolean touchingObs(){
+    
+  }
+
+}
