@@ -68,3 +68,39 @@ public class Original extends Ball{
   }
 
 }
+
+public class Droplet extends Ball{
+  
+  public Original{
+    super();
+  } 
+   
+  public boolean touchingObs(){
+    
+  }
+
+}
+
+public class Snitch extends Ball{
+  
+  public Original{
+    super();
+  } 
+   
+  public boolean touchingObs(){
+    
+  }
+
+}
+
+public class Stone extends Ball{
+  
+  public Original{
+    super();
+  } 
+   
+  public boolean touchingObs(){
+    
+  }
+
+}
