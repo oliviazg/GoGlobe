@@ -35,12 +35,16 @@ public class Ball{
   public int getWindCount(){
       return windCount;
   }
+  
+  public color getColor(){
+      return color_;
+  }
     
     
   public void display(){
     noStroke();
     fill(color_, 100);
-    ellipse(xPos, yPos, size * 2, size * 2);
+    rectangle(xPos, yPos, size * 2, size * 2);
   }
   
   public void setStartPos(int x, int y){
@@ -60,11 +64,14 @@ public class Ball{
     }
   }
     
-  public boolean touchingObs(Obstacle obs, int xObs, int yObs){
+  public boolean touchingObs(Ball ball, int xBall, int yBall){
     if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
       //if (obs.getColor() == 0){ // replace with proper color once subclasses exist
         health -= 20;
       //}
+      return true;
+    } else {
+      return false;
     }
   }
     
