@@ -3,7 +3,7 @@ public class Ball{
   private int windCount;
   private double speed;
   private int xPos;
-  private int yPOs;
+  private int yPos;
   private int[] direction;
   private int[] up = {1, 0};
   private int[] down = {-1, 0};
@@ -35,32 +35,52 @@ public class Ball{
   public int getWindCount(){
       return windCount;
   }
+  
+  public color getColor(){
+      return color_;
+  }
     
     
+  public void display(){
+    noStroke();
+    fill(color_, 100);
+    rectangle(xPos, yPos, size * 2, size * 2);
+  }
+  
   public void setStartPos(int x, int y){
-      xPos = x;
-      yPos = y;
+    xPos = x;
+    yPos = y;
   }
     
   public void move(){
-      xPos += move * direction[1];
-      yPos += move * direction[0];
+    xPos += move * direction[1];
+    yPos += move * direction[0];
   }
     
   public boolean die(){
-      
+    if (health == 0 || millis() - 100000000 == 0){
+      color_ = 0;
+      size = 0;
+    }
   }
     
-  public boolean touchingObs(){
-      
+  public boolean touchingObs(Ball ball, int xBall, int yBall){
+    if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
+      //if (obs.getColor() == 0){ // replace with proper color once subclasses exist
+        health -= 20;
+      //}
+      return true;
+    } else {
+      return false;
+    }
   }
     
   public boolean addWind(){
-      
+    
   }
     
   public boolean changeGravity(){
-      
+    gravity = (setGravity % 2 == 0);
   }
     
   public void keyPressed(){
@@ -83,51 +103,51 @@ public class Ball{
   }
   
   
-  public class Original extends Ball{
+  //public class Original extends Ball{
     
-    public Original{
-      super();
-    } 
+  //  public Original{
+  //    super();
+  //  } 
      
-    public boolean touchingObs(){
+  //  public boolean touchingObs(){
       
-    }
+  //  }
   
-  }
+  //}
   
-  public class Droplet extends Ball{
+  //public class Droplet extends Ball{
     
-    public Original{
-      super();
-    } 
+  //  public Original{
+  //    super();
+  //  } 
      
-    public boolean touchingObs(){
+  //  public boolean touchingObs(){
       
-    }
+  //  }
   
-  }
+  //}
   
-  public class Snitch extends Ball{
+  //public class Snitch extends Ball{
     
-    public Original{
-      super();
-    } 
+  //  public Original{
+  //    super();
+  //  } 
      
-    public boolean touchingObs(){
+  //  public boolean touchingObs(){
       
-    }
+  //  }
   
-  }
+  //}
   
-  public class Stone extends Ball{
+  //public class Stone extends Ball{
     
-    public Original{
-      super();
-    } 
+  //  public Original{
+  //    super();
+  //  } 
      
-    public boolean touchingObs(){
+  //  public boolean touchingObs(){
       
-    }
+  //  }
   
-  }
+  //}
 }
