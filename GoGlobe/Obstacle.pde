@@ -6,7 +6,7 @@ public class Obstacle{
   private color color_;
   private boolean orientation;
   
-  public Obstacle{
+  public Obstacle(){
     
   }
   

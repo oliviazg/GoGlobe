@@ -16,7 +16,7 @@ public class Ball{
   private boolean gravity;
   private int setGravity = 0;
     
-  public ball{
+  public Ball(){
     health = 1000;
     windCount = 1;
     speed = 20;

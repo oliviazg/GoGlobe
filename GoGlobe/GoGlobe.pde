@@ -1,19 +1,11 @@
-
 static int endX; //Portal will be centered at this x-coordinate.
 static int endY; //Portal will be centered at this y-coordinate.
 static double density; //the percentage of maze (impenetrable) compared to open space 
 int numOfPixels;
 int countdown;
+static int difficulty;
 
-//Generate the maze walls and make the Portal by calling  generateMaze(double density) and makePortal(int x, int y)
-//void setup() {
-//}
-
-//Display the graphics 
-//void draw() {
-//}
-
-// //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
+//Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
 void generateMaze(double density) {
   int startY;
   int startX;
@@ -488,6 +480,7 @@ float[] ball_size={10, 10, 10, 10, 10, 10, 10, 5, 10, 10, 10, 10, 10, 10, 10, 10
 int mode=1;
 
 
+//Generate the maze walls and make the Portal by calling  generateMaze(double density) and makePortal(int x, int y)
 void setup() {
   size(500, 500);
   key_log=new int[10];
@@ -503,6 +496,7 @@ void mousePressed(){
   }
 }
 
+//Display the graphics 
 void draw() {
   background(51);
   p.move();
@@ -526,10 +520,6 @@ void draw() {
   }
   text(countdown, 20, 20);
   int time = 59;
-  println(second());
-  if (second() == time){
-    println("TIME HAS RUN OUT");
-  }
 }
 
 //movement of ball using arrow keys
