@@ -7,8 +7,8 @@ static int difficulty;
 
 //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
 void generateMaze(double density) {
-  int startY;
-  int startX;
+  int startY = (int) Math.random()*500;
+  int startX = (int) Math.random()*500;
 }
 
 //A portal will be created, centered at the given x- and y- coordinates. 
