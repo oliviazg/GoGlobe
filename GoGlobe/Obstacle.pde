@@ -7,7 +7,7 @@ public class Obstacle{
   private boolean orientation;
   
   public Obstacle{
-    
+    size = 40;
   }
   
   public color getColor(){
@@ -40,7 +40,7 @@ public class Obstacle{
     yPos -= move * direction[vertical - 2];
   }
   
-  public boolean touchingBall(){
+  public boolean touchingBall(Ball ball, int xBall, int yBall){
     if (xBall - xPos <= horizontal || yBall - yPos <= vertical){
       color_ = (255, 0, 0, 10);
       return true;

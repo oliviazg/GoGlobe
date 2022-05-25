@@ -64,7 +64,7 @@ public class Ball{
     }
   }
     
-  public boolean touchingObs(Ball ball, int xBall, int yBall){
+  public boolean touchingObs(Obstacle obs, int xObs, int yObs){
     if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
       //if (obs.getColor() == 0){ // replace with proper color once subclasses exist
         health -= 20;
