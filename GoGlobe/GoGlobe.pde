@@ -2,6 +2,7 @@ static int endX; //Portal will be centered at this x-coordinate.
 static int endY; //Portal will be centered at this y-coordinate.
 static double density; //the percentage of maze (impenetrable) compared to open space 
 int numOfPixels;
+int countdown;
 
 //Generate the maze walls and make the Portal by calling  generateMaze(double density) and makePortal(int x, int y)
 //void setup() {
@@ -18,8 +19,7 @@ void generateMaze(double density) {
 }
 
 //A portal will be created, centered at the given x- and y- coordinates. 
-void makePortal(int endX, int endY) {
-  
+void makePortal(int endX, int endY) { 
 }
 
 PImage img;
@@ -497,6 +497,13 @@ void setup() {
   p=new Ball();
   p.prep();
   frameRate(60);
+  countdown = 0;
+}
+
+void mousePressed(){
+  if (countdown == 0) {
+    countdown += 60;
+  }
 }
 void draw() {
   background(51);
@@ -516,6 +523,10 @@ void draw() {
     win=0;
     p.prep();
   }
+  if (countdown > 0) {
+    countdown --;
+  }
+  text(countdown, 20, 20);
 }
 void keyReleased() {
   if (key==' ') {
