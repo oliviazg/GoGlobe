@@ -14,12 +14,22 @@ public class Obstacle{
     return color_;
   }
   
+  public int getX(){
+      return xPos;
+  }
+  
+  public int getY(){
+      return yPos;
+  }
+  
   
   // Selects coordinate from arraylist of arrays 
   // containing coordinates where the maze has 
   // been constructed.
   
   //public void setPos(int x, int y){
+    //xPos = x;
+    //yPos = y;
   //}
   
   public void display(){
@@ -55,13 +65,14 @@ public class Obstacle{
     
   //  public Original{
   //    super();
+  //    color_ = (111, 168, 220);
   //  }
   //}
   
   //public class Ice extends Obstacle{
   //  private double color;
     
-  //  public Original{
+  //  public Ice{
   //    super();
   //  }
   //}
@@ -69,7 +80,7 @@ public class Obstacle{
   //public class Gold extends Obstacle{
   //  private double color;
     
-  //  public Original{
+  //  public Gold{
   //    super();
   //  }
   //}
@@ -77,7 +88,7 @@ public class Obstacle{
   //public class Granite extends Obstacle{
   //  private double color;
     
-  //  public Original{
+  //  public Granite{
   //    super();
   //  }
   //}
