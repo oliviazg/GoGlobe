@@ -144,7 +144,18 @@ public class Ball{
     
     public void display(){
       super();
-      // add glare
+      
+      fill(207, 226, 243);
+      curve(xPos + 5, yPos - 5, xPos + 8, yPos - 3, xPos + 10, yPos - 1, xPos + 6, yPos);
+      
+      fill(225, 243, 253);
+      curve(xPos + 4, yPos - 4, xPos + 7, yPos - 2, xPos + 9, yPos, xPos + 5, yPos + 1);
+      
+      fill(255, 255, 255);
+      curve(xPos + 3, yPos - 3, xPos + 6, yPos - 1, xPos + 8, yPos + 1, xPos + 4, yPos + 2);
+      
+      fill(11, 83, 148);
+      curve(xPos - 4, yPos + 4, xPos - 7, yPos + 2, xPos - 9, yPos, xPos - 5, yPos - 1);
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
@@ -169,6 +180,7 @@ public class Ball{
     
     public void display(){
       super();
+      
       // add shine
     }
      
