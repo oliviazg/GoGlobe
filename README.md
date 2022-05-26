@@ -11,9 +11,14 @@ Compile/Run instructions:
 Development Log for Evelyn Chen:
 --------------------------------
 D1: I merged main GoGlobe (created by Olivia) into my own branch and added the instance variables and main methods for GoGlobe. I also started coding generateMaze(double density).
-D2: I continued working on GoGlobe, updating setup and the configuration with keys. 
+
+D2: I continued working on GoGlobe, updating setup and the configuration with keys.
+
+D3: I added Time configuration and continued to work on the mazeGenerator and Portal in the main class.
 
 ----------------------------------
 Development Log for Olivia Zheng:
 ----------------------------------
-D1/2: I merged Evelyn's updated GoGlobe with my own branch. I filled in most of the variables and methods for Ball and Obstacle, and added a few new variables and methods as well.
+D1: I merged Evelyn's updated GoGlobe with my own branch. I filled in most of the variables and methods for Ball and Obstacle, and added a few new variables and methods as well.
+
+D2: I created the Wind class and added and updated Ball, Obstacle, and Wind methods.
