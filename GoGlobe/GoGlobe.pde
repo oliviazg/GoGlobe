@@ -21,13 +21,15 @@ void generateMaze(double density) {
     yDirection = 1;
     for (int i = 0; i < numOfPixels*difficulty; i++) {
       if (xDirection == 1) {
+        color c = color(0);
         for (int x = startX; x < x + numOfPixels*difficulty; x++) {
-          set(0, x, startY);
+          set(c, x, startY);
         }
       }
       if (xDirecetion = -1) {
         for (int x2 = startX; x2 > x2 - numOfPixels*difficulty; x2--) {
-          set(0, x2, startY);
+          color c = color(0);
+          set(c, x2, startY);
         }
       }
     startY = numOfPixels + yDirection * size*2;
@@ -41,6 +43,8 @@ void generateMaze(double density) {
 
 //A portal will be created, centered at the given x- and y- coordinates. 
 void makePortal(int endX, int endY) { 
+  color c = color(0, 255, 0);
+  set(c, endX, endY);
 }
 
 PImage img;
