@@ -26,7 +26,7 @@ void generateMaze(double density) {
           set(c, x, startY);
         }
       }
-      if (xDirecetion = -1) {
+      if (xDirection = -1) {
         for (int x2 = startX; x2 > x2 - numOfPixels*difficulty; x2--) {
           color c = color(0);
           set(c, x2, startY);
@@ -64,6 +64,8 @@ PImage img;
  l=left gravity
  */
 
+/**
+|-----------CODE BELOW IS FOR MANUAL CREATION OF THE MAZE (LAST RESORT IF GENERATEMAZE() FUNCTION DOESN'T WORK------|
 Ball p;
 int u=10;
 int r=11;
@@ -498,6 +500,7 @@ int[][][] level=
     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}, 
   }, 
 };
+**/
 float slide=0.9;
 int win=0;
 int levels=0;
@@ -512,13 +515,14 @@ float[] ball_size={10, 10, 10, 10, 10, 10, 10, 5, 10, 10, 10, 10, 10, 10, 10, 10
 int mode=1;
 
 
+
 //Generate the maze walls and make the Portal by calling  generateMaze(double density) and makePortal(int x, int y)
 void setup() {
   size(500, 500);
   key_log=new int[10];
-  p=new Ball();
-  p.prep();
-  frameRate(60);
+  player=new Ball();
+  player.prep();
+  frameRate(60); //default frame; 60 frams will be displayed every second
   countdown = 0;
 }
 
@@ -531,15 +535,16 @@ void mousePressed(){
 //Display the graphics 
 void draw() {
   background(51);
-  p.move();
-  p.show();
+  player.move();
+  player.show();
   if(key_log[0]==skip[0]&&key_log[1]==skip[1]&&key_log[2]==skip[2]&&key_log[3]==skip[3]&&key_log[4]==skip[4]&&key_log[5]==skip[5]&&key_log[6]==skip[6]&&key_log[7]==skip[7]
   &&key_log[8]==skip[8]&&key_log[9]==skip[9]){
     win=1;
     key_log=new int[10];
   }
   if (win==1) {
-    levels++;
+    levels++; //progress to the next level
+    difficulty++; //increase difficulty
     if (levels==level.length) {
       //println(millis());
     }
