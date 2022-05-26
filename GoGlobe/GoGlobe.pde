@@ -8,18 +8,16 @@ int yDirection;
 static int difficulty;
 ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 
-
-
 //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
 void generateMaze(double density) {
-  int startY = (int) Math.random()*500;
+  int startY = (int) Math.random()*500; 
   int startX = (int) Math.random()*500;
-  numOfPixels = (int) Math.random()*30;
-  int randomHalf = (int) Math.random();
-  if (randomHalf%2 == 0) {
+  numOfPixels = (int) Math.random()*30; //pick a random number of pixels
+  int randomHalf = (int) Math.random(); //flip a coin
+  if (randomHalf%2 == 0) { //if heads
     xDirection = -1;
     yDirection = -1;
-  } else {
+  } else { //if tails
     xDirection = 1;
     yDirection = 1;
     for (int i = 0; i < numOfPixels*difficulty; i++) {
@@ -557,12 +555,13 @@ void draw() {
   if (win==1) { //if player is successful in the level
     levels++; //progress to the next level
     difficulty++; //increase difficulty to generate a larger maze with more pixels
-    if (levels==level.length) {
-      //println(millis());
+    if (levels==level.length) { //once you've completed all the levels
+      println("CONGRATS!"); //print congratulatory message
+      println("You've completed all the levels!"); 
     }
-    levels=levels%level.length;
+    levels=levels%level.length; //
     win=0;
-    p.prep();
+    player.prep();
   }
   if (countdown > 0) {
     countdown --;
