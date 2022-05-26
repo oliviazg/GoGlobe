@@ -1,4 +1,5 @@
 public class Ball{
+  private String type;
   private int health;
   private int windCount;
   private double speed;
@@ -17,6 +18,8 @@ public class Ball{
   private int setGravity = 0;
     
   public ball{
+    type = "Original";
+    
     health = 1000;
     windCount = 1;
     speed = 20;
@@ -118,27 +121,28 @@ public class Ball{
   
 // ----------------------------------------------------------------
   
-  public class Original extends Ball{
+  //public class Original extends Ball{
     
-    public Original{
-      super();
-      color_ = (111, 168, 220);
-    } 
+  //  public Original{
+  //    super();
+  //    color_ = (111, 168, 220);
+  //  } 
      
-    public void display(){
-      super();
-    }
+  //  public void display(){
+  //    super();
+  //  }
   
-    public boolean touchingObs(Obstacle obs, int xObs, int yObs){
-       super();
-    }
+  //  public boolean touchingObs(Obstacle obs, int xObs, int yObs){
+  //     super();
+  //  }
   
-  }
+  //}
   
   public class Droplet extends Ball{
     
     public Droplet{
       super();
+      type = "Droplet";
       color_ = (201, 218, 248);
     } 
     
@@ -175,6 +179,7 @@ public class Ball{
     
     public Snitch{
       super();
+      type = "Snitch";
       color_ = (241, 194, 50);
     } 
     
@@ -201,6 +206,7 @@ public class Ball{
     
     public Stone{
       super();
+      type = "Stone";
       color_ = (204, 204, 204);
     } 
      
