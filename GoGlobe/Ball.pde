@@ -120,7 +120,7 @@ public class Ball{
   
   public class Original extends Ball{
     
-    public Original{
+    public Original(){
       super();
       color_ = (111, 168, 220);
     } 
@@ -137,7 +137,7 @@ public class Ball{
   
   public class Droplet extends Ball{
     
-    public Droplet{
+    public Droplet(){
       super();
       color_ = (201, 218, 248);
     } 
@@ -162,7 +162,7 @@ public class Ball{
   
   public class Snitch extends Ball{
     
-    public Snitch{
+    public Snitch(){
       super();
       color_ = (241, 194, 50);
     } 
@@ -187,7 +187,7 @@ public class Ball{
   
   public class Stone extends Ball{
     
-    public Stone{
+    public Stone(){
       super();
       color_ = (204, 204, 204);
     } 

@@ -67,7 +67,7 @@ public class Obstacle{
   public class Original extends Obstacle{
     private double color;
     
-    public Original{
+    public Original(){
       super();
       color_ = (111, 168, 220);
     }
@@ -76,7 +76,7 @@ public class Obstacle{
   public class Ice extends Obstacle{
     private double color;
     
-    public Ice{
+    public Ice(){
       super();
       color_ = (201, 218, 248);
     }
@@ -90,7 +90,7 @@ public class Obstacle{
   public class Gold extends Obstacle{
     private double color;
     
-    public Gold{
+    public Gold(){
       super();
       color_ = (241, 194, 50);
     }
@@ -104,7 +104,7 @@ public class Obstacle{
   public class Granite extends Obstacle{
     private double color;
     
-    public Granite{
+    public Granite(){
       super();
       color_ = (204, 204, 204);
     }
