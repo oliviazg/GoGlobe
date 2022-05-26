@@ -1,4 +1,5 @@
 public class Obstacle{
+  private String type;
   private double speed;
   private int xPos;
   private int yPos;
@@ -7,11 +8,19 @@ public class Obstacle{
   private boolean orientation;
   
   public Obstacle{
-    
+    size = 40;
   }
   
-  public color getColor(){
-    return color_;
+  public String getType(){
+      return type;
+  }
+  
+  public int getX(){
+      return xPos;
+  }
+  
+  public int getY(){
+      return yPos;
   }
   
   
@@ -20,6 +29,8 @@ public class Obstacle{
   // been constructed.
   
   //public void setPos(int x, int y){
+    //xPos = x;
+    //yPos = y;
   //}
   
   public void display(){
@@ -40,7 +51,7 @@ public class Obstacle{
     yPos -= move * direction[vertical - 2];
   }
   
-  public boolean touchingBall(){
+  public boolean touchingBall(Ball ball, int xBall, int yBall){
     if (xBall - xPos <= horizontal || yBall - yPos <= vertical){
       color_ = (255, 0, 0, 10);
       return true;
@@ -50,35 +61,60 @@ public class Obstacle{
   }
   
   
+  // ----------------------------------------------------------------
+
+  
   //public class Original extends Obstacle{
   //  private double color;
     
   //  public Original{
   //    super();
+  //    color_ = (111, 168, 220);
   //  }
   //}
   
-  //public class Ice extends Obstacle{
-  //  private double color;
+  public class Ice extends Obstacle{
+    private double color;
     
-  //  public Original{
-  //    super();
-  //  }
-  //}
+    public Ice{
+      super();
+      type = "Ice";
+      color_ = (201, 218, 248);
+    }
+    
+    public display(){
+      // add glare
+    }
+    
+  }
   
-  //public class Gold extends Obstacle{
-  //  private double color;
+  public class Gold extends Obstacle{
+    private double color;
     
-  //  public Original{
-  //    super();
-  //  }
-  //}
+    public Gold{
+      super();
+      type = "Gold";
+      color_ = (241, 194, 50);
+    }
+    
+    public display(){
+      // add shine
+    }
+    
+  }
   
-  //public class Granite extends Obstacle{
-  //  private double color;
+  public class Granite extends Obstacle{
+    private double color;
     
-  //  public Original{
-  //    super();
-  //  }
-  //}
+    public Granite{
+      super();
+      type = "Granite";
+      color_ = (204, 204, 204);
+    }
+    
+    public display(){
+      // add ridges
+    }
+    
+  }
 }

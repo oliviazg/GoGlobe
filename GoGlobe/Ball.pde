@@ -1,4 +1,5 @@
 public class Ball{
+  private String type;
   private int health;
   private int windCount;
   private double speed;
@@ -17,17 +18,22 @@ public class Ball{
   private int setGravity = 0;
     
   public ball{
+    type = "Original";
+    
     health = 1000;
     windCount = 1;
     speed = 20;
     
     size = 40;
-    color_ = 0;
     
     gravity = true;
     
   }
     
+  public String getType(){
+      return type;
+  }
+  
   public int getHealth(){
       return health;
   }
@@ -36,8 +42,12 @@ public class Ball{
       return windCount;
   }
   
-  public color getColor(){
-      return color_;
+  public int getX(){
+      return xPos;
+  }
+  
+  public int getY(){
+      return yPos;
   }
     
     
@@ -47,10 +57,14 @@ public class Ball{
     rectangle(xPos, yPos, size * 2, size * 2);
   }
   
-  public void setStartPos(int x, int y){
-    xPos = x;
-    yPos = y;
-  }
+  // Selects coordinate from arraylist of arrays 
+  // containing coordinates where the maze has 
+  // been constructed.
+  
+  //public void setStartPos(int x, int y){
+  //  xPos = x;
+  //  yPos = y;
+  //}
     
   public void move(){
     xPos += move * direction[1];
@@ -64,19 +78,22 @@ public class Ball{
     }
   }
     
-  public boolean touchingObs(Ball ball, int xBall, int yBall){
+  public boolean touchingObs(Obstacle obs, int xObs, int yObs){
     if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-      //if (obs.getColor() == 0){ // replace with proper color once subclasses exist
-        health -= 20;
-      //}
+      health -= 20;
       return true;
     } else {
       return false;
     }
   }
     
-  public boolean addWind(){
-    
+  public boolean touchingWind(Wind wind, int xWind, int yWind){
+    if (xWind - xPos <= size * 2 || yWind - yPos <= size * 2){
+      windCount++;
+      return true;
+    } else {
+      return false;
+    }
   }
     
   public boolean changeGravity(){
@@ -102,52 +119,112 @@ public class Ball{
       }
   }
   
+// ----------------------------------------------------------------
   
   //public class Original extends Ball{
     
   //  public Original{
   //    super();
+  //    color_ = (111, 168, 220);
   //  } 
      
-  //  public boolean touchingObs(){
-      
-  //  }
-  
-  //}
-  
-  //public class Droplet extends Ball{
-    
-  //  public Original{
+  //  public void display(){
   //    super();
-  //  } 
-     
-  //  public boolean touchingObs(){
-      
+  //  }
+  
+  //  public boolean touchingObs(Obstacle obs, int xObs, int yObs){
+  //     super();
   //  }
   
   //}
   
-  //public class Snitch extends Ball{
+  public class Droplet extends Ball{
     
-  //  public Original{
-  //    super();
-  //  } 
-     
-  //  public boolean touchingObs(){
-      
-  //  }
-  
-  //}
-  
-  //public class Stone extends Ball{
+    public Droplet{
+      super();
+      type = "Droplet";
+      color_ = (201, 218, 248);
+    } 
     
-  //  public Original{
-  //    super();
-  //  } 
-     
-  //  public boolean touchingObs(){
+    public void display(){
+      super();
       
-  //  }
+      fill(207, 226, 243);
+      curve(xPos + 5, yPos - 5, xPos + 8, yPos - 3, xPos + 10, yPos - 1, xPos + 6, yPos);
+      
+      fill(225, 243, 253);
+      curve(xPos + 4, yPos - 4, xPos + 7, yPos - 2, xPos + 9, yPos, xPos + 5, yPos + 1);
+      
+      fill(255, 255, 255);
+      curve(xPos + 3, yPos - 3, xPos + 6, yPos - 1, xPos + 8, yPos + 1, xPos + 4, yPos + 2);
+      
+      fill(11, 83, 148);
+      curve(xPos - 4, yPos + 4, xPos - 7, yPos + 2, xPos - 9, yPos, xPos - 5, yPos - 1);
+    }
+     
+    public boolean touchingObs(Obstacle obs, int xObs, int yObs){
+      if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
+        if (obs.getType().equals("Ice")){
+          health -= 40;
+        }
+        return true;
+      } else {
+        return false;
+      }
+    }
   
-  //}
+  }
+  
+  public class Snitch extends Ball{
+    
+    public Snitch{
+      super();
+      type = "Snitch";
+      color_ = (241, 194, 50);
+    } 
+    
+    public void display(){
+      super();
+      
+      // add shine
+    }
+     
+    public boolean touchingObs(Obstacle obs, int xObs, int yObs){
+      if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
+        if (obs.getType().equals("Gold")){
+          health -= 40;
+        }
+        return true;
+      } else {
+        return false;
+      }
+    }
+  
+  }
+  
+  public class Stone extends Ball{
+    
+    public Stone{
+      super();
+      type = "Stone";
+      color_ = (204, 204, 204);
+    } 
+     
+    public void display(){
+      super();
+      // add ridges
+    }
+    
+    public boolean touchingObs(Obstacle obs, int xObs, int yObs){
+      if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
+        if (obs.getType().equals("Granite")){
+          health -= 40;
+        }
+        return true;
+      } else {
+        return false;
+      }
+    }
+  
+  }
 }
