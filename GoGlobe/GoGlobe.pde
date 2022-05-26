@@ -12,11 +12,31 @@ void generateMaze(double density) {
   int startY = (int) Math.random()*500;
   int startX = (int) Math.random()*500;
   numOfPixels = (int) Math.random()*30;
-  for (int i = 0; i < numOfPixels*difficulty; i++) {
-    for (int x = startX; x < x + numOfPixels*difficulty; x++) {
-      set(0, startX, startY);
+  int randomHalf = (int) Math.random();
+  if (randomHalf%2 == 0) {
+    xDirection = -1;
+    yDirection = -1;
+  } else {
+    xDirection = 1;
+    yDirection = 1;
+    for (int i = 0; i < numOfPixels*difficulty; i++) {
+      if (xDirection == 1) {
+        for (int x = startX; x < x + numOfPixels*difficulty; x++) {
+          set(0, x, startY);
+        }
+      }
+      if (xDirecetion = -1) {
+        for (int x2 = startX; x2 > x2 - numOfPixels*difficulty; x2--) {
+          set(0, x2, startY);
+        }
+      }
+    startY = numOfPixels + yDirection * size*2;
+    if (startY > height || startY < 0) {
+      numOfPixels = (int) Math.random()*30;
     }
   }
+  }
+ 
 }
 
 //A portal will be created, centered at the given x- and y- coordinates. 
