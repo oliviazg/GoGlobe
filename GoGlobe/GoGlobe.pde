@@ -20,14 +20,15 @@ void generateMaze(double density) {
   } else { //if tails
     xDirection = 1;
     yDirection = 1;
-    for (int i = 0; i < numOfPixels*difficulty; i++) {
+    for (int i = 0; i < numOfPixels*difficulty; i++) { 
       if (xDirection == 1) {
-        color c = color(0);
+        
         for (int x = startX; x < x + numOfPixels*difficulty; x++) {
+          color c = color(0); //set pixel as black to indicate maze
           set(c, x, startY);
           int[] xyCoor = new int[2];
           xyCoor[0] = startX;
-          xyCoor[1] = startY;
+          xyCoor[1] = startY;g
           mazeCoordinates.add(xyCoor);
         }
       }
@@ -47,8 +48,6 @@ void generateMaze(double density) {
     }
   }
   }
-  
- 
 }
 
 //A portal will be created, centered at the given x- and y- coordinates. 
