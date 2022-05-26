@@ -2,24 +2,49 @@ static int endX; //Portal will be centered at this x-coordinate.
 static int endY; //Portal will be centered at this y-coordinate.
 static double density; //the percentage of maze (impenetrable) compared to open space 
 int numOfPixels;
+int countdown;
+int xDirection;
+int yDirection;
+static int difficulty;
 
-//Generate the maze walls and make the Portal by calling  generateMaze(double density) and makePortal(int x, int y)
-//void setup() {
-//}
-
-//Display the graphics 
-//void draw() {
-//}
-
-// //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
+//Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
 void generateMaze(double density) {
-  int startY;
-  int startX;
+  int startY = (int) Math.random()*500;
+  int startX = (int) Math.random()*500;
+  numOfPixels = (int) Math.random()*30;
+  int randomHalf = (int) Math.random();
+  if (randomHalf%2 == 0) {
+    xDirection = -1;
+    yDirection = -1;
+  } else {
+    xDirection = 1;
+    yDirection = 1;
+    for (int i = 0; i < numOfPixels*difficulty; i++) {
+      if (xDirection == 1) {
+        color c = color(0);
+        for (int x = startX; x < x + numOfPixels*difficulty; x++) {
+          set(c, x, startY);
+        }
+      }
+      if (xDirecetion = -1) {
+        for (int x2 = startX; x2 > x2 - numOfPixels*difficulty; x2--) {
+          color c = color(0);
+          set(c, x2, startY);
+        }
+      }
+    startY = numOfPixels + yDirection * size*2;
+    if (startY > height || startY < 0) {
+      numOfPixels = (int) Math.random()*30;
+    }
+  }
+  }
+ 
 }
 
 //A portal will be created, centered at the given x- and y- coordinates. 
-void makePortal(int endX, int endY) {
-  
+void makePortal(int endX, int endY) { 
+  color c = color(0, 255, 0);
+  set(c, endX, endY);
 }
 
 PImage img;
@@ -487,14 +512,23 @@ float[] ball_size={10, 10, 10, 10, 10, 10, 10, 5, 10, 10, 10, 10, 10, 10, 10, 10
 int mode=1;
 
 
+//Generate the maze walls and make the Portal by calling  generateMaze(double density) and makePortal(int x, int y)
 void setup() {
   size(500, 500);
   key_log=new int[10];
   p=new Ball();
   p.prep();
   frameRate(60);
+  countdown = 0;
 }
 
+void mousePressed(){
+  if (countdown == 0) {
+    countdown += 60;
+  }
+}
+
+//Display the graphics 
 void draw() {
   background(51);
   p.move();
@@ -513,11 +547,11 @@ void draw() {
     win=0;
     p.prep();
   }
-  int time = 59;
-  println(second());
-  if (second() == time){
-    println("TIME HAS RUN OUT");
+  if (countdown > 0) {
+    countdown --;
   }
+  text(countdown, 20, 20);
+  int time = 59;
 }
 
 //movement of ball using arrow keys
