@@ -164,7 +164,7 @@ public class Ball{
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getColor() != (201, 218, 248)){
+        if (obs.getType().equals("Ice")){
           health -= 40;
         }
         return true;
@@ -191,7 +191,7 @@ public class Ball{
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getColor() != (241, 194, 50)){
+        if (obs.getType().equals("Gold")){
           health -= 40;
         }
         return true;
@@ -217,7 +217,7 @@ public class Ball{
     
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getColor() != (204, 204, 204)){
+        if (obs.getType().equals("Granite")){
           health -= 40;
         }
         return true;

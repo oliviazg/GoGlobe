@@ -108,7 +108,7 @@ public class Obstacle{
     
     public Granite{
       super();
-      type "Granite";
+      type = "Granite";
       color_ = (204, 204, 204);
     }
     
