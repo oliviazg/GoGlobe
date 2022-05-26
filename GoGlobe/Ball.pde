@@ -30,16 +30,16 @@ public class Ball{
     
   }
     
+  public String getType(){
+      return type;
+  }
+  
   public int getHealth(){
       return health;
   }
     
   public int getWindCount(){
       return windCount;
-  }
-  
-  public color getColor(){
-      return color_;
   }
   
   public int getX(){
