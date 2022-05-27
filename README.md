@@ -16,6 +16,8 @@ D2: I continued working on GoGlobe, updating setup and the configuration with ke
 
 D3: I added Time configuration and continued to work on the mazeGenerator and Portal in the main class.
 
+D4: I created the Controller class and updated the main GoGlobe class.
+
 ----------------------------------
 Development Log for Olivia Zheng:
 ----------------------------------
