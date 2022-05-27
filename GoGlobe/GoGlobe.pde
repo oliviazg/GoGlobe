@@ -1,15 +1,14 @@
 static int endX; //Portal will be centered at this x-coordinate.
 static int endY; //Portal will be centered at this y-coordinate.
-static double density; //the percentage of maze (impenetrable) compared to open space 
+static double difficulty; //the percentage of maze (impenetrable) compared to open space 
 int numOfPixels;
 int countdown;
 int xDirection;
 int yDirection;
-static int difficulty;
 ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 
 //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
-void generateMaze(double density) {
+void generateMaze(double difficulty) {
   int startY = (int) Math.random()*500; 
   int startX = (int) Math.random()*500;
   numOfPixels = (int) Math.random()*30; //pick a random number of pixels
@@ -522,7 +521,6 @@ int[] key_log;
 int[] skip={1,3,1,3,2,4,2,4,5,5};
 float[] ball_size={10, 10, 10, 10, 10, 10, 10, 5, 10, 10, 10, 10, 10, 10, 10, 10, 10};
 int mode=1;
-
 
 
 //Generate the maze walls and make the Portal by calling  generateMaze(double density) and makePortal(int x, int y)
