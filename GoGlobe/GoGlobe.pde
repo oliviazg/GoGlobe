@@ -11,7 +11,7 @@ ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 void generateMaze(double difficulty) {
   int startY = (int) Math.random()*500; 
   int startX = (int) Math.random()*500;
-  numOfPixels = (int) Math.random()*30; //pick a random number of pixels
+  numOfPixels = (int) Math.random()*20; //pick a random number of pixels
   int randomHalf = (int) Math.random(); //flip a coin
   if (randomHalf%2 == 0) { //if heads
     xDirection = -1;
@@ -21,7 +21,6 @@ void generateMaze(double difficulty) {
     yDirection = 1;
     for (int i = 0; i < numOfPixels*difficulty; i++) { 
       if (xDirection == 1) {
-        
         for (int x = startX; x < x + numOfPixels*difficulty; x++) {
           color c = color(0); //set pixel as black to indicate maze
           set(c, x, startY);
@@ -31,7 +30,7 @@ void generateMaze(double difficulty) {
           mazeCoordinates.add(xyCoor);
         }
       }
-      if (xDirection = -1) {
+      if (xDirection == -1) {
         for (int x2 = startX; x2 > x2 - numOfPixels*difficulty; x2--) {
           color c = color(0);
           set(c, x2, startY);
@@ -523,7 +522,7 @@ float[] ball_size={10, 10, 10, 10, 10, 10, 10, 5, 10, 10, 10, 10, 10, 10, 10, 10
 int mode=1;
 
 
-//Generate the maze walls and make the Portal by calling  generateMaze(double density) and makePortal(int x, int y)
+//Generate the maze walls and make the Portal by calling  generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
   size(500, 500);
   key_log=new int[10];
@@ -531,6 +530,7 @@ void setup() {
   player.prep();
   frameRate(60); //default frame; 60 frams will be displayed every second
   countdown = 0;
+  generateMaze(1);
 }
 
 void mousePressed(){
@@ -544,8 +544,7 @@ void draw() {
   background(51);
   player.move();
   player.show();
-  if(key_log[0]==skip[0]&&key_log[1]==skip[1]&&key_log[2]==skip[2]&&key_log[3]==skip[3]&&key_log[4]==skip[4]&&key_log[5]==skip[5]&&key_log[6]==skip[6]&&key_log[7]==skip[7]
-  &&key_log[8]==skip[8]&&key_log[9]==skip[9]){
+  if(Ball.getX() == endX && Ball.getY() == endY){
     win=1;
     key_log=new int[10];
   }
@@ -561,17 +560,21 @@ void draw() {
     player.prep();
   }
   if (countdown > 0) {
-    countdown --;
+    countdown--;
   }
   text(countdown, 20, 20);
   int time = 59;
+  if (level == 0) {
+    println("Choose your avatar!");
+    
+  }
 }
 
 //movement of ball using arrow keys
 void keyReleased() {
   if (key==' ') {
     s_s=0;
-    p.sd=1;
+    Player.sd=1;
   }
   if (keyCode==LEFT) {
     a_a=0;
@@ -594,6 +597,15 @@ void keyReleased() {
   }
 }
 void keyPressed() {
+  if (key == '1') {
+    Ball ball = new Ball.Droplet();
+  }
+  if (key == '2') {
+    Ball ball = new Ball.Snitch();
+  }
+  if (key == '3') {
+    Ball ball = new Ball.Stone();
+  }
   if (key==' ') {
     s_s=1;
   }
