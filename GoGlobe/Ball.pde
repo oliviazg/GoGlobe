@@ -137,7 +137,8 @@ public class Ball{
   //  }
   
   //}
-  
+  PImage image;
+    
   public class Droplet extends Ball{
     
     public Droplet{
@@ -148,7 +149,8 @@ public class Ball{
     
     public void display(){
       super();
-      image("Droplet.png");
+      image = "Droplet.png";
+      image(image);
       image.resize(size, size);
       //fill(207, 226, 243);
       //curve(xPos + 5, yPos - 5, xPos + 8, yPos - 3, xPos + 10, yPos - 1, xPos + 6, yPos);
@@ -186,7 +188,8 @@ public class Ball{
     
     public void display(){
       //super();
-      image("Snitch.png");
+      image = "Snitch.png";
+      image(image);
       image.resize(size, size);
     }
      
@@ -213,7 +216,8 @@ public class Ball{
      
     public void display(){
       //super();
-      image("Stone.png");
+      image = "Stone.png";
+      image(image);
       image.resize(size, size);
     }
     
