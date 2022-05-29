@@ -6,7 +6,9 @@ public class Obstacle{
   private double size;
   private color color_;
   private boolean orientation;
-  
+  int horizontal = 2;
+  int vertical = 2;
+    
   public Obstacle{
     size = 40;
   }
@@ -28,20 +30,18 @@ public class Obstacle{
   // containing coordinates where the maze has 
   // been constructed.
   
-  //public void setPos(int x, int y){
-    //xPos = x;
-    //yPos = y;
-  //}
+  public void setPos(int x, int y){
+    xPos = x;
+    yPos = y;
+  }
   
   public void display(){
     noStroke();
     fill(color_, 100);
-    int horizontal = 2;
-    int vertical = 2;
     if (orientation){
       vertical = size;
     }
-    ellipse(xPos, yPos, horizontal, vertical);
+    rect(xPos, yPos, horizontal, vertical);
   }
   
   public void move(){
@@ -72,6 +72,7 @@ public class Obstacle{
   //    color_ = (111, 168, 220);
   //  }
   //}
+  PImage image;
   
   public class Ice extends Obstacle{
     private double color;
@@ -83,7 +84,9 @@ public class Obstacle{
     }
     
     public display(){
-      // add glare
+      image = "Ice.png";
+      image.resize(horizontal, vertical);
+      image(image);
     }
     
   }
@@ -98,7 +101,9 @@ public class Obstacle{
     }
     
     public display(){
-      // add shine
+      image = "Gold.png";
+      image.resize(horizontal, vertical);
+      image(image);
     }
     
   }
@@ -113,7 +118,9 @@ public class Obstacle{
     }
     
     public display(){
-      // add ridges
+      image = "Granite.png";
+      image.resize(horizontal, vertical);
+      image(image);
     }
     
   }

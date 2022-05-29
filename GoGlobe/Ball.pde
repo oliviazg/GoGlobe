@@ -61,10 +61,10 @@ public class Ball{
   // containing coordinates where the maze has 
   // been constructed.
   
-  //public void setStartPos(int x, int y){
-  //  xPos = x;
-  //  yPos = y;
-  //}
+  public void setStartPos(int x, int y){
+    xPos = x;
+    yPos = y;
+  }
     
   public void move(){
     xPos += move * direction[1];
@@ -149,6 +149,7 @@ public class Ball{
     public void display(){
       super();
       image("Droplet.png");
+      image.resize(size, size);
       //fill(207, 226, 243);
       //curve(xPos + 5, yPos - 5, xPos + 8, yPos - 3, xPos + 10, yPos - 1, xPos + 6, yPos);
       
@@ -178,15 +179,15 @@ public class Ball{
   public class Snitch extends Ball{
     
     public Snitch{
-      super();
+      //super();
       type = "Snitch";
       color_ = (241, 194, 50);
     } 
     
     public void display(){
-      super();
+      //super();
       image("Snitch.png");
-      // add shine
+      image.resize(size, size);
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
@@ -211,9 +212,9 @@ public class Ball{
     } 
      
     public void display(){
-      super();
+      //super();
       image("Stone.png");
-      // add ridges
+      image.resize(size, size);
     }
     
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
