@@ -1,5 +1,5 @@
-static int endX; //Portal will be centered at this x-coordinate.
-static int endY; //Portal will be centered at this y-coordinate.
+static int endX = 500; //Portal will be centered at this x-coordinate.
+static int endY = 500; //Portal will be centered at this y-coordinate.
 static double difficulty; //the percentage of maze (impenetrable) compared to open space 
 int numOfPixels;
 int countdown;
@@ -50,30 +50,14 @@ void generateMaze(double difficulty) {
 
 //A portal will be created, centered at the given x- and y- coordinates. 
 void makePortal(int endX, int endY) { 
-  color c = color(0, 255, 0);
-  set(c, endX, endY);
+  color c = color(0, 255, 0); 
+  set(c, endX, endY); //set the pixel at coordinates endX and endY green
 }
 
-float slide=0.9;
-int win=0;
-int levels=0;
-int d_d=0;
-int a_a=0;
-int s_s=0;
-int w_w=0;
-int s_sp=0;
-int[] key_log;
-int[] skip={1,3,1,3,2,4,2,4,5,5};
-float[] ball_size={10, 10, 10, 10, 10, 10, 10, 5, 10, 10, 10, 10, 10, 10, 10, 10, 10};
-int mode=1;
-
-
-//Generate the maze walls and make the Portal by calling  generateMaze(double difficulty) and makePortal(int x, int y)
+//Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
   size(500, 500);
-  key_log=new int[10];
   player=new Ball();
-  player.prep();
   frameRate(60); //default frame; 60 frams will be displayed every second
   countdown = 0;
   generateMaze(1);
@@ -89,7 +73,6 @@ void mousePressed(){
 void draw() {
   background(51);
   player.move();
-  player.show();
   if(Ball.getX() == endX && Ball.getY() == endY){
     win=1;
     key_log=new int[10];
@@ -112,7 +95,6 @@ void draw() {
   int time = 59;
   if (level == 0) {
     println("Choose your avatar!");
-    
   }
 }
 
@@ -144,13 +126,13 @@ void keyReleased() {
 }
 void keyPressed() {
   if (key == '1') {
-    Ball ball = new Ball.Droplet();
+    Ball player = new Ball.Droplet();
   }
   if (key == '2') {
-    Ball ball = new Ball.Snitch();
+    Ball player = new Ball.Snitch();
   }
   if (key == '3') {
-    Ball ball = new Ball.Stone();
+    Ball player = new Ball.Stone();
   }
   if (key==' ') {
     s_s=1;
