@@ -1,28 +1,59 @@
-<<<<<<< HEAD
-
-=======
 static int endX; //Portal will be centered at this x-coordinate.
 static int endY; //Portal will be centered at this y-coordinate.
 static double density; //the percentage of maze (impenetrable) compared to open space 
 int numOfPixels;
+int countdown;
+int xDirection;
+int yDirection;
+static int difficulty;
+ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 
-//Generate the maze walls and make the Portal by calling  generateMaze(double density) and makePortal(int x, int y)
-//void setup() {
-//}
-
-//Display the graphics 
-//void draw() {
-//}
-
-// //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
+//Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
 void generateMaze(double density) {
-  int startY;
-  int startX;
+  int startY = (int) Math.random()*500; 
+  int startX = (int) Math.random()*500;
+  numOfPixels = (int) Math.random()*30; //pick a random number of pixels
+  int randomHalf = (int) Math.random(); //flip a coin
+  if (randomHalf%2 == 0) { //if heads
+    xDirection = -1;
+    yDirection = -1;
+  } else { //if tails
+    xDirection = 1;
+    yDirection = 1;
+    for (int i = 0; i < numOfPixels*difficulty; i++) { 
+      if (xDirection == 1) {
+        
+        for (int x = startX; x < x + numOfPixels*difficulty; x++) {
+          color c = color(0); //set pixel as black to indicate maze
+          set(c, x, startY);
+          int[] xyCoor = new int[2];
+          xyCoor[0] = startX;
+          xyCoor[1] = startY;g
+          mazeCoordinates.add(xyCoor);
+        }
+      }
+      if (xDirection = -1) {
+        for (int x2 = startX; x2 > x2 - numOfPixels*difficulty; x2--) {
+          color c = color(0);
+          set(c, x2, startY);
+          int[] xyCoor = new int[2];
+          xyCoor[0] = startX;
+          xyCoor[1] = startY;
+          mazeCoordinates.add(xyCoor);
+        }
+      }
+    startY = numOfPixels + yDirection * size*2;
+    if (startY > height || startY < 0) {
+      numOfPixels = (int) Math.random()*30;
+    }
+  }
+  }
 }
 
 //A portal will be created, centered at the given x- and y- coordinates. 
-void makePortal(int endX, int endY) {
-  
+void makePortal(int endX, int endY) { 
+  color c = color(0, 255, 0);
+  set(c, endX, endY);
 }
 
 PImage img;
@@ -42,6 +73,8 @@ PImage img;
  l=left gravity
  */
 
+/**
+|-----------CODE BELOW IS FOR MANUAL CREATION OF THE MAZE (LAST RESORT IF GENERATEMAZE() FUNCTION DOESN'T WORK------|
 Ball p;
 int u=10;
 int r=11;
@@ -476,6 +509,7 @@ int[][][] level=
     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}, 
   }, 
 };
+**/
 float slide=0.9;
 int win=0;
 int levels=0;
@@ -490,37 +524,49 @@ float[] ball_size={10, 10, 10, 10, 10, 10, 10, 5, 10, 10, 10, 10, 10, 10, 10, 10
 int mode=1;
 
 
+
+//Generate the maze walls and make the Portal by calling  generateMaze(double density) and makePortal(int x, int y)
 void setup() {
   size(500, 500);
   key_log=new int[10];
-  p=new Ball();
-  p.prep();
-  frameRate(60);
+  player=new Ball();
+  player.prep();
+  frameRate(60); //default frame; 60 frams will be displayed every second
+  countdown = 0;
 }
 
+void mousePressed(){
+  if (countdown == 0) {
+    countdown += 60;
+  }
+}
+
+//Display the graphics 
 void draw() {
   background(51);
-  p.move();
-  p.show();
+  player.move();
+  player.show();
   if(key_log[0]==skip[0]&&key_log[1]==skip[1]&&key_log[2]==skip[2]&&key_log[3]==skip[3]&&key_log[4]==skip[4]&&key_log[5]==skip[5]&&key_log[6]==skip[6]&&key_log[7]==skip[7]
   &&key_log[8]==skip[8]&&key_log[9]==skip[9]){
     win=1;
     key_log=new int[10];
   }
-  if (win==1) {
-    levels++;
-    if (levels==level.length) {
-      //println(millis());
+  if (win==1) { //if player is successful in the level
+    levels++; //progress to the next level
+    difficulty++; //increase difficulty to generate a larger maze with more pixels
+    if (levels==level.length) { //once you've completed all the levels
+      println("CONGRATS!"); //print congratulatory message
+      println("You've completed all the levels!"); 
     }
-    levels=levels%level.length;
+    levels=levels%level.length; //
     win=0;
-    p.prep();
+    player.prep();
   }
+  if (countdown > 0) {
+    countdown --;
+  }
+  text(countdown, 20, 20);
   int time = 59;
-  println(second());
-  if (second() == time){
-    println("TIME HAS RUN OUT");
-  }
 }
 
 //movement of ball using arrow keys
@@ -566,4 +612,3 @@ void keyPressed() {
     s_sp=1;
   }
 }
->>>>>>> e6352be7e37706ea1c1425a04084355415fbd636
