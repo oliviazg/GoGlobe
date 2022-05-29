@@ -20,3 +20,7 @@ Development Log for Olivia Zheng:
 D1: I merged Evelyn's updated GoGlobe with my own branch. I filled in most of the variables and methods for Ball and Obstacle, and added a few new variables and methods as well.
 
 D2: I created the Wind class and added and updated Ball, Obstacle, and Wind methods.
+
+D3: I hand-sketched Ball and Obstacle designs.
+
+D4: I added pngs to Ball display() methods.
