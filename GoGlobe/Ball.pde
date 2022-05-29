@@ -122,7 +122,7 @@ public class Ball{
     
     public Original(){
       super();
-      color_ = (111, 168, 220);
+      color_ = color(111, 168, 220);
     } 
      
     public void display(){
