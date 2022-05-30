@@ -21,11 +21,12 @@ int coorX;
 int coorY;
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
+  difficulty = 1;
   size(600, 600);
-  maze = new Maze(1);
+  maze = new Maze(difficulty);
   
   frameRate(60); //default frame; 60 frams will be displayed every second
-  countdown = 100000;
+  countdown = 10000;
   
   
   player = new Ball();
@@ -47,7 +48,7 @@ void setup() {
 
 //Display the graphics 
 void draw() {
-  background(200);
+  background(255, 242, 204);
   fill(0);
   rect(0, 0, 5, 600);
   rect(0, 0, 600, 5);
@@ -76,9 +77,15 @@ void draw() {
   }
   if (countdown > 0){
     countdown--;
+  } else {
+    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   }
   text("COUNTDOWN: ", 20, 20);
   text(countdown / 100, 110, 20);
+  
+  text("DIFFICULTY: ", 20, 35);
+  text(difficulty, 100, 35);
+  
   int time = 59;
   if (difficulty == 1) {
     println("Choose your avatar!");
@@ -88,6 +95,9 @@ void draw() {
   player.move(xDir, yDir);
   xDir = 0;
   yDir = 0;
+  if (player.getY() + 16 >= 600){
+    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+  }
   
   obs1.display();
   obs2.display();
@@ -99,6 +109,30 @@ void draw() {
   player.touchingObs(obs1, obs1.getX(), obs1.getY());
   player.touchingObs(obs2, obs2.getX(), obs2.getY());
   player.touchingObs(obs3, obs3.getX(), obs3.getY());
+  
+  if (player.withinPortal()){
+    //clear();
+    difficulty++;
+    maze = new Maze(difficulty);
+    countdown = 10000 - 1000 * (difficulty - 1);
+    text(countdown / 100, 110, 20);
+    text(difficulty, 100, 35);
+    
+    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+  
+    coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
+    coorY = maze.getCoor(coorX + 1);
+    obs1 = new Obstacle();
+    obs1.setPos(coorX, coorY);
+  
+    coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
+    coorY = maze.getCoor(coorX + 1);
+    obs2 = new Obstacle();
+  
+    coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
+    coorY = maze.getCoor(coorX + 1);
+    obs3 = new Obstacle();
+  }
 }
 
 //movement of ball using arrow keys

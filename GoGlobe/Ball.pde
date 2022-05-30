@@ -26,6 +26,7 @@ public class Ball{
     size = 10;
     
     gravity = true;
+    color_ = color(11,83,148);
     
   }
     
@@ -88,15 +89,8 @@ public class Ball{
     yPos += speed * yDir;
   }
     
-  public boolean die(){
-    if (health == 0 || millis() - 100000 == 0 || yPos >= 600){
-      color_ = 0;
-      size = 0;
-      return true;
-    } else {
-      return false;
-    }
-  }
+  //public void die(){
+  //}
     
   public boolean touchingObs(Obstacle obs, int xObs, int yObs){
     if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
@@ -122,6 +116,10 @@ public class Ball{
   
   public boolean getGravity(){
     return gravity;
+  }
+  
+  public boolean withinPortal(){
+    return (get((int)(xPos), (int)(yPos)) == color(0,128,0));
   }
     
   //public void keyPressed(){
