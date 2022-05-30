@@ -23,4 +23,4 @@ D2: I created the Wind class and added and updated Ball, Obstacle, and Wind meth
 
 D3: I hand-sketched Ball and Obstacle designs.
 
-D4: I added pngs to Ball display() methods.
+D4: I added pngs to Ball and Obstacle display() methods.
