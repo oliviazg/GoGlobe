@@ -66,10 +66,17 @@ public class Ball{
   }
     
   public void move(int xDir, int yDir){
-    xPos += speed * xDir;
-    yPos += speed * yDir;
-    if (get((int)(xPos), (int)(yPos + 11)) != color(0) && gravity){
-      yPos += 1;
+    if (xPos > 600 || xPos < 0) {
+      xPos = xPos;
+    }
+    if (yPos > 600 || yPos < 0) {
+      yPos = yPos;
+    } else {
+      xPos += speed * xDir;
+      yPos += speed * yDir;
+      if (get((int)(xPos), (int)(yPos + 11)) != color(0) && gravity){
+        yPos += 1;
+      }
     }
   }
     
