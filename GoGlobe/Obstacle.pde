@@ -64,14 +64,6 @@ public class Obstacle{
   // ----------------------------------------------------------------
 
   
-  //public class Original extends Obstacle{
-  //  private double color;
-    
-  //  public Original{
-  //    super();
-  //    color_ = (111, 168, 220);
-  //  }
-  //}
   PImage image;
   
   public class Ice extends Obstacle{
@@ -80,10 +72,11 @@ public class Obstacle{
     public Ice{
       super();
       type = "Ice";
-      color_ = (201, 218, 248);
+      //color_ = (201, 218, 248);
     }
     
     public display(){
+      //super();
       image = "Ice.png";
       image.resize(horizontal, vertical);
       image(image);
@@ -97,10 +90,11 @@ public class Obstacle{
     public Gold{
       super();
       type = "Gold";
-      color_ = (241, 194, 50);
+      //color_ = (241, 194, 50);
     }
     
     public display(){
+      //super();
       image = "Gold.png";
       image.resize(horizontal, vertical);
       image(image);
@@ -114,10 +108,11 @@ public class Obstacle{
     public Granite{
       super();
       type = "Granite";
-      color_ = (204, 204, 204);
+      //color_ = (204, 204, 204);
     }
     
     public display(){
+      //super();
       image = "Granite.png";
       image.resize(horizontal, vertical);
       image(image);

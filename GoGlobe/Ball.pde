@@ -17,7 +17,7 @@ public class Ball{
   private boolean gravity;
   private int setGravity = 0;
     
-  public ball{
+  public Ball(){
     type = "Original";
     
     health = 1000;
@@ -54,7 +54,7 @@ public class Ball{
   public void display(){
     noStroke();
     fill(color_, 100);
-    rectangle(xPos, yPos, size * 2, size * 2);
+    rect(xPos, yPos, size * 2, size * 2);
   }
   
   // Selects coordinate from arraylist of arrays 
@@ -121,22 +121,7 @@ public class Ball{
   
 // ----------------------------------------------------------------
   
-  //public class Original extends Ball{
-    
-  //  public Original{
-  //    super();
-  //    color_ = (111, 168, 220);
-  //  } 
-     
-  //  public void display(){
-  //    super();
-  //  }
   
-  //  public boolean touchingObs(Obstacle obs, int xObs, int yObs){
-  //     super();
-  //  }
-  
-  //}
   PImage image;
     
   public class Droplet extends Ball{
@@ -144,25 +129,14 @@ public class Ball{
     public Droplet{
       super();
       type = "Droplet";
-      color_ = (201, 218, 248);
+      //color_ = (201, 218, 248);
     } 
     
     public void display(){
-      super();
+      //super();
       image = "Droplet.png";
       image(image);
       image.resize(size, size);
-      //fill(207, 226, 243);
-      //curve(xPos + 5, yPos - 5, xPos + 8, yPos - 3, xPos + 10, yPos - 1, xPos + 6, yPos);
-      
-      //fill(225, 243, 253);
-      //curve(xPos + 4, yPos - 4, xPos + 7, yPos - 2, xPos + 9, yPos, xPos + 5, yPos + 1);
-      
-      //fill(255, 255, 255);
-      //curve(xPos + 3, yPos - 3, xPos + 6, yPos - 1, xPos + 8, yPos + 1, xPos + 4, yPos + 2);
-      
-      //fill(11, 83, 148);
-      //curve(xPos - 4, yPos + 4, xPos - 7, yPos + 2, xPos - 9, yPos, xPos - 5, yPos - 1);
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
@@ -181,9 +155,9 @@ public class Ball{
   public class Snitch extends Ball{
     
     public Snitch{
-      //super();
+      super();
       type = "Snitch";
-      color_ = (241, 194, 50);
+      //color_ = (241, 194, 50);
     } 
     
     public void display(){
@@ -211,7 +185,7 @@ public class Ball{
     public Stone{
       super();
       type = "Stone";
-      color_ = (204, 204, 204);
+      //color_ = (204, 204, 204);
     } 
      
     public void display(){
