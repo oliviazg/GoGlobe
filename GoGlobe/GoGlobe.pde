@@ -86,6 +86,8 @@ void draw() {
   
   player.display();
   player.move(xDir, yDir);
+  xDir = 0;
+  yDir = 0;
   
   obs1.display();
   obs2.display();
