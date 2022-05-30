@@ -9,6 +9,8 @@ int countdown;
 Ball player;
 int win;
 Maze maze;
+int xDir;
+int yDir;
 
 Obstacle obs1;
 Obstacle obs2;
@@ -26,7 +28,7 @@ void setup() {
   
   
   player = new Ball();
-  player.setStartPos(maze.getCoor(0), maze.getCoor(1));
+  player.setStartPos(maze.getCoor(0), maze.getCoor(1) + 20);
   
   coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
   coorY = maze.getCoor(coorX + 1);
@@ -77,6 +79,7 @@ void draw() {
     println("Choose your avatar!");
   }
   player.display();
+  player.move(xDir, yDir);
   obs1.display();
   obs2.display();
   obs3.display();
@@ -100,14 +103,17 @@ void keyPressed() {
     player.changeGravity();
   }
   if (keyCode==LEFT) {
-    player.move(-5, 0);
+    xDir = -5;
+    yDir = 0;
   }
   if (keyCode==RIGHT) {
-    player.move(5, 0);
+    xDir = 5;
+    yDir = 0;
   }
   if (keyCode==UP) {
     if (player.changeGravity()){
-      player.move(0, (int)(5/9.81));
+      xDir = 0;
+      yDir = (int)(5/9.81);
     }
   }
 }

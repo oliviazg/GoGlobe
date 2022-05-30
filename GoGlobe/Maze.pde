@@ -10,9 +10,9 @@ public class Maze {
   
   
   //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
-public Maze(int difficulty) {
-  numOfPixels = (int) (Math.random()*1500000+1400000); //pick a random number of pixels
-    for (int i = 0; i < numOfPixels*difficulty; i++) { 
+  public Maze(int difficulty) {
+   numOfPixels = (int) (Math.random()*1500000+1400000); //pick a random number of pixels
+    for (int i = 0; i < numOfPixels * difficulty; i++) { 
       int randomHalf = (int) (Math.random()*2); //flip a coin
       if (randomHalf%2 == 0) { //if heads
         xDirection = -1;
@@ -20,7 +20,7 @@ public Maze(int difficulty) {
         xDirection = 1;
       }
       if (xDirection == 1) {
-        for (int x = startX; x < (int)(Math.random()*600+startX); x++) {
+        for (int x = startX; x < (int)(Math.random() * 500 + startX); x++) {
           if (x < 550) {
             //c = color(0); //set pixel as black to indicate maze
             //set(c, x, startY);
@@ -40,18 +40,18 @@ public Maze(int difficulty) {
         }
       }
       startX += xDirection*300;
-  startY += (int)(Math.random()*2+10);
-    if (startY > 600) {
-      i = numOfPixels*difficulty;
+      startY += (int)(Math.random()*2+10);
+      if (startY > 600) {
+        i = numOfPixels*difficulty;
+      }
     }
   }
-}
 
 //A portal will be created, centered at the given x- and y- coordinates. 
 void makePortal(int endX, int endY) { 
   color c = color(0, 255, 0); 
-  mazeCoordinates.add(-1*endX);
-  mazeCoordinates.add(-1*endY);
+  mazeCoordinates.add(-1 * endX);
+  mazeCoordinates.add(-1 * endY);
   //set(c, endX, endY); //set the pixel at coordinates endX and endY green
 }
 
@@ -59,16 +59,16 @@ void display() {
   
   for (int i = 0; i < mazeCoordinates.size(); i+=2) {
     if (mazeCoordinates.get(i) < 0) {
-      fill(0,255,0);
-      rect(-1*mazeCoordinates.get(i), -1*mazeCoordinates.get(i+1), 10, 40);
+      fill(0, 255, 0);
+      rect(-1 * mazeCoordinates.get(i), -1 * mazeCoordinates.get(i+1), 100, 5);
     } else {
       fill(0);
-      rect(mazeCoordinates.get(i), mazeCoordinates.get(i+1), 100, 10);
+      rect(mazeCoordinates.get(i), mazeCoordinates.get(i + 1), 100, 5);
     }
   }
 }
 int getCoor(int pos){
-  if (pos < mazeCoordinates.size() && pos > 0){
+  if (pos < mazeCoordinates.size() && pos >= 0){
     return mazeCoordinates.get(pos);
   } else {
     return 0;

@@ -5,11 +5,11 @@ public class Ball{
   private double speed;
   private float xPos;
   private float yPos;
-  private int[] direction;
-  private int[] up = {1, 0};
-  private int[] down = {-1, 0};
-  private int[] right = {0, 1};
-  private int[] left = {0, -1};
+  //private int[] direction;
+  //private int[] up = {1, 0};
+  //private int[] down = {-1, 0};
+  //private int[] right = {0, 1};
+  //private int[] left = {0, -1};
     
   private float size;
   private color color_;
@@ -68,6 +68,9 @@ public class Ball{
   public void move(int xDir, int yDir){
     xPos += speed * xDir;
     yPos += speed * yDir;
+    if (get((int)(xPos - 20), (int)(yPos - 30)) != color(0) && !gravity){
+      yDir += 5 * 9.81;
+    }
   }
     
   public boolean die(){
@@ -100,7 +103,7 @@ public class Ball{
     
   public boolean changeGravity(){
     gravity = (setGravity % 2 == 0);
-    return setGravity % 2 == 0;
+    return gravity;
   }
     
   //public void keyPressed(){

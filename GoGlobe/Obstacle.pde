@@ -12,6 +12,7 @@ public class Obstacle{
   public Obstacle(){
     horizontal = 2;
     vertical = 2;
+    color_ = color(0, 0, 255);
   }
   
   public String getType(){
