@@ -9,6 +9,7 @@ int countdown;
 Ball player;
 int win;
 Maze maze;
+ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 
 Obstacle obs1;
 Obstacle obs2;
@@ -42,16 +43,20 @@ void setup() {
   obs3 = new Obstacle();
 }
 
-void mousePressed(){
-  if (countdown == 0) {
-    countdown += 60;
-  }
-}
-
 //Display the graphics 
 void draw() {
   background(200);
+  fill(0);
+  rect(0, 0, 5, 600);
+  rect(0, 0, 600, 5);
+  rect(0, 595, 600, 5);
+  rect(595, 0, 5, 600);
   maze.display();
+  fill(0);
+  rect(0, 0, 5, 600);
+  rect(0, 0, 600, 5);
+  rect(0, 595, 600, 5);
+  rect(595, 0, 5, 600);
   
   if(player.getX() == endX && player.getY() == endY){
     win=1;

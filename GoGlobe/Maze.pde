@@ -1,6 +1,6 @@
 public class Maze {
-  int endX = 500; //Portal will be centered at this x-coordinate.
-  int endY = 500; //Portal will be centered at this y-coordinate.
+  int endX = 570; //Portal will be centered at this x-coordinate.
+  int endY = 550; //Portal will be centered at this y-coordinate.
   int startX = 50;
   int startY = 100;
   int numOfPixels;
@@ -48,23 +48,19 @@ public Maze(int difficulty) {
 }
 
 //A portal will be created, centered at the given x- and y- coordinates. 
-void makePortal(int endX, int endY) { 
-  color c = color(0, 255, 0); 
-  mazeCoordinates.add(-1*endX);
-  mazeCoordinates.add(-1*endY);
+//void makePortal(int endX, int endY) { 
+  //color c = color(0, 255, 0); 
+  //mazeCoordinates.add(-1*endX);
+  //mazeCoordinates.add(-1*endY);
   //set(c, endX, endY); //set the pixel at coordinates endX and endY green
-}
+//}
 
 void display() {
-  
+  fill(0,128,0);
+  rect(endX, endY, 30, 50);
   for (int i = 0; i < mazeCoordinates.size(); i+=2) {
-    if (mazeCoordinates.get(i) < 0) {
-      fill(0,255,0);
-      rect(-1*mazeCoordinates.get(i), -1*mazeCoordinates.get(i+1), 10, 40);
-    } else {
       fill(0);
       rect(mazeCoordinates.get(i), mazeCoordinates.get(i+1), 100, 10);
-    }
   }
 }
 int getCoor(int pos){
