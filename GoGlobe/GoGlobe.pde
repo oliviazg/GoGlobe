@@ -78,11 +78,14 @@ void draw() {
   if (difficulty == 1) {
     println("Choose your avatar!");
   }
+  
   player.display();
   player.move(xDir, yDir);
+  
   obs1.display();
   obs2.display();
   obs3.display();
+  
   player.touchingObs(obs1, obs1.getX(), obs1.getY());
   player.touchingObs(obs2, obs2.getX(), obs2.getY());
   player.touchingObs(obs3, obs3.getX(), obs3.getY());
@@ -92,28 +95,25 @@ void draw() {
 void keyPressed() {
   if (key == '1') {
     player = new Ball();
-  }
-  if (key == '2') {
+  } else if (key == '2') {
     player = new Ball();
-  }
-  if (key == '3') {
+  } else if (key == '3') {
     player = new Ball();
-  }
-  if (key==' ') {
+  } else if (key==' ') {
     player.changeGravity();
-  }
-  if (keyCode==LEFT) {
+  } else if (keyCode==LEFT) {
     xDir = -5;
     yDir = 0;
-  }
-  if (keyCode==RIGHT) {
+  } else if (keyCode==RIGHT) {
     xDir = 5;
     yDir = 0;
-  }
-  if (keyCode==UP) {
-    if (player.changeGravity()){
+  } else if (keyCode==UP) {
+    if (!player.changeGravity()){
       xDir = 0;
       yDir = (int)(5/9.81);
     }
+  } else {
+    xDir = 0;
+    yDir = 0;
   }
 }
