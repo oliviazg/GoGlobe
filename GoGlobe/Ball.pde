@@ -68,18 +68,9 @@ public class Ball{
   public void move(int xDir, int yDir){
     xPos += speed * xDir;
     yPos += speed * yDir;
-    if (get((int)(xPos - 20), (int)(yPos - 30)) != color(0) && !gravity){
-      yDir += 5 * 9.81;
+    if (get((int)(xPos), (int)(yPos + 11)) != color(0) && gravity){
+      yPos += 1;
     }
-    //if (xPos == 500 || xPos == 0) {
-    //  xPos += 0;
-    //}
-    //if (yPos == 500 || yPos == 0) {
-    //  yPos += 0;
-    //} else {
-    //   xPos += speed * xDir;
-    //   yPos += speed * yDir;
-    //}
   }
     
   public boolean die(){
@@ -110,8 +101,11 @@ public class Ball{
     }
   }
     
-  public boolean changeGravity(){
+  public void changeGravity(){
     gravity = (setGravity % 2 == 0);
+  }
+  
+  public boolean getGravity(){
     return gravity;
   }
     

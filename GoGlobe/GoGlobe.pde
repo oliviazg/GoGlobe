@@ -29,7 +29,7 @@ void setup() {
   
   
   player = new Ball();
-  player.setStartPos(maze.getCoor(0), maze.getCoor(1) + 20);
+  player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
   coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
   coorY = maze.getCoor(coorX + 1);
@@ -86,10 +86,15 @@ void draw() {
   
   player.display();
   player.move(xDir, yDir);
+  xDir = 0;
+  yDir = 0;
   
   obs1.display();
   obs2.display();
   obs3.display();
+  obs1.move();
+  obs2.move();
+  obs3.move();
   
   player.touchingObs(obs1, obs1.getX(), obs1.getY());
   player.touchingObs(obs2, obs2.getX(), obs2.getY());
@@ -107,15 +112,15 @@ void keyPressed() {
   } else if (key==' ') {
     player.changeGravity();
   } else if (keyCode==LEFT) {
-    xDir = -5;
+    xDir = -1;
     yDir = 0;
   } else if (keyCode==RIGHT) {
-    xDir = 5;
+    xDir = 1;
     yDir = 0;
   } else if (keyCode==UP) {
-    if (!player.changeGravity()){
+    if (!player.getGravity()){
       xDir = 0;
-      yDir = (int)(5/9.81);
+      yDir = 1;
     }
   } else {
     xDir = 0;
