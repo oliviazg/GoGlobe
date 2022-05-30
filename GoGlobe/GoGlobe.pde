@@ -25,7 +25,9 @@ void generateMaze(double difficulty) {
       if (xDirection == 1) {
         for (int x = startX; x < x + numOfPixels*difficulty; x++) {
           color c = color(0); //set pixel as black to indicate maze
-          set(c, x, startY);
+          //set(c, x, startY);
+          fill(c);
+          rect(x, startY, 1, 1);
           int[] xyCoor = new int[2];
           xyCoor[0] = startX;
           xyCoor[1] = startY;
@@ -35,7 +37,9 @@ void generateMaze(double difficulty) {
       if (xDirection == -1) {
         for (int x2 = startX; x2 > x2 - numOfPixels*difficulty; x2--) {
           color c = color(0);
-          set(c, x2, startY);
+          fill(c);
+          //set(c, x2, startY);
+          rect(x2, startY, 1, 1);
           int[] xyCoor = new int[2];
           xyCoor[0] = startX;
           xyCoor[1] = startY;
@@ -58,10 +62,10 @@ void makePortal(int endX, int endY) {
 
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
-  size(500, 500);
+  size(600, 800);
   player=new Ball();
   frameRate(60); //default frame; 60 frams will be displayed every second
-  countdown = millis() - 100000;
+  countdown = 100000;
   generateMaze(1);
 }
 
@@ -73,7 +77,7 @@ void mousePressed(){
 
 //Display the graphics 
 void draw() {
-  background(51);
+  background(200);
   generateMaze(1);
   if(player.getX() == endX && player.getY() == endY){
     win=1;
@@ -89,10 +93,11 @@ void draw() {
     //levels=levels%level.length; //
     //win=0;
   }
-  if (countdown > 0) {
+  if (countdown > 0){
     countdown--;
   }
-  text(countdown, 20, 20);
+  text("COUNTDOWN: ", 20, 20);
+  text(countdown / 100, 110, 20);
   int time = 59;
   if (difficulty == 1) {
     println("Choose your avatar!");
