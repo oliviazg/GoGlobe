@@ -129,4 +129,11 @@ public class Obstacle{
       image(image);
     }
     
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> d1cc118f9e7946913f026128e75ae13bbbbfd6d8
+>>>>>>> EvelynChen
 }
