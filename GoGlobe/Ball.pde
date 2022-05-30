@@ -119,7 +119,7 @@ public class Ball{
   }
   
   public boolean withinPortal(){
-    return (get((int)(xPos), (int)(yPos)) == color(0,128,0));
+    return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
   }
     
   //public void keyPressed(){
