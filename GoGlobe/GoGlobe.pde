@@ -1,72 +1,22 @@
 static int endX = 500; //Portal will be centered at this x-coordinate.
 static int endY = 500; //Portal will be centered at this y-coordinate.
 static int difficulty; //the percentage of maze (impenetrable) compared to open space 
-int numOfPixels;
+//int numOfPixels;
 int countdown;
-int xDirection;
-int yDirection;
-ArrayList<int[]> mazeCoordinates = new ArrayList<int[]>();
+//int xDirection;
+//int yDirection;
+//ArrayList<int[]> mazeCoordinates = new ArrayList<int[]>();
 Ball player;
 int win;
-
-//Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
-void generateMaze(double difficulty) {
-  int startY = (int) Math.random()*500; 
-  int startX = (int) Math.random()*500;
-  numOfPixels = (int) Math.random()*20; //pick a random number of pixels
-  int randomHalf = (int) Math.random(); //flip a coin
-  if (randomHalf%2 == 0) { //if heads
-    xDirection = -1;
-    yDirection = -1;
-  } else { //if tails
-    xDirection = 1;
-    yDirection = 1;
-    for (int i = 0; i < numOfPixels*difficulty; i++) { 
-      if (xDirection == 1) {
-        for (int x = startX; x < x + numOfPixels*difficulty; x++) {
-          color c = color(0); //set pixel as black to indicate maze
-          //set(c, x, startY);
-          fill(c);
-          rect(x, startY, 1, 1);
-          int[] xyCoor = new int[2];
-          xyCoor[0] = startX;
-          xyCoor[1] = startY;
-          mazeCoordinates.add(xyCoor);
-        }
-      }
-      if (xDirection == -1) {
-        for (int x2 = startX; x2 > x2 - numOfPixels*difficulty; x2--) {
-          color c = color(0);
-          fill(c);
-          //set(c, x2, startY);
-          rect(x2, startY, 1, 1);
-          int[] xyCoor = new int[2];
-          xyCoor[0] = startX;
-          xyCoor[1] = startY;
-          mazeCoordinates.add(xyCoor);
-        }
-      }
-    startY = numOfPixels + yDirection * 40 * 2;
-    if (startY > height || startY < 0) {
-      numOfPixels = (int) Math.random()*30;
-    }
-  }
-  }
-}
-
-//A portal will be created, centered at the given x- and y- coordinates. 
-void makePortal(int endX, int endY) { 
-  color c = color(0, 255, 0); 
-  set(c, endX, endY); //set the pixel at coordinates endX and endY green
-}
+Maze maze;
 
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
-  size(600, 800);
+  size(600, 600);
   player=new Ball();
   frameRate(60); //default frame; 60 frams will be displayed every second
   countdown = 100000;
-  generateMaze(1);
+  maze = new Maze(1);
 }
 
 void mousePressed(){
@@ -78,7 +28,8 @@ void mousePressed(){
 //Display the graphics 
 void draw() {
   background(200);
-  generateMaze(1);
+  maze.display();
+  
   if(player.getX() == endX && player.getY() == endY){
     win=1;
     //key_log=new int[10];
