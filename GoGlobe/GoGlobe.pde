@@ -86,6 +86,9 @@ void draw() {
   text("DIFFICULTY: ", 20, 35);
   text(difficulty, 100, 35);
   
+  text("JUMP ABILITY: ", 20, 50);
+  text(" "+!player.getGravity(), 100, 50);
+  
   int time = 59;
   if (difficulty == 1) {
     println("Choose your avatar!");
