@@ -21,10 +21,10 @@ public class Wind{
   // containing coordinates where the maze has 
   // been constructed.
   
-  //public void setPos(int x, int y){
-    //xPos = x;
-    //yPos = y;
-  //}
+  public void setPos(int x, int y){
+    xPos = x;
+    yPos = y;
+  }
   
   public display(){
     fill(255, 255, 255);

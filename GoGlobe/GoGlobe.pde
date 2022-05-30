@@ -1,11 +1,11 @@
 static int endX = 500; //Portal will be centered at this x-coordinate.
 static int endY = 500; //Portal will be centered at this y-coordinate.
-static double difficulty; //the percentage of maze (impenetrable) compared to open space 
+static int difficulty; //the percentage of maze (impenetrable) compared to open space 
 int numOfPixels;
 int countdown;
 int xDirection;
 int yDirection;
-ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
+ArrayList<int[]> mazeCoordinates = new ArrayList<int[]>();
 
 //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
 void generateMaze(double difficulty) {

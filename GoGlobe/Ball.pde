@@ -1,4 +1,5 @@
 public class Ball{
+  private String type;
   private int health;
   private int windCount;
   private double speed;
@@ -17,6 +18,7 @@ public class Ball{
   private int setGravity = 0;
     
   public Ball(){
+    type = "Original";
     health = 1000;
     windCount = 1;
     speed = 20;
@@ -27,16 +29,16 @@ public class Ball{
     
   }
     
+  public String getType(){
+      return type;
+  }
+  
   public int getHealth(){
       return health;
   }
     
   public int getWindCount(){
       return windCount;
-  }
-  
-  public color getColor(){
-      return color_;
   }
   
   public int getX(){
@@ -58,10 +60,10 @@ public class Ball{
   // containing coordinates where the maze has 
   // been constructed.
   
-  //public void setStartPos(int x, int y){
-  //  xPos = x;
-  //  yPos = y;
-  //}
+  public void setStartPos(int x, int y){
+    xPos = x;
+    yPos = y;
+  }
     
   public void move(){
     xPos += move * direction[1];
@@ -118,38 +120,60 @@ public class Ball{
   
 // ----------------------------------------------------------------
   
-  public class Original extends Ball{
+  //public class Original extends Ball{
     
+<<<<<<< HEAD
     public Original(){
       super();
       color_ = color(111, 168, 220);
     } 
+=======
+  //  public Original{
+  //    super();
+  //    color_ = (111, 168, 220);
+  //  } 
+>>>>>>> 3c9c71740c47229afe97a2f523ced97913f524c8
      
-    public void display(){
-      super();
-    }
+  //  public void display(){
+  //    super();
+  //  }
   
-    public boolean touchingObs(Obstacle obs, int xObs, int yObs){
-       super();
-    }
+  //  public boolean touchingObs(Obstacle obs, int xObs, int yObs){
+  //     super();
+  //  }
   
-  }
-  
+  //}
+  PImage image;
+    
   public class Droplet extends Ball{
     
     public Droplet(){
       super();
+      type = "Droplet";
       color_ = (201, 218, 248);
     } 
     
     public void display(){
       super();
-      // add glare
+      image = "Droplet.png";
+      image(image);
+      image.resize(size, size);
+      //fill(207, 226, 243);
+      //curve(xPos + 5, yPos - 5, xPos + 8, yPos - 3, xPos + 10, yPos - 1, xPos + 6, yPos);
+      
+      //fill(225, 243, 253);
+      //curve(xPos + 4, yPos - 4, xPos + 7, yPos - 2, xPos + 9, yPos, xPos + 5, yPos + 1);
+      
+      //fill(255, 255, 255);
+      //curve(xPos + 3, yPos - 3, xPos + 6, yPos - 1, xPos + 8, yPos + 1, xPos + 4, yPos + 2);
+      
+      //fill(11, 83, 148);
+      //curve(xPos - 4, yPos + 4, xPos - 7, yPos + 2, xPos - 9, yPos, xPos - 5, yPos - 1);
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getColor() != (201, 218, 248)){
+        if (obs.getType().equals("Ice")){
           health -= 40;
         }
         return true;
@@ -162,19 +186,22 @@ public class Ball{
   
   public class Snitch extends Ball{
     
-    public Snitch(){
+    public Snitch{
+      type = "Snitch";
       super();
       color_ = (241, 194, 50);
     } 
     
     public void display(){
-      super();
-      // add shine
+      //super();
+      image = "Snitch.png";
+      image(image);
+      image.resize(size, size);
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getColor() != (241, 194, 50)){
+        if (obs.getType().equals("Gold")){
           health -= 40;
         }
         return true;
@@ -189,17 +216,20 @@ public class Ball{
     
     public Stone(){
       super();
+      type = "Stone";
       color_ = (204, 204, 204);
     } 
      
     public void display(){
-      super();
-      // add ridges
+      //super();
+      image = "Stone.png";
+      image(image);
+      image.resize(size, size);
     }
     
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getColor() != (204, 204, 204)){
+        if (obs.getType().equals("Granite")){
           health -= 40;
         }
         return true;
