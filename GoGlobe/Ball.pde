@@ -120,6 +120,21 @@ public class Ball{
   
 // ----------------------------------------------------------------
   
+
+  //public class Original extends Ball{
+    
+  //  public Original{
+  //    super();
+  //    color_ = color(111, 168, 220);
+  //  } 
+     
+  //  public void display(){
+  //    super();
+  //  }
+  
+  //  public boolean touchingObs(Obstacle obs, int xObs, int yObs){
+  //     super();
+  //  }
   
   PImage image;
     
@@ -128,7 +143,7 @@ public class Ball{
     public Droplet(){
       super();
       type = "Droplet";
-      //color_ = (201, 218, 248);
+      //color_ = color(201, 218, 248);
     } 
     
     public void display(){
@@ -156,7 +171,7 @@ public class Ball{
     public Snitch{
       super();
       type = "Snitch";
-      //color_ = (241, 194, 50);
+      //color_ = color(241, 194, 50);
     } 
     
     public void display(){
@@ -184,7 +199,7 @@ public class Ball{
     public Stone(){
       super();
       type = "Stone";
-      //color_ = (204, 204, 204);
+      //color_ = color(204, 204, 204);
     } 
      
     public void display(){
