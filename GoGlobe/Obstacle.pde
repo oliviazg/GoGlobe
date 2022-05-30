@@ -1,18 +1,21 @@
 public class Obstacle{
+  private String type;
   private double speed;
   private int xPos;
   private int yPos;
   private double size;
   private color color_;
   private boolean orientation;
-  
-
-  public Obstacle(){
-    size = 40;
+  int horizontal;
+  int vertical;
+    
+  public Obstacle{
+    horizontal = 2;
+    veritcal = 2;
   }
   
-  public color getColor(){
-    return color_;
+  public String getType(){
+      return type;
   }
   
   public int getX(){
@@ -28,20 +31,18 @@ public class Obstacle{
   // containing coordinates where the maze has 
   // been constructed.
   
-  //public void setPos(int x, int y){
-    //xPos = x;
-    //yPos = y;
-  //}
+  public void setPos(int x, int y){
+    xPos = x;
+    yPos = y;
+  }
   
   public void display(){
     noStroke();
     fill(color_, 100);
-    int horizontal = 2;
-    int vertical = 2;
     if (orientation){
       vertical = size;
     }
-    ellipse(xPos, yPos, horizontal, vertical);
+    rect(xPos, yPos, horizontal, vertical);
   }
   
   public void move(){
@@ -64,9 +65,15 @@ public class Obstacle{
   // ----------------------------------------------------------------
 
   
-  public class Original extends Obstacle{
-    private double color;
+  //public class Original extends Obstacle{
+  //  private double color;
     
+  //  public Original{
+  //    super();
+  //    color_ = (111, 168, 220);
+  //  }
+  //}
+  PImage image;
     public Original(){
       super();
       color_ = (111, 168, 220);
@@ -78,11 +85,14 @@ public class Obstacle{
     
     public Ice(){
       super();
+      type = "Ice";
       color_ = (201, 218, 248);
     }
     
     public display(){
-      // add glare
+      image = "Ice.png";
+      image.resize(horizontal, vertical);
+      image(image);
     }
     
   }
@@ -92,11 +102,14 @@ public class Obstacle{
     
     public Gold(){
       super();
+      type = "Gold";
       color_ = (241, 194, 50);
     }
     
     public display(){
-      // add shine
+      image = "Gold.png";
+      image.resize(horizontal, vertical);
+      image(image);
     }
     
   }
@@ -106,11 +119,14 @@ public class Obstacle{
     
     public Granite(){
       super();
+      type = "Granite";
       color_ = (204, 204, 204);
     }
     
     public display(){
-      // add ridges
+      image = "Granite.png";
+      image.resize(horizontal, vertical);
+      image(image);
     }
     
   }
