@@ -40,7 +40,7 @@ public class Maze {
         }
       }
       startX = (int)(Math.random() * 500 + 50);
-      startY += (int)(Math.random()*2+20);
+      startY += (int)(Math.random()*2+40);
       if (startY > 600) {
         i = numOfPixels * difficulty;
       }

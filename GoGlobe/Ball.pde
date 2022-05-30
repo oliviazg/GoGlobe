@@ -77,7 +77,7 @@ public class Ball{
     if (get((int)(xPos), (int)(yPos + 11)) != color(0)){
       if (gravity){
         xDir = 0;
-        yDir = 0.5;
+        yDir = 0.25;
       } else {
         yDir += 0.25;
       }
