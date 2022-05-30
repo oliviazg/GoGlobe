@@ -48,7 +48,7 @@ public class Maze {
   }
 
 //A portal will be created, centered at the given x- and y- coordinates. 
-void makePortal(int endX, int endY) { 
+//void makePortal(int endX, int endY) { 
 //void makePortal(int endX, int endY) { 
   //color c = color(0, 255, 0); 
   //mazeCoordinates.add(-1*endX);
