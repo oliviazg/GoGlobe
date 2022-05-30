@@ -187,7 +187,7 @@ public class Ball{
     public Snitch{
       type = "Snitch";
       super();
-      color_ = (241, 194, 50);
+      color_ = color(241, 194, 50);
     } 
     
     public void display(){
@@ -215,7 +215,7 @@ public class Ball{
     public Stone(){
       super();
       type = "Stone";
-      color_ = (204, 204, 204);
+      color_ = color(204, 204, 204);
     } 
      
     public void display(){
