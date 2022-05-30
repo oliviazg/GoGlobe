@@ -57,7 +57,7 @@ void makePortal(int endX, int endY) {
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
   size(500, 500);
-  player=new Ball();
+  Ball player=new Ball();
   frameRate(60); //default frame; 60 frams will be displayed every second
   countdown = 0;
   generateMaze(1);
@@ -72,7 +72,7 @@ void mousePressed(){
 //Display the graphics 
 void draw() {
   background(51);
-  player.move();
+  generateMaze(1);
   if(Ball.getX() == endX && Ball.getY() == endY){
     win=1;
     key_log=new int[10];
@@ -86,7 +86,6 @@ void draw() {
     }
     levels=levels%level.length; //
     win=0;
-    player.prep();
   }
   if (countdown > 0) {
     countdown--;
@@ -99,31 +98,6 @@ void draw() {
 }
 
 //movement of ball using arrow keys
-void keyReleased() {
-  if (key==' ') {
-    s_s=0;
-    Player.sd=1;
-  }
-  if (keyCode==LEFT) {
-    a_a=0;
-    key_logAdd(2);
-  }
-  if (keyCode==RIGHT) {
-    d_d=0;
-    key_logAdd(4);
-  }
-  if (keyCode==UP) {
-    w_w=0;
-    key_logAdd(1);
-  }
-  if (keyCode==DOWN) {
-    s_sp=0;
-    key_logAdd(3);
-  }
-  if(key=='r' || key=='R'){
-    key_logAdd(5);
-  }
-}
 void keyPressed() {
   if (key == '1') {
     Ball player = new Ball.Droplet();
@@ -138,15 +112,12 @@ void keyPressed() {
     s_s=1;
   }
   if (keyCode==LEFT) {
-    a_a=1;
+    player.xPos += 10;
   }
   if (keyCode==RIGHT) {
-    d_d=1;
+    player.xPos -= 10;
   }
   if (keyCode==UP) {
-    w_w=1;
-  }
-  if (keyCode==DOWN) {
-    s_sp=1;
+    player.yPos += .15;
   }
 }
