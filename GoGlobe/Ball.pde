@@ -15,7 +15,7 @@ public class Ball{
   private color color_;
     
   private boolean gravity;
-  private int setGravity = 0;
+  //private int setGravity = 0;
     
   public Ball(){
     type = "Original";
@@ -65,23 +65,31 @@ public class Ball{
     yPos = y;
   }
     
-  public void move(int xDir, int yDir){
-    if (xPos > 600 || xPos < 0) {
-      xPos = xPos;
+  public void move(float xDir, float yDir){
+    if (xPos >= 600 || xPos <= 0) {
+      xDir *= -5;
+      yDir = 0;
     }
-    if (yPos > 600 || yPos < 0) {
-      yPos = yPos;
-    } else {
-      xPos += speed * xDir;
-      yPos += speed * yDir;
-      if (get((int)(xPos), (int)(yPos + 11)) != color(0) && gravity){
-        yPos += 1;
+    if (yPos <= 0) {
+      xDir = 0;
+      yDir *= -5;
+    }
+    if (get((int)(xPos), (int)(yPos + 11)) != color(0)){
+      if (gravity){
+        xDir = 0;
+        yDir = 0.5;
+      } else {
+        yDir += 0.25;
       }
+    } else if (gravity) {
+      yDir = 0;
     }
+    xPos += speed * xDir;
+    yPos += speed * yDir;
   }
     
   public boolean die(){
-    if (health == 0 || millis() - 100000 == 0){
+    if (health == 0 || millis() - 100000 == 0 || yPos >= 600){
       color_ = 0;
       size = 0;
       return true;
@@ -109,7 +117,7 @@ public class Ball{
   }
     
   public void changeGravity(){
-    gravity = (setGravity % 2 == 0);
+    gravity = !gravity;
   }
   
   public boolean getGravity(){

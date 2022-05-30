@@ -9,8 +9,8 @@ int countdown;
 Ball player;
 int win;
 Maze maze;
-int xDir;
-int yDir;
+float xDir;
+float yDir;
 ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 
 Obstacle obs1;
@@ -109,18 +109,18 @@ void keyPressed() {
     player = new Ball();
   } else if (key == '3') {
     player = new Ball();
-  } else if (key==' ') {
+  } else if (key==32) {
     player.changeGravity();
   } else if (keyCode==LEFT) {
-    xDir = -1;
+    xDir = -2;
     yDir = 0;
   } else if (keyCode==RIGHT) {
-    xDir = 1;
+    xDir = 2;
     yDir = 0;
   } else if (keyCode==UP) {
     if (!player.getGravity()){
       xDir = 0;
-      yDir = 1;
+      yDir = -4;
     }
   } else {
     xDir = 0;
