@@ -11,7 +11,7 @@ public class Obstacle{
     
   public Obstacle{
     horizontal = 2;
-    veritcal = 2;
+    vertical = 2;
   }
   
   public String getType(){
@@ -129,5 +129,8 @@ public class Obstacle{
       image(image);
     }
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> d1cc118f9e7946913f026128e75ae13bbbbfd6d8
 }
