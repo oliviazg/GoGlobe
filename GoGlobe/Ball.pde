@@ -19,7 +19,6 @@ public class Ball{
     
   public Ball(){
     type = "Original";
-    
     health = 1000;
     windCount = 1;
     speed = 20;
@@ -126,7 +125,7 @@ public class Ball{
     
   public class Droplet extends Ball{
     
-    public Droplet{
+    public Droplet(){
       super();
       type = "Droplet";
       //color_ = (201, 218, 248);
@@ -182,7 +181,7 @@ public class Ball{
   
   public class Stone extends Ball{
     
-    public Stone{
+    public Stone(){
       super();
       type = "Stone";
       //color_ = (204, 204, 204);
