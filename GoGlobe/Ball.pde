@@ -53,7 +53,7 @@ public class Ball{
   public void display(){
     noStroke();
     fill(color_, 100);
-    rect(xPos, yPos, size * 2, size * 2);
+    ellipse(xPos, yPos, size * 2, size * 2);
   }
   
   // Selects coordinate from arraylist of arrays 
@@ -65,9 +65,9 @@ public class Ball{
     yPos = y;
   }
     
-  public void move(){
-    xPos += speed * direction[1];
-    yPos += speed * direction[0];
+  public void move(int xDir, int yDir){
+    xPos += speed * xDir;
+    yPos += speed * yDir;
   }
     
   public boolean die(){

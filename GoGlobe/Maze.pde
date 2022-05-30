@@ -67,5 +67,16 @@ void display() {
     }
   }
 }
+int getCoor(int pos){
+  if (pos < mazeCoordinates.size()){
+    return mazeCoordinates.get(pos);
+  } else {
+    return 0;
+  }
+}
+
+int coorSize(){
+  return mazeCoordinates.size();
+}
   
 }

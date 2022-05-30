@@ -10,6 +10,12 @@ Ball player;
 int win;
 Maze maze;
 
+Obstacle obs1;
+Obstacle obs2;
+Obstacle obs3;
+
+int coorX;
+int coorY;
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
   size(600, 600);
@@ -17,6 +23,20 @@ void setup() {
   frameRate(60); //default frame; 60 frams will be displayed every second
   countdown = 100000;
   maze = new Maze(1);
+  player.setStartPos(maze.getCoor(0), maze.getCoor(1));
+  
+  coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
+  coorY = maze.getCoor(coorX + 1);
+  obs1 = new Obstacle();
+  obs1.setPos(coorX, coorY);
+  
+  coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
+  coorY = maze.getCoor(coorX + 1);
+  obs2 = new Obstacle();
+  
+  coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
+  coorY = maze.getCoor(coorX + 1);
+  obs3 = new Obstacle();
 }
 
 void mousePressed(){
@@ -53,6 +73,13 @@ void draw() {
   if (difficulty == 1) {
     println("Choose your avatar!");
   }
+  player.display();
+  obs1.display();
+  obs2.display();
+  obs3.display();
+  player.touchingObs(obs1, obs1.getX(), obs1.getY());
+  player.touchingObs(obs2, obs2.getX(), obs2.getY());
+  player.touchingObs(obs3, obs3.getX(), obs3.getY());
 }
 
 //movement of ball using arrow keys
@@ -70,14 +97,14 @@ void keyPressed() {
     player.changeGravity();
   }
   if (keyCode==LEFT) {
-    player.xPos += 20;
+    player.move(-20, 0);
   }
   if (keyCode==RIGHT) {
-    player.xPos -= 20;
+    player.move(20, 0);
   }
   if (keyCode==UP) {
     if (player.changeGravity()){
-      player.yPos += 20/9.81;
+      player.move(0, (int)(20/9.81));
     }
   }
 }
