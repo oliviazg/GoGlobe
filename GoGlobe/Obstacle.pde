@@ -129,5 +129,5 @@ public class Obstacle{
       image(image);
     }
     
-  }
+
 }
