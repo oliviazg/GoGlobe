@@ -66,8 +66,15 @@ public class Ball{
   }
     
   public void move(int xDir, int yDir){
-    xPos += speed * xDir;
-    yPos += speed * yDir;
+    if (xPos == 500 || xPos == 0) {
+      xPos += 0;
+    }
+    if (yPos == 500 || yPos == 0) {
+      yPos += 0;
+    } else {
+       xPos += speed * xDir;
+       yPos += speed * yDir;
+    }
   }
     
   public boolean die(){
