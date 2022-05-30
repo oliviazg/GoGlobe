@@ -14,6 +14,10 @@ D1: I merged main GoGlobe (created by Olivia) into my own branch and added the i
 
 D2: I continued working on GoGlobe, updating setup and the configuration with keys.
 
+D3: I added Time configuration and continued to work on the mazeGenerator and Portal in the main class.
+
+D4: I created the Controller class and updated the main GoGlobe class.
+
 ----------------------------------
 Development Log for Olivia Zheng:
 ----------------------------------

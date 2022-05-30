@@ -6,11 +6,12 @@ public class Obstacle{
   private double size;
   private color color_;
   private boolean orientation;
-  int horizontal = 2;
-  int vertical = 2;
+  int horizontal;
+  int vertical;
     
   public Obstacle{
-    size = 40;
+    horizontal = 2;
+    veritcal = 2;
   }
   
   public String getType(){
@@ -73,11 +74,16 @@ public class Obstacle{
   //  }
   //}
   PImage image;
+    public Original(){
+      super();
+      color_ = (111, 168, 220);
+    }
+  }
   
   public class Ice extends Obstacle{
     private double color;
     
-    public Ice{
+    public Ice(){
       super();
       type = "Ice";
       color_ = (201, 218, 248);
@@ -94,7 +100,7 @@ public class Obstacle{
   public class Gold extends Obstacle{
     private double color;
     
-    public Gold{
+    public Gold(){
       super();
       type = "Gold";
       color_ = (241, 194, 50);
@@ -111,7 +117,7 @@ public class Obstacle{
   public class Granite extends Obstacle{
     private double color;
     
-    public Granite{
+    public Granite(){
       super();
       type = "Granite";
       color_ = (204, 204, 204);

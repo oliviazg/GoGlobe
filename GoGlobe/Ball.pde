@@ -17,9 +17,8 @@ public class Ball{
   private boolean gravity;
   private int setGravity = 0;
     
-  public ball{
+  public Ball(){
     type = "Original";
-    
     health = 1000;
     windCount = 1;
     speed = 20;
@@ -141,7 +140,7 @@ public class Ball{
     
   public class Droplet extends Ball{
     
-    public Droplet{
+    public Droplet(){
       super();
       type = "Droplet";
       color_ = (201, 218, 248);
@@ -181,8 +180,8 @@ public class Ball{
   public class Snitch extends Ball{
     
     public Snitch{
-      //super();
       type = "Snitch";
+      super();
       color_ = (241, 194, 50);
     } 
     
@@ -208,7 +207,7 @@ public class Ball{
   
   public class Stone extends Ball{
     
-    public Stone{
+    public Stone(){
       super();
       type = "Stone";
       color_ = (204, 204, 204);

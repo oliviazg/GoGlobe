@@ -5,7 +5,7 @@ public class Wind{
   private int yPos;
   private double size;
   
-  public Wind{
+  public Wind(){
     speed = 10;
   }
   
