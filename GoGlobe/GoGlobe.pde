@@ -19,10 +19,13 @@ int coorY;
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
   size(600, 600);
-  player=new Ball();
+  maze = new Maze(1);
+  
   frameRate(60); //default frame; 60 frams will be displayed every second
   countdown = 100000;
-  maze = new Maze(1);
+  
+  
+  player = new Ball();
   player.setStartPos(maze.getCoor(0), maze.getCoor(1));
   
   coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
@@ -97,14 +100,14 @@ void keyPressed() {
     player.changeGravity();
   }
   if (keyCode==LEFT) {
-    player.move(-20, 0);
+    player.move(-5, 0);
   }
   if (keyCode==RIGHT) {
-    player.move(20, 0);
+    player.move(5, 0);
   }
   if (keyCode==UP) {
     if (player.changeGravity()){
-      player.move(0, (int)(20/9.81));
+      player.move(0, (int)(5/9.81));
     }
   }
 }

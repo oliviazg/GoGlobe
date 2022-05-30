@@ -21,9 +21,9 @@ public class Ball{
     type = "Original";
     health = 1000;
     windCount = 1;
-    speed = 20;
+    speed = 5;
     
-    size = 40;
+    size = 10;
     
     gravity = true;
     

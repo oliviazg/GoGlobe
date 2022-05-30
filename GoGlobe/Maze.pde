@@ -40,7 +40,7 @@ public Maze(int difficulty) {
         }
       }
       startX += xDirection*300;
-  startY += (int)(Math.random()*2+80);
+  startY += (int)(Math.random()*2+10);
     if (startY > 600) {
       i = numOfPixels*difficulty;
     }
@@ -68,7 +68,7 @@ void display() {
   }
 }
 int getCoor(int pos){
-  if (pos < mazeCoordinates.size()){
+  if (pos < mazeCoordinates.size() && pos > 0){
     return mazeCoordinates.get(pos);
   } else {
     return 0;
