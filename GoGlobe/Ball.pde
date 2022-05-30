@@ -123,6 +123,10 @@ public class Ball{
   public boolean getGravity(){
     return gravity;
   }
+  
+  public boolean withinPortal(){
+    return (get((int)(xPos), (int)(yPos + 11)) == color(0,128,0));
+  }
     
   //public void keyPressed(){
   //    if (keyPressed == 24){
