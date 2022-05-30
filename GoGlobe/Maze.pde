@@ -57,7 +57,7 @@ public class Maze {
 //}
 
 void display() {
-  fill(0,128,0);
+  fill(204, 65, 37);
   rect(endX, endY, 30, 50);
   for (int i = 0; i < mazeCoordinates.size(); i+=2) {
     //if (mazeCoordinates.get(i) < 0) {
