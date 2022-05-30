@@ -6,7 +6,7 @@ int countdown;
 int xDirection;
 int yDirection;
 static int difficulty;
-ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
+ArrayList<int[]> mazeCoordinates = new ArrayList<int[]>();
 
 //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
 void generateMaze(double density) {
