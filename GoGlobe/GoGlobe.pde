@@ -6,6 +6,8 @@ int countdown;
 int xDirection;
 int yDirection;
 ArrayList<int[]> mazeCoordinates = new ArrayList<int[]>();
+Ball player;
+int win;
 
 //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
 void generateMaze(double difficulty) {
@@ -40,7 +42,7 @@ void generateMaze(double difficulty) {
           mazeCoordinates.add(xyCoor);
         }
       }
-    startY = numOfPixels + yDirection * size*2;
+    startY = numOfPixels + yDirection * 40 * 2;
     if (startY > height || startY < 0) {
       numOfPixels = (int) Math.random()*30;
     }
@@ -57,9 +59,9 @@ void makePortal(int endX, int endY) {
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
   size(500, 500);
-  Ball player=new Ball();
+  player=new Ball();
   frameRate(60); //default frame; 60 frams will be displayed every second
-  countdown = 0;
+  countdown = millis() - 100000;
   generateMaze(1);
 }
 
@@ -73,26 +75,26 @@ void mousePressed(){
 void draw() {
   background(51);
   generateMaze(1);
-  if(Ball.getX() == endX && Ball.getY() == endY){
+  if(player.getX() == endX && player.getY() == endY){
     win=1;
-    key_log=new int[10];
+    //key_log=new int[10];
   }
   if (win==1) { //if player is successful in the level
-    levels++; //progress to the next level
+    //levels++; //progress to the next level
     difficulty++; //increase difficulty to generate a larger maze with more pixels
-    if (levels==level.length) { //once you've completed all the levels
-      println("CONGRATS!"); //print congratulatory message
-      println("You've completed all the levels!"); 
-    }
-    levels=levels%level.length; //
-    win=0;
+    //if (levels==level.length) { //once you've completed all the levels
+    //  println("CONGRATS!"); //print congratulatory message
+    //  println("You've completed all the levels!"); 
+    //}
+    //levels=levels%level.length; //
+    //win=0;
   }
   if (countdown > 0) {
     countdown--;
   }
   text(countdown, 20, 20);
   int time = 59;
-  if (level == 0) {
+  if (difficulty == 1) {
     println("Choose your avatar!");
   }
 }
@@ -100,24 +102,26 @@ void draw() {
 //movement of ball using arrow keys
 void keyPressed() {
   if (key == '1') {
-    Ball player = new Ball.Droplet();
+    player = new Ball();
   }
   if (key == '2') {
-    Ball player = new Ball.Snitch();
+    player = new Ball();
   }
   if (key == '3') {
-    Ball player = new Ball.Stone();
+    player = new Ball();
   }
   if (key==' ') {
-    s_s=1;
+    player.changeGravity();
   }
   if (keyCode==LEFT) {
-    player.xPos += 10;
+    player.xPos += 20;
   }
   if (keyCode==RIGHT) {
-    player.xPos -= 10;
+    player.xPos -= 20;
   }
   if (keyCode==UP) {
-    player.yPos += .15;
+    if (player.changeGravity()){
+      player.yPos += 20/9.81;
+    }
   }
 }

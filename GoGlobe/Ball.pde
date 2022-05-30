@@ -3,15 +3,15 @@ public class Ball{
   private int health;
   private int windCount;
   private double speed;
-  private int xPos;
-  private int yPos;
+  private float xPos;
+  private float yPos;
   private int[] direction;
   private int[] up = {1, 0};
   private int[] down = {-1, 0};
   private int[] right = {0, 1};
   private int[] left = {0, -1};
     
-  private double size;
+  private float size;
   private color color_;
     
   private boolean gravity;
@@ -41,11 +41,11 @@ public class Ball{
       return windCount;
   }
   
-  public int getX(){
+  public float getX(){
       return xPos;
   }
   
-  public int getY(){
+  public float getY(){
       return yPos;
   }
     
@@ -66,14 +66,17 @@ public class Ball{
   }
     
   public void move(){
-    xPos += move * direction[1];
-    yPos += move * direction[0];
+    xPos += speed * direction[1];
+    yPos += speed * direction[0];
   }
     
   public boolean die(){
-    if (health == 0 || millis() - 100000000 == 0){
+    if (health == 0 || millis() - 100000 == 0){
       color_ = 0;
       size = 0;
+      return true;
+    } else {
+      return false;
     }
   }
     
@@ -97,26 +100,27 @@ public class Ball{
     
   public boolean changeGravity(){
     gravity = (setGravity % 2 == 0);
+    return setGravity % 2 == 0;
   }
     
-  public void keyPressed(){
-      if (keyPressed == 24){
-        direction = up;
-      }
-      if (keyPressed == 25){
-        direction = down;
-      }
-      if (keyPressed == 26){
-        direction = left;
-      }
-      if (keyPressed == 27){
-        direction = right;
-      }
+  //public void keyPressed(){
+  //    if (keyPressed == 24){
+  //      direction = up;
+  //    }
+  //    if (keyPressed == 25){
+  //      direction = down;
+  //    }
+  //    if (keyPressed == 26){
+  //      direction = left;
+  //    }
+  //    if (keyPressed == 27){
+  //      direction = right;
+  //    }
       
-      if (keyPressed == 255){
-        setGravity++;
-      }
-  }
+  //    if (keyPressed == 255){
+  //      setGravity++;
+  //    }
+  //}
   
 // ----------------------------------------------------------------
   
@@ -148,9 +152,9 @@ public class Ball{
     
     public void display(){
       //super();
-      image = "Droplet.png";
-      image(image);
-      image.resize(size, size);
+      image = loadImage("Droplet.png");
+      image(image, xPos, yPos);
+      image.resize((int)size, (int)size);
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
@@ -168,7 +172,7 @@ public class Ball{
   
   public class Snitch extends Ball{
     
-    public Snitch{
+    public Snitch(){
       super();
       type = "Snitch";
       //color_ = color(241, 194, 50);
@@ -176,9 +180,9 @@ public class Ball{
     
     public void display(){
       //super();
-      image = "Snitch.png";
-      image(image);
-      image.resize(size, size);
+      image = loadImage("Snitch.png");
+      image(image, xPos, yPos);
+      image.resize((int)size, (int)size);
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
@@ -204,9 +208,9 @@ public class Ball{
      
     public void display(){
       //super();
-      image = "Stone.png";
-      image(image);
-      image.resize(size, size);
+      image = loadImage("Stone.png");
+      image(image, xPos, yPos);
+      image.resize((int)size, (int)size);
     }
     
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){

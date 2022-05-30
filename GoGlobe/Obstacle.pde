@@ -3,13 +3,13 @@ public class Obstacle{
   private double speed;
   private int xPos;
   private int yPos;
-  private double size;
+  private float size;
   private color color_;
   private boolean orientation;
-  int horizontal;
-  int vertical;
+  private float horizontal;
+  private float vertical;
     
-  public Obstacle{
+  public Obstacle(){
     horizontal = 2;
     vertical = 2;
   }
@@ -46,15 +46,15 @@ public class Obstacle{
   }
   
   public void move(){
-    xPos += move * direction[horizontal - 2];
-    yPos += move * direction[vertical - 2];
-    xPos -= move * direction[horizontal - 2];
-    yPos -= move * direction[vertical - 2];
+    xPos += speed * horizontal;
+    yPos += speed * vertical;
+    xPos -= speed * horizontal;
+    yPos -= speed * vertical;
   }
   
   public boolean touchingBall(Ball ball, int xBall, int yBall){
     if (xBall - xPos <= horizontal || yBall - yPos <= vertical){
-      color_ = (255, 0, 0, 10);
+      color_ = color(255, 0, 0, 10);
       return true;
     } else {
       return false;
@@ -66,14 +66,8 @@ public class Obstacle{
 
   
   PImage image;
-    public Original(){
-      super();
-      color_ = (111, 168, 220);
-    }
-  }
   
   public class Ice extends Obstacle{
-    private double color;
     
     public Ice(){
       super();
@@ -81,17 +75,16 @@ public class Obstacle{
       //color_ = (201, 218, 248);
     }
     
-    public display(){
+    public void display(){
       //super();
-      image = "Ice.png";
-      image.resize(horizontal, vertical);
-      image(image);
+      image = loadImage("Ice.png");
+      image.resize((int)horizontal, (int)vertical);
+      image(image, xPos, yPos);
     }
     
   }
   
   public class Gold extends Obstacle{
-    private double color;
     
     public Gold(){
       super();
@@ -99,17 +92,16 @@ public class Obstacle{
       //color_ = (241, 194, 50);
     }
     
-    public display(){
+    public void display(){
       //super();
-      image = "Gold.png";
-      image.resize(horizontal, vertical);
-      image(image);
+      image = loadImage("Gold.png");
+      image.resize((int)horizontal, (int)vertical);
+      image(image, xPos, yPos);
     }
     
   }
   
   public class Granite extends Obstacle{
-    private double color;
     
     public Granite(){
       super();
@@ -117,11 +109,12 @@ public class Obstacle{
       //color_ = (204, 204, 204);
     }
     
-    public display(){
+    public void display(){
       //super();
-      image = "Granite.png";
-      image.resize(horizontal, vertical);
-      image(image);
+      image = loadImage("Granite.png");
+      image.resize((int)horizontal, (int)vertical);
+      image(image, xPos, yPos);
     }
     
+}
 }

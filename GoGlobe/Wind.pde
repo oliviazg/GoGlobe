@@ -3,7 +3,7 @@ public class Wind{
   private int speed;
   private int xPos;
   private int yPos;
-  private double size;
+  private float size;
   
   public Wind(){
     speed = 10;
@@ -26,14 +26,14 @@ public class Wind{
     yPos = y;
   }
   
-  public display(){
+  public void display(){
     fill(255, 255, 255);
     textSize(size);
     text("W", xPos, yPos);
   }
   
   public boolean touchingBall(Ball ball, int xBall, int yBall){
-    if (xBall - xPos <= horizontal || yBall - yPos <= vertical){
+    if (xBall - xPos <= size || yBall - yPos <= size){
       size = 0;
       return true;
     } else {
