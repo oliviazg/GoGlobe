@@ -28,3 +28,5 @@ D2: I created the Wind class and added and updated Ball, Obstacle, and Wind meth
 D3: I hand-sketched Ball and Obstacle designs.
 
 D4: I added pngs to Ball and Obstacle display() methods.
+
+D5 - 8: Met with Evelyn online: worked out Maze generator and level advancement; added Ball, Obstacle, and Maze to setup and draw in GoGlobe; got Ball and Maze generator to work for our MVP.
