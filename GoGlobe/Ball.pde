@@ -81,6 +81,9 @@ public class Ball{
         yDir = 0.25;
       } else {
         yDir += 0.25;
+        if (yDir >= 0.5){
+          xDir = 0;
+        }
       }
     } else if (gravity) {
       yDir = 0;
