@@ -67,13 +67,13 @@ public class Ball{
   }
     
   public void move(float xDir, float yDir){
-    if (xPos >= 600 || xPos <= 0) {
-      xDir *= -5;
+    if (xPos >= 580 || xPos <= 20) {
+      xDir *= -1;
       yDir = 0;
     }
-    if (yPos <= 0) {
+    if (yPos <= 20) {
       xDir = 0;
-      yDir *= -5;
+      yDir *= -1;
     }
     if (get((int)(xPos), (int)(yPos + 11)) != color(0)){
       if (gravity){
@@ -119,7 +119,7 @@ public class Ball{
   }
   
   public boolean withinPortal(){
-    return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
+    return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37) || xPos > 570 && xPos < 600 && yPos > 550 && yPos < 600);
   }
     
   //public void keyPressed(){
