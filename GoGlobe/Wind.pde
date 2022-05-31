@@ -7,6 +7,7 @@ public class Wind{
   
   public Wind(){
     speed = 10;
+    size = 5;
   }
   
   public int getX(){
