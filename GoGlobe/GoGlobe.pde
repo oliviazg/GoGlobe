@@ -3,6 +3,7 @@ static int endY = 500; //Portal will be centered at this y-coordinate.
 static int difficulty; //the percentage of maze (impenetrable) compared to open space 
 //int numOfPixels;
 int countdown;
+int countdownHelper;
 //int xDirection;
 //int yDirection;
 //ArrayList<int[]> mazeCoordinates = new ArrayList<int[]>();
@@ -79,6 +80,7 @@ void draw() {
     countdown--;
   } else {
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+    countdown = countdownHelper;
   }
   text("COUNTDOWN: ", 20, 20);
   text(countdown / 100, 110, 20);
@@ -118,6 +120,7 @@ void draw() {
     difficulty++;
     maze = new Maze(difficulty);
     countdown = 10000 - 1000 * (difficulty - 1);
+    countdownHelper = countdown;
     text(countdown / 100, 110, 20);
     text(difficulty, 100, 35);
     
