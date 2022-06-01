@@ -18,7 +18,9 @@ D3: I added Time configuration and continued to work on the mazeGenerator and Po
 
 D4: I created the Controller class and updated the main GoGlobe class.
 
-D5 - D8: I worked with Olivia via live coding to fix mazeGenerator, portal, ball movement, difficulty levels, timer, borders, keyPressed and keyReleased. 
+D5 - D8: I worked with Olivia via live coding to fix mazeGenerator, portal, ball movement, difficulty levels, timer, borders, keyPressed and keyReleased.
+
+D9: I worked on the Wind class, but bumped into Processing.app errors that I could not solve on my own.
 
 ----------------------------------
 Development Log for Olivia Zheng:
