@@ -43,7 +43,7 @@ public class Obstacle{
     if (orientation){
       vertical = size;
     }
-    rect(xPos, yPos, 40, 20);
+    rect(xPos, yPos, 40, 10);
   }
   
   public void move(){

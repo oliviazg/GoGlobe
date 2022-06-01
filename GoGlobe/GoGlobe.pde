@@ -35,10 +35,10 @@ void setup() {
   int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
   if (ind % 2 == 0){
     coorX = maze.getCoor(ind);
-    coorY = maze.getCoor(ind + 1);
+    coorY = maze.getCoor(ind + 1) - 10;
   } else {
     coorX = maze.getCoor(ind - 1);
-    coorY = maze.getCoor(ind);
+    coorY = maze.getCoor(ind) - 10;
   }
   obs1 = new Obstacle();
   obs1.setPos(coorX, coorY);
@@ -85,8 +85,6 @@ void draw() {
   }
   if (countdown > 0){
     countdown--;
-  } else {
-    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   }
   text("COUNTDOWN: ", 20, 20);
   text(countdown / 100, 110, 20);
@@ -106,9 +104,9 @@ void draw() {
   player.move(xDir, yDir);
   xDir = 0;
   yDir = 0;
-  if (player.getY() + 16 >= 600){
-    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-  }
+  //if (player.getY() + 16 >= 600){
+  //  player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+  //}
   
   obs1.display();
   //obs2.display();
@@ -117,10 +115,13 @@ void draw() {
   //obs2.move();
   //obs3.move();
   
-  player.touchingObs(obs1, obs1.getX(), obs1.getY());
+  //if (player.touchingObs(obs1, obs1.getX(), obs1.getY())){
+  //  player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+  //}
   //player.touchingObs(obs2, obs2.getX(), obs2.getY());
   //player.touchingObs(obs3, obs3.getX(), obs3.getY());
   
+  die(player);
   if (player.withinPortal()){
     //clear();
     difficulty++;
@@ -136,13 +137,19 @@ void draw() {
     obs1 = new Obstacle();
     obs1.setPos(coorX, coorY);
   
-    coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
-    coorY = maze.getCoor(coorX + 1);
-    obs2 = new Obstacle();
+    //coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
+    //coorY = maze.getCoor(coorX + 1);
+    //obs2 = new Obstacle();
   
-    coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
-    coorY = maze.getCoor(coorX + 1);
-    obs3 = new Obstacle();
+    //coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
+    //coorY = maze.getCoor(coorX + 1);
+    //obs3 = new Obstacle();
+  }
+}
+
+void die(Ball ball){
+  if (player.getY() + 16 >= 600 || player.touchingObs(obs1, obs1.getX(), obs1.getY()) || countdown == 0){
+    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   }
 }
 
