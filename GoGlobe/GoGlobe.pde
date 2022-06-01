@@ -13,6 +13,7 @@ Maze maze;
 float xDir;
 float yDir;
 ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
+Wind wind;
 
 Obstacle obs1;
 Obstacle obs2;
@@ -32,6 +33,9 @@ void setup() {
   
   player = new Ball();
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+  
+  wind = new Wind();
+  wind.setPos(maze.getCoor(6)+1, maze.getCoor(7)-10);
   
   coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
   coorY = maze.getCoor(coorX + 1);
@@ -103,6 +107,8 @@ void draw() {
   if (player.getY() + 16 >= 600){
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   }
+  
+  wind.display();
   
   obs1.display();
   obs2.display();
