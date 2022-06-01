@@ -122,12 +122,12 @@ void draw() {
   player.touchingObs(obs1, obs1.getX(), obs1.getY());
   player.touchingObs(obs2, obs2.getX(), obs2.getY());
   player.touchingObs(obs3, obs3.getX(), obs3.getY());
-  
+  /**
   if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())) {
     player.speed += 10;
     color background = color(255, 242, 204);
     set(background, wind.getX(), wind.getY());
-  }
+  }**/
   
   if (player.withinPortal()){
     //clear();
