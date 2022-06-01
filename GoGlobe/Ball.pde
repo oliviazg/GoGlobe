@@ -80,13 +80,13 @@ public class Ball{
         xDir = 0;
         yDir = 0.25;
       } else {
-        yDir += 0.25;
-        if (yDir >= 0.5){
-          xDir = 0;
-        }
+        yDir += 0.125;
       }
     } else if (gravity) {
       yDir = 0;
+    }
+    if (yDir > 0.125){
+      xDir = 0;
     }
     xPos += speed * xDir;
     yPos += speed * yDir;

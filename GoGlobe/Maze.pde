@@ -71,9 +71,9 @@ void display() {
       rect(mazeCoordinates.get(i), mazeCoordinates.get(i+1), 100, 2);
   }
 }
-int getCoor(int pos){
-  if (pos < mazeCoordinates.size() && pos >= 0){
-    return mazeCoordinates.get(pos);
+int getCoor(int ind){
+  if (ind < mazeCoordinates.size() && ind >= 0){
+    return mazeCoordinates.get(ind);
   } else {
     return 0;
   }

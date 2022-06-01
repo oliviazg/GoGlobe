@@ -32,18 +32,26 @@ void setup() {
   player = new Ball();
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
-  coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
-  coorY = maze.getCoor(coorX + 1);
+  int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
+  if (ind % 2 == 0){
+    coorX = maze.getCoor(ind);
+    coorY = maze.getCoor(ind + 1);
+  } else {
+    coorX = maze.getCoor(ind - 1);
+    coorY = maze.getCoor(ind);
+  }
   obs1 = new Obstacle();
   obs1.setPos(coorX, coorY);
   
-  coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
-  coorY = maze.getCoor(coorX + 1);
-  obs2 = new Obstacle();
+  //coorX = maze.getCoor((int)(Math.random() * (maze.coorSize() - 1) + 40));
+  //coorY = maze.getCoor(coorX + 1);
+  //obs2 = new Obstacle();
+  //obs2.setPos(coorX, coorY);
   
-  coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
-  coorY = maze.getCoor(coorX + 1);
-  obs3 = new Obstacle();
+  //coorX = maze.getCoor((int)(Math.random() * (maze.coorSize() - 1) + 40));
+  //coorY = maze.getCoor(coorX + 1);
+  //obs3 = new Obstacle();
+  //obs3.setPos(coorX, coorY);
 }
 
 //Display the graphics 
@@ -103,15 +111,15 @@ void draw() {
   }
   
   obs1.display();
-  obs2.display();
-  obs3.display();
+  //obs2.display();
+  //obs3.display();
   obs1.move();
-  obs2.move();
-  obs3.move();
+  //obs2.move();
+  //obs3.move();
   
   player.touchingObs(obs1, obs1.getX(), obs1.getY());
-  player.touchingObs(obs2, obs2.getX(), obs2.getY());
-  player.touchingObs(obs3, obs3.getX(), obs3.getY());
+  //player.touchingObs(obs2, obs2.getX(), obs2.getY());
+  //player.touchingObs(obs3, obs3.getX(), obs3.getY());
   
   if (player.withinPortal()){
     //clear();
@@ -157,7 +165,7 @@ void keyPressed() {
   } else if (keyCode==UP) {
     if (!player.getGravity()){
       xDir = 0;
-      yDir = -4;
+      yDir = -2;
     }
   } else {
     xDir = 0;
