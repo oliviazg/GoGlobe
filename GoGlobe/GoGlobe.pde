@@ -1,24 +1,23 @@
 static int endX = 500; //Portal will be centered at this x-coordinate.
 static int endY = 500; //Portal will be centered at this y-coordinate.
 static int difficulty; //the percentage of maze (impenetrable) compared to open space 
-//int numOfPixels;
 int countdown;
-//int xDirection;
-//int yDirection;
-//ArrayList<int[]> mazeCoordinates = new ArrayList<int[]>();
 Ball player;
+ArrayList<Obstacle> obsList = new ArrayList<Obstacle>();
+Obstacle obs;
 int win;
 Maze maze;
 float xDir;
 float yDir;
 ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 
-Obstacle obs1;
-Obstacle obs2;
-Obstacle obs3;
+for (int i = 0; i <= difficulty; i++){
+  obsList.add(new Obstacle());
+}
 
-int coorX;
-int coorY;
+int xCoor;
+int yCoor;
+
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
   difficulty = 1;
@@ -32,26 +31,18 @@ void setup() {
   player = new Ball();
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
-  int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
-  if (ind % 2 == 0){
-    coorX = maze.getCoor(ind);
-    coorY = maze.getCoor(ind + 1) - 10;
-  } else {
-    coorX = maze.getCoor(ind - 1);
-    coorY = maze.getCoor(ind) - 10;
+  for (int i = 0; i <= obsList.size(); i++){
+    obs = obsList.get(i);
+    int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
+    if (ind % 2 == 0){
+      xCoor = maze.getCoor(ind);
+      yCoor = maze.getCoor(ind + 1) - 10;
+    } else {
+      xCoor = maze.getCoor(ind - 1);
+      yCoor = maze.getCoor(ind) - 10;
+    }
+    obs.setPos(xCoor, yCoor);
   }
-  obs1 = new Obstacle();
-  obs1.setPos(coorX, coorY);
-  
-  //coorX = maze.getCoor((int)(Math.random() * (maze.coorSize() - 1) + 40));
-  //coorY = maze.getCoor(coorX + 1);
-  //obs2 = new Obstacle();
-  //obs2.setPos(coorX, coorY);
-  
-  //coorX = maze.getCoor((int)(Math.random() * (maze.coorSize() - 1) + 40));
-  //coorY = maze.getCoor(coorX + 1);
-  //obs3 = new Obstacle();
-  //obs3.setPos(coorX, coorY);
 }
 
 //Display the graphics 
@@ -71,17 +62,9 @@ void draw() {
   
   if(player.getX() == endX && player.getY() == endY){
     win=1;
-    //key_log=new int[10];
   }
   if (win==1) { //if player is successful in the level
-    //levels++; //progress to the next level
     difficulty++; //increase difficulty to generate a larger maze with more pixels
-    //if (levels==level.length) { //once you've completed all the levels
-    //  println("CONGRATS!"); //print congratulatory message
-    //  println("You've completed all the levels!"); 
-    //}
-    //levels=levels%level.length; //
-    //win=0;
   }
   if (countdown > 0){
     countdown--;
@@ -104,26 +87,12 @@ void draw() {
   player.move(xDir, yDir);
   xDir = 0;
   yDir = 0;
-  //if (player.getY() + 16 >= 600){
-  //  player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-  //}
   
-  obs1.display();
-  //obs2.display();
-  //obs3.display();
-  obs1.move();
-  //obs2.move();
-  //obs3.move();
-  
-  //if (player.touchingObs(obs1, obs1.getX(), obs1.getY())){
-  //  player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-  //}
-  //player.touchingObs(obs2, obs2.getX(), obs2.getY());
-  //player.touchingObs(obs3, obs3.getX(), obs3.getY());
+  obs.display();
+  obs.move();
   
   die(player);
   if (player.withinPortal()){
-    //clear();
     difficulty++;
     maze = new Maze(difficulty);
     countdown = 10000 - 1000 * (difficulty - 1);
@@ -131,19 +100,6 @@ void draw() {
     text(difficulty, 100, 35);
     
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-  
-    coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
-    coorY = maze.getCoor(coorX + 1);
-    obs1 = new Obstacle();
-    obs1.setPos(coorX, coorY);
-  
-    //coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
-    //coorY = maze.getCoor(coorX + 1);
-    //obs2 = new Obstacle();
-  
-    //coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
-    //coorY = maze.getCoor(coorX + 1);
-    //obs3 = new Obstacle();
   }
 }
 
