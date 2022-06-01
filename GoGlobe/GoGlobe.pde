@@ -28,7 +28,7 @@ void setup() {
   maze = new Maze(difficulty);
   
   frameRate(60); //default frame; 60 frams will be displayed every second
-  countdown = 10000;
+  countdown = 1000;
   
   
   player = new Ball();
@@ -127,7 +127,7 @@ void draw() {
     //clear();
     difficulty++;
     maze = new Maze(difficulty);
-    countdown = 10000 - 1000 * (difficulty - 1);
+    countdown = 1000 - 100 * (difficulty - 1);
     countdownHelper = countdown;
     text(countdown / 100, 110, 20);
     text(difficulty, 100, 35);
