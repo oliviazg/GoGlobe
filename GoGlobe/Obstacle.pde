@@ -43,14 +43,19 @@ public class Obstacle{
     if (orientation){
       vertical = size;
     }
-    rect(xPos, yPos, 40, 10);
+    rect(xPos, yPos, 20, 10);
   }
   
   public void move(){
-    xPos += speed * horizontal;
-    yPos += speed * vertical;
-    xPos -= speed * horizontal;
-    yPos -= speed * vertical;
+    //xPos += speed * horizontal;
+    //yPos += speed * vertical;
+    //xPos -= speed * horizontal;
+    //yPos -= speed * vertical;
+    if ((millis() / 1000) % 2 == 0){
+      xPos += 1;
+    } else {
+      xPos -= 1;
+    }
   }
   
   public boolean touchingBall(Ball ball, int xBall, int yBall){
