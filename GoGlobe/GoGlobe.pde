@@ -35,7 +35,7 @@ void setup() {
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
   wind = new Wind();
-  wind.setPos(maze.getCoor(0)+1, maze.getCoor(1)-10);
+  wind.setPos(maze.getCoor(6)+1, maze.getCoor(7)-10);
   
   coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
   coorY = maze.getCoor(coorX + 1);
