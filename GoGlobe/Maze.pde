@@ -32,8 +32,6 @@ public class Maze {
       if (xDirection == -1) {
         for (int x2 = startX; x2 > (int) (Math.random()*450); x2--) {
           if (x2 > 50) {
-            //c = color(0);
-            //set(c, x2, startY);
             mazeCoordinates.add(x2);
             mazeCoordinates.add(startY);
           }
@@ -47,40 +45,24 @@ public class Maze {
     }
   }
 
-//A portal will be created, centered at the given x- and y- coordinates. 
-//void makePortal(int endX, int endY) { 
-//void makePortal(int endX, int endY) { 
-  //color c = color(0, 255, 0); 
-  //mazeCoordinates.add(-1*endX);
-  //mazeCoordinates.add(-1*endY);
-  //set(c, endX, endY); //set the pixel at coordinates endX and endY green
-//}
-
-void display() {
-  fill(204, 65, 37);
-  rect(endX, endY, 30, 50);
-  for (int i = 0; i < mazeCoordinates.size(); i+=2) {
-    //if (mazeCoordinates.get(i) < 0) {
-    //  fill(0, 255, 0);
-    //  rect(-1 * mazeCoordinates.get(i), -1 * mazeCoordinates.get(i+1), 100, 5);
-    //} else {
-    //  fill(0);
-    //  rect(mazeCoordinates.get(i), mazeCoordinates.get(i + 1), 100, 5);
-    //}
+  void display() {
+    fill(204, 65, 37);
+    rect(endX, endY, 30, 50);
+    for (int i = 0; i < mazeCoordinates.size(); i+=2) {
       fill(0);
       rect(mazeCoordinates.get(i), mazeCoordinates.get(i+1), 100, 2);
+    }
+  } 
+  int getCoor(int ind){
+    if (ind < mazeCoordinates.size() && ind >= 0){
+      return mazeCoordinates.get(ind);
+    } else {
+      return 0;
+    }
   }
-}
-int getCoor(int ind){
-  if (ind < mazeCoordinates.size() && ind >= 0){
-    return mazeCoordinates.get(ind);
-  } else {
-    return 0;
-  }
-}
 
-int coorSize(){
-  return mazeCoordinates.size();
-}
+  int coorSize(){
+    return mazeCoordinates.size();
+  }
   
 }

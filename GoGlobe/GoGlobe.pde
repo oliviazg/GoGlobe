@@ -11,10 +11,6 @@ float xDir;
 float yDir;
 ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 
-for (int i = 0; i <= difficulty; i++){
-  obsList.add(new Obstacle());
-}
-
 int xCoor;
 int yCoor;
 
@@ -24,14 +20,18 @@ void setup() {
   size(600, 600);
   maze = new Maze(difficulty);
   
-  frameRate(60); //default frame; 60 frams will be displayed every second
+  frameRate(60); //default frame; 60 frames will be displayed every second
   countdown = 10000;
   
   
   player = new Ball();
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
-  for (int i = 0; i <= obsList.size(); i++){
+  for (int i = 0; i <= difficulty; i++){
+    obsList.add(new Obstacle());
+  }
+  
+  for (int i = 0; i <= obsList.size() - 1; i++){
     obs = obsList.get(i);
     int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
     if (ind % 2 == 0){
@@ -76,7 +76,10 @@ void draw() {
   text(difficulty, 100, 35);
   
   text("JUMP ABILITY: ", 20, 50);
-  text(" "+!player.getGravity(), 100, 50);
+  text(" " + !player.getGravity(), 100, 50);
+  
+  text("HEALTH: ", 20, 65);
+  text(" " + player.getHealth(), 70, 65);
   
   int time = 59;
   if (difficulty == 1) {
@@ -91,8 +94,15 @@ void draw() {
   obs.display();
   obs.move();
   
+  if (player.touchingObs(obs, obs.getX(), obs.getY())){
+    player.decHealth();
+  }
+  
   die(player);
+  
+  // move to next level
   if (player.withinPortal()){
+    
     difficulty++;
     maze = new Maze(difficulty);
     countdown = 10000 - 1000 * (difficulty - 1);
@@ -100,11 +110,29 @@ void draw() {
     text(difficulty, 100, 35);
     
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+    
+    for (int i = 0; i <= difficulty; i++){
+      obsList.add(new Obstacle());
+    }
+  
+    for (int i = 0; i <= obsList.size() - 1; i++){
+      obs = obsList.get(i);
+      int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
+      if (ind % 2 == 0){
+        xCoor = maze.getCoor(ind);
+        yCoor = maze.getCoor(ind + 1) - 10;
+      } else {
+        xCoor = maze.getCoor(ind - 1);
+        yCoor = maze.getCoor(ind) - 10;
+      }
+      obs.setPos(xCoor, yCoor);
+    }
+  
   }
 }
 
 void die(Ball ball){
-  if (player.getY() + 16 >= 600 || player.touchingObs(obs1, obs1.getX(), obs1.getY()) || countdown == 0){
+  if (player.getY() + 16 >= 600 || ball.getHealth() == 0 || countdown == 0){
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   }
 }

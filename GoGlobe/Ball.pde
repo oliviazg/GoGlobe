@@ -5,17 +5,11 @@ public class Ball{
   private double speed;
   private float xPos;
   private float yPos;
-  //private int[] direction;
-  //private int[] up = {1, 0};
-  //private int[] down = {-1, 0};
-  //private int[] right = {0, 1};
-  //private int[] left = {0, -1};
     
   private float size;
   private color color_;
     
   private boolean gravity;
-  //private int setGravity = 0;
     
   public Ball(){
     type = "Original";
@@ -92,16 +86,12 @@ public class Ball{
     yPos += speed * yDir;
   }
     
-  //public void die(){
-  //}
-    
   public boolean touchingObs(Obstacle obs, int xObs, int yObs){
-    if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-      health -= 20;
-      return true;
-    } else {
-      return false;
-    }
+    return xObs - xPos <= size && yObs - yPos <= size;
+  }
+  
+  public void decHealth(){
+    health -= 2;
   }
     
   public boolean touchingWind(Wind wind, int xWind, int yWind){
@@ -124,25 +114,6 @@ public class Ball{
   public boolean withinPortal(){
     return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
   }
-    
-  //public void keyPressed(){
-  //    if (keyPressed == 24){
-  //      direction = up;
-  //    }
-  //    if (keyPressed == 25){
-  //      direction = down;
-  //    }
-  //    if (keyPressed == 26){
-  //      direction = left;
-  //    }
-  //    if (keyPressed == 27){
-  //      direction = right;
-  //    }
-      
-  //    if (keyPressed == 255){
-  //      setGravity++;
-  //    }
-  //}
   
 // ----------------------------------------------------------------
   

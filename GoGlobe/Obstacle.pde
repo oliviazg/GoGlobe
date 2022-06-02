@@ -47,11 +47,7 @@ public class Obstacle{
   }
   
   public void move(){
-    //xPos += speed * horizontal;
-    //yPos += speed * vertical;
-    //xPos -= speed * horizontal;
-    //yPos -= speed * vertical;
-    if ((millis() / 1000) % 2 == 0){
+    if ((millis() / 100) % 2 == 0){
       xPos += 1;
     } else {
       xPos -= 1;
