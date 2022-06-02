@@ -98,46 +98,50 @@ void draw() {
     player.setHealth(-2);
   }
   
-  die(player);
+  if (!player.getGravity()){
+    player.setHealth(-0.25);
+  }
   
-  levelUp();
+  if (player.getY() + 16 >= 600 || player.getHealth() == 0 || countdown == 0){
+    die(player);
+  }
+  
+  if (player.withinPortal()){
+    levelUp();
+  }
 }
 
 // move to next level
-void levelUp (){
-  if (player.withinPortal()){
-    
-    difficulty++;
-    maze = new Maze(difficulty);
-    countdown = 10000 - 1000 * (difficulty - 1);
-    
-    player.setHealth(1000);
-    
-    //player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-    
-    //for (int i = 0; i <= difficulty; i++){
-    //  obsList.add(new Obstacle());
-    //}
+void levelUp (){    
   
-    //for (int i = 0; i <= obsList.size() - 1; i++){
-    //  obs = obsList.get(i);
-    //  int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
-    //  if (ind % 2 == 0){
-    //    xCoor = maze.getCoor(ind);
-    //    yCoor = maze.getCoor(ind + 1) - 10;
-    //  } else {
-    //    xCoor = maze.getCoor(ind - 1);
-    //    yCoor = maze.getCoor(ind) - 10;
-    //  }
-    //  obs.setPos(xCoor, yCoor);
-    //}
+  maze = new Maze(difficulty);
   
+  difficulty++;
+  countdown = 10000 - 1000 * (difficulty - 1);
+    
+  player.setHealth(1000);
+    
+  for (int i = 0; i <= difficulty; i++){
+    obsList.add(new Obstacle());
   }
+  
+  for (int i = 0; i <= obsList.size() - 1; i++){
+    obs = obsList.get(i);
+    int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
+    if (ind % 2 == 0){
+      xCoor = maze.getCoor(ind);
+      yCoor = maze.getCoor(ind + 1) - 10;
+    } else {
+      xCoor = maze.getCoor(ind - 1);
+      yCoor = maze.getCoor(ind) - 10;
+    }
+    obs.setPos(xCoor, yCoor);
+  }
+  
 }
+
 void die(Ball ball){
-  if (player.getY() + 16 >= 600 || ball.getHealth() == 0 || countdown == 0){
-    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-  }
+  player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   player.setHealth(1000);
 }
 

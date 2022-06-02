@@ -34,3 +34,5 @@ D5 - 8: Got Maze to function properly; added maze, ball, and obstacles to setup 
 D9 - I edited the Obstacle class-still doesn't work.
 
 D10 - I got the Obstacle class to show up in the maze and to move. I also created an Obstacle ArrayList in GoGlobe to generate numerous Obstacles (doesn't work yet).
+
+D11 - Decremented health when jump toggled

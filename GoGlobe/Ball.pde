@@ -1,6 +1,6 @@
 public class Ball{
   private String type;
-  private int health;
+  private float health;
   private int windCount;
   private double speed;
   private float xPos;
@@ -28,7 +28,7 @@ public class Ball{
       return type;
   }
   
-  public int getHealth(){
+  public float getHealth(){
       return health;
   }
     
@@ -87,10 +87,10 @@ public class Ball{
   }
     
   public boolean touchingObs(Obstacle obs, int xObs, int yObs){
-    return xObs - xPos <= size && yObs - yPos <= size;
+    return Math.abs(xObs - xPos) <= size && Math.abs(yObs - yPos) <= size;
   }
   
-  public void setHealth(int num){
+  public void setHealth(float num){
     health += num;
   }
     
