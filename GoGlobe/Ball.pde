@@ -90,8 +90,8 @@ public class Ball{
     return xObs - xPos <= size && yObs - yPos <= size;
   }
   
-  public void decHealth(){
-    health -= 2;
+  public void setHealth(int num){
+    health += num;
   }
     
   public boolean touchingWind(Wind wind, int xWind, int yWind){
@@ -116,22 +116,6 @@ public class Ball{
   }
   
 // ----------------------------------------------------------------
-  
-
-  //public class Original extends Ball{
-    
-  //  public Original{
-  //    super();
-  //    color_ = color(111, 168, 220);
-  //  } 
-     
-  //  public void display(){
-  //    super();
-  //  }
-  
-  //  public boolean touchingObs(Obstacle obs, int xObs, int yObs){
-  //     super();
-  //  }
   
   PImage image;
     

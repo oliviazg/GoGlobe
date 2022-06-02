@@ -95,46 +95,50 @@ void draw() {
   obs.move();
   
   if (player.touchingObs(obs, obs.getX(), obs.getY())){
-    player.decHealth();
+    player.setHealth(-2);
   }
   
   die(player);
   
-  // move to next level
+  levelUp();
+}
+
+// move to next level
+void levelUp (){
   if (player.withinPortal()){
     
     difficulty++;
     maze = new Maze(difficulty);
     countdown = 10000 - 1000 * (difficulty - 1);
-    text(countdown / 100, 110, 20);
-    text(difficulty, 100, 35);
     
-    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+    player.setHealth(1000);
     
-    for (int i = 0; i <= difficulty; i++){
-      obsList.add(new Obstacle());
-    }
+    //player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+    
+    //for (int i = 0; i <= difficulty; i++){
+    //  obsList.add(new Obstacle());
+    //}
   
-    for (int i = 0; i <= obsList.size() - 1; i++){
-      obs = obsList.get(i);
-      int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
-      if (ind % 2 == 0){
-        xCoor = maze.getCoor(ind);
-        yCoor = maze.getCoor(ind + 1) - 10;
-      } else {
-        xCoor = maze.getCoor(ind - 1);
-        yCoor = maze.getCoor(ind) - 10;
-      }
-      obs.setPos(xCoor, yCoor);
-    }
+    //for (int i = 0; i <= obsList.size() - 1; i++){
+    //  obs = obsList.get(i);
+    //  int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
+    //  if (ind % 2 == 0){
+    //    xCoor = maze.getCoor(ind);
+    //    yCoor = maze.getCoor(ind + 1) - 10;
+    //  } else {
+    //    xCoor = maze.getCoor(ind - 1);
+    //    yCoor = maze.getCoor(ind) - 10;
+    //  }
+    //  obs.setPos(xCoor, yCoor);
+    //}
   
   }
 }
-
 void die(Ball ball){
   if (player.getY() + 16 >= 600 || ball.getHealth() == 0 || countdown == 0){
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   }
+  player.setHealth(1000);
 }
 
 //movement of ball using arrow keys
