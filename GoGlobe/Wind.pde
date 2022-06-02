@@ -34,12 +34,14 @@ public class Wind{
   }
   
   public boolean touchingBall(Ball ball, int xBall, int yBall){
-    if (xBall - xPos <= size || yBall - yPos <= size){
-      size = 0;
+    if (xBall - xPos <= size && yBall - yPos <= size){
+      color background = color(255, 242, 204);
+      set(background, wind.getX(), wind.getY());
       return true;
     } else {
       return false;
     }
   }
+  
   
 }
