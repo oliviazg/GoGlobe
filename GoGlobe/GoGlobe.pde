@@ -28,7 +28,7 @@ void setup() {
   maze = new Maze(difficulty);
   
   frameRate(60); //default frame; 60 frams will be displayed every second
-  countdown = 1000;
+  countdown = 10000;
   
   
   player = new Ball();
@@ -111,7 +111,7 @@ void draw() {
   }
   
   wind.display();
-  
+ 
   obs1.display();
   obs2.display();
   obs3.display();
@@ -123,15 +123,12 @@ void draw() {
   player.touchingObs(obs2, obs2.getX(), obs2.getY());
   player.touchingObs(obs3, obs3.getX(), obs3.getY());
   
-  if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())) {
-    player.speed += 10;
-  }
   
   if (player.withinPortal()){
     //clear();
     difficulty++;
     maze = new Maze(difficulty);
-    countdown = 1000 - 100 * (difficulty - 1);
+    countdown = 10000 - 1000 * (difficulty - 1);
     countdownHelper = countdown;
     text(countdown / 100, 110, 20);
     text(difficulty, 100, 35);
