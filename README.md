@@ -30,3 +30,7 @@ D3: I hand-sketched Ball and Obstacle designs.
 D4: I added pngs to Ball and Obstacle display() methods.
 
 D5 - 8: Got Maze to function properly; added maze, ball, and obstacles to setup and draw; got the maze and the ball to function for the MVP.
+
+D9 - I edited the Obstacle class-still doesn't work.
+
+D10 - I got the Obstacle class to show up in the maze and to move. I also created an Obstacle ArrayList in GoGlobe to generate numerous Obstacles (doesn't work yet).
