@@ -28,14 +28,14 @@ void setup() {
   maze = new Maze(difficulty);
   
   frameRate(60); //default frame; 60 frams will be displayed every second
-  countdown = 10000;
+  countdown = 1000;
   
   
   player = new Ball();
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
   wind = new Wind();
-  wind.setPos(maze.getCoor(6)+1, maze.getCoor(7)-10);
+  wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
   
   coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
   coorY = maze.getCoor(coorX + 1);
@@ -84,8 +84,10 @@ void draw() {
     countdown--;
   } else {
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+    wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
     countdown = countdownHelper;
   }
+  textSize(12);
   text("COUNTDOWN: ", 20, 20);
   text(countdown / 100, 110, 20);
   
@@ -120,17 +122,25 @@ void draw() {
   player.touchingObs(obs1, obs1.getX(), obs1.getY());
   player.touchingObs(obs2, obs2.getX(), obs2.getY());
   player.touchingObs(obs3, obs3.getX(), obs3.getY());
+  /**
+  if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())) {
+    player.speed += 10;
+    color background = color(255, 242, 204);
+    set(background, wind.getX(), wind.getY());
+  }**/
   
   if (player.withinPortal()){
     //clear();
     difficulty++;
     maze = new Maze(difficulty);
-    countdown = 10000 - 1000 * (difficulty - 1);
+    countdown = 1000 - 100 * (difficulty - 1);
     countdownHelper = countdown;
     text(countdown / 100, 110, 20);
     text(difficulty, 100, 35);
     
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+    
+    wind.setPos(maze.getCoor(24)+1, maze.getCoor(25)-10);
   
     coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
     coorY = maze.getCoor(coorX + 1);
