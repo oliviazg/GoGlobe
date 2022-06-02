@@ -22,6 +22,8 @@ D5 - D8: I worked with Olivia via live coding to fix mazeGenerator, portal, ball
 
 D9: I worked on the Wind class, but bumped into Processing.app errors that I could not solve on my own.
 
+D10: I continued to work on displaying the Wind element in the main and adding the effects to the Ball.
+
 ----------------------------------
 Development Log for Olivia Zheng:
 ----------------------------------
