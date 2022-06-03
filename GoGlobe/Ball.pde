@@ -90,8 +90,12 @@ public class Ball{
     return Math.abs(xObs - xPos) <= size && Math.abs(yObs - yPos) <= size;
   }
   
-  public void setHealth(float num){
+  public void changeHealth(float num){
     health += num;
+  }
+  
+  public void setHealth(float num){
+    health = 1000 - num;
   }
     
   public boolean touchingWind(Wind wind, int xWind, int yWind){
@@ -102,9 +106,9 @@ public class Ball{
       return false;
     }
   }
-    
-  public void changeGravity(){
-    gravity = !gravity;
+  
+  public void setGravity(boolean g){
+    gravity = g;
   }
   
   public boolean getGravity(){

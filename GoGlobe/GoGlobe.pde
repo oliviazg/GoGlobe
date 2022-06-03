@@ -31,9 +31,9 @@ void setup() {
     obsList.add(new Obstacle());
   }
   
+  int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
   for (int i = 0; i <= obsList.size() - 1; i++){
     obs = obsList.get(i);
-    int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
     if (ind % 2 == 0){
       xCoor = maze.getCoor(ind);
       yCoor = maze.getCoor(ind + 1) - 10;
@@ -42,6 +42,13 @@ void setup() {
       yCoor = maze.getCoor(ind) - 10;
     }
     obs.setPos(xCoor, yCoor);
+    
+    int ind1 = (int)(Math.random() * (maze.coorSize() - 1) + 40);
+    while(Math.abs(ind1 - ind) < 20){
+      ind1 = (int)(Math.random() * (maze.coorSize() - 1) + 40);
+    }
+    
+    ind = ind1;
   }
 }
 
@@ -91,11 +98,14 @@ void draw() {
   xDir = 0;
   yDir = 0;
   
-  obs.display();
-  obs.move();
+  for (int i = 0; i < obsList.size() - 1; i++){
+    obs = obsList.get(i);
+    obs.display();
+    obs.move();
+  }
   
   if (player.touchingObs(obs, obs.getX(), obs.getY())){
-    player.setHealth(-2);
+    player.changeHealth(-2);
   }
   
   if (!player.getGravity()){
@@ -114,12 +124,17 @@ void draw() {
 // move to next level
 void levelUp (){    
   
+  player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+  player.setGravity(true);
+  
   maze = new Maze(difficulty);
   
   difficulty++;
   countdown = 10000 - 1000 * (difficulty - 1);
     
-  player.setHealth(1000);
+  player.setHealth(difficulty * 100);
+  
+  obsList = new ArrayList<Obstacle>();
     
   for (int i = 0; i <= difficulty; i++){
     obsList.add(new Obstacle());
@@ -142,7 +157,8 @@ void levelUp (){
 
 void die(Ball ball){
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-  player.setHealth(1000);
+  player.setHealth(0);
+  player.setGravity(true);
 }
 
 //movement of ball using arrow keys
@@ -154,7 +170,7 @@ void keyPressed() {
   } else if (key == '3') {
     player = new Ball();
   } else if (key==32) {
-    player.changeGravity();
+    player.setGravity(!player.getGravity());
   } else if (keyCode==LEFT) {
     xDir = -2;
     yDir = 0;
