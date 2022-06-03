@@ -35,7 +35,7 @@ void setup() {
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
   wind = new Wind();
-  wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
+  wind.setPos(maze.getCoor(60)+1,maze.getCoor(61)-10);
   
   coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
   coorY = maze.getCoor(coorX + 1);
@@ -123,6 +123,8 @@ void draw() {
   player.touchingObs(obs2, obs2.getX(), obs2.getY());
   player.touchingObs(obs3, obs3.getX(), obs3.getY());
   
+  wind.touchingBall(player, (int) player.getX(), (int) player.getY());
+  
   
   if (player.withinPortal()){
     //clear();
@@ -135,7 +137,7 @@ void draw() {
     
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
     
-    wind.setPos(maze.getCoor(24)+1, maze.getCoor(25)-10);
+    wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
   
     coorX = maze.getCoor((int)(Math.random() * maze.coorSize() + 40));
     coorY = maze.getCoor(coorX + 1);

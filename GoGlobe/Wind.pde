@@ -40,9 +40,9 @@ public class Wind{
   public boolean touchingBall(Ball ball, int xBall, int yBall){
     if (xBall == xPos && yBall == yPos){
       color background = color(255, 242, 204);
-      fill(background);
-      stroke(background);
       windReceived = true;
+      xPos = xBall;
+      yPos = yBall;
       return true;
     } else {
       return false;

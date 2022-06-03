@@ -82,5 +82,22 @@ int getCoor(int pos){
 int coorSize(){
   return mazeCoordinates.size();
 }
-  
+/**
+int getMiddleCoor() {
+  if (mazeCoordinates.get(mazeCoordinates.size()) % 2 == 0) {
+    return mazeCoordinates.get(mazeCoordinates.size()/2);
+  } else {
+    return (mazeCoordinates.get(mazeCoordinates.size()/2+1));
+  }
+}
+
+int indexOfMiddleCoor() {
+  if (mazeCoordinates.size() % 2 == 0) {
+    return mazeCoordinates.size()/2;
+  } else {
+    return mazeCoordinates.size()/2+1;
+  }
+    
+}
+  **/
 }
