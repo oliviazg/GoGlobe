@@ -1,15 +1,15 @@
 public class Ball{
-  private String type;
-  private float health;
-  private int windCount;
-  private double speed;
-  private float xPos;
-  private float yPos;
+  String type;
+  float health;
+  int windCount;
+  double speed;
+  float xPos;
+  float yPos;
     
-  private float size;
-  private color color_;
+  float size;
+  color color_;
     
-  private boolean gravity;
+  boolean gravity;
     
   public Ball(){
     type = "Original";
@@ -20,7 +20,7 @@ public class Ball{
     size = 10;
     
     gravity = true;
-    color_ = color(11,83,148);
+    color_ = color(255, 255, 255);
     
   }
     
@@ -118,25 +118,29 @@ public class Ball{
   public boolean withinPortal(){
     return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
   }
+}
   
 // ----------------------------------------------------------------
   
-  PImage image;
+PImage image;
+
+public class Droplet extends Ball{
+  Droplet(){
+    type = "Droplet";
+    health = 1000;
+    windCount = 1;
+    speed = 5;
+    size = 10;
+    gravity = true;
+    color_ = color(143, 165, 255);
+  } 
     
-  public class Droplet extends Ball{
-    
-    public Droplet(){
-      super();
-      type = "Droplet";
-      //color_ = color(201, 218, 248);
-    } 
-    
-    public void display(){
+    //public void display(){
       //super();
-      image = loadImage("Droplet.png");
-      image(image, xPos, yPos);
-      image.resize((int)size, (int)size);
-    }
+      //image = loadImage("Droplet.png");
+      //image(image, xPos, yPos);
+      //image.resize((int)size, (int)size);
+    //}
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
@@ -153,18 +157,25 @@ public class Ball{
   
   public class Snitch extends Ball{
     
-    public Snitch(){
-      super();
+     Snitch(){
+      //super();
       type = "Snitch";
-      //color_ = color(241, 194, 50);
+      health = 1000;
+    windCount = 1;
+    speed = 5;
+    
+    size = 10;
+    
+    gravity = true;
+      color_ = color(255, 231, 112);
     } 
     
-    public void display(){
+    //public void display(){
       //super();
-      image = loadImage("Snitch.png");
-      image(image, xPos, yPos);
-      image.resize((int)size, (int)size);
-    }
+      //image = loadImage("Snitch.png");
+      //image(image, xPos, yPos);
+      //image.resize((int)size, (int)size);
+    //}
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
@@ -181,18 +192,25 @@ public class Ball{
   
   public class Stone extends Ball{
     
-    public Stone(){
-      super();
+     Stone(){
+      //super();
       type = "Stone";
-      //color_ = color(204, 204, 204);
+      health = 1000;
+    windCount = 1;
+    speed = 5;
+    
+    size = 10;
+    
+    gravity = true;
+      color_ = color(192, 178, 175);
     } 
      
-    public void display(){
+    //public void display(){
       //super();
-      image = loadImage("Stone.png");
-      image(image, xPos, yPos);
-      image.resize((int)size, (int)size);
-    }
+      //image = loadImage("Stone.png");
+      //image(image, xPos, yPos);
+      //image.resize((int)size, (int)size);
+    //}
     
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
@@ -206,4 +224,3 @@ public class Ball{
     }
   
   }
-}

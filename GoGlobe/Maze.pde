@@ -22,8 +22,6 @@ public class Maze {
       if (xDirection == 1) {
         for (int x = startX; x < (int)(Math.random() * 500 + startX); x++) {
           if (x < 550) {
-            //c = color(0); //set pixel as black to indicate maze
-            //set(c, x, startY);
             mazeCoordinates.add(x);
             mazeCoordinates.add(startY);
           }

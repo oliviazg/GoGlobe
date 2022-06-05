@@ -189,11 +189,11 @@ void die(Ball ball){
 //movement of ball using arrow keys
 void keyPressed() {
   if (key == '1') {
-    player = new Ball();
+    player = new Droplet();
   } else if (key == '2') {
-    player = new Ball();
+    player = new Snitch();
   } else if (key == '3') {
-    player = new Ball();
+    player = new Stone();
   } else if (key==32) {
     player.setGravity(!player.getGravity());
   } else if (keyCode==LEFT) {
