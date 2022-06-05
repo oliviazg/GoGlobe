@@ -30,7 +30,7 @@ void setup() {
   maze = new Maze(difficulty);
   
   frameRate(60); //default frame; 60 frames will be displayed every second
-  sCountdown = 5000;
+  sCountdown = 4000;
   countdown = sCountdown;
   
   
@@ -66,8 +66,8 @@ void setup() {
   sB = 91;
   
   eR = 255;
-  eG = 98;
-  eB = 31;
+  eG = 148;
+  eB = 71;
 }
 
 //Display the graphics 
@@ -131,7 +131,7 @@ void draw() {
   }
   
   if (!player.getGravity()){
-    player.setHealth(-0.25);
+    player.changeHealth(-0.25);
   }
   
   if (player.getY() + 16 >= 600 || player.getHealth() == 0 || countdown == 0){
@@ -152,7 +152,7 @@ void levelUp (){
   maze = new Maze(difficulty);
   
   difficulty++;
-  sCountdown = 5000 - 1000 * (difficulty - 1);
+  sCountdown = 4000 - 500 * (difficulty - 1);
   countdown = sCountdown;
     
   player.setHealth((difficulty - 1) * 100);
@@ -182,6 +182,8 @@ void die(Ball ball){
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   player.setHealth(0);
   player.setGravity(true);
+  sCountdown = 4000 - 500 * (difficulty - 1);
+  countdown = sCountdown;
 }
 
 //movement of ball using arrow keys
