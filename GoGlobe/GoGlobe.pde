@@ -54,7 +54,16 @@ void setup() {
 
 //Display the graphics 
 void draw() {
-  background(255, 242, 204);
+  int sR = 78;
+  int sG = 22;
+  int sB = 91;
+  
+  int eR = 255;
+  int eG = 98;
+  int eB = 31;
+  
+  background(sR, sG, sB);
+
   fill(0);
   rect(0, 0, 5, 600);
   rect(0, 0, 600, 5);
@@ -132,7 +141,7 @@ void levelUp (){
   difficulty++;
   countdown = 10000 - 1000 * (difficulty - 1);
     
-  player.setHealth(difficulty * 100);
+  player.setHealth((difficulty - 1) * 100);
   
   obsList = new ArrayList<Obstacle>();
     
