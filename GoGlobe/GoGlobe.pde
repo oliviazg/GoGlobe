@@ -15,6 +15,14 @@ ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 int xCoor;
 int yCoor;
 
+float sR;
+float sG;
+float sB;
+  
+float eR;
+float eG;
+float eB;
+
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
   difficulty = 1;
@@ -52,21 +60,22 @@ void setup() {
     
     ind = ind1;
   }
+  
+  sR = 78;
+  sG = 22;
+  sB = 91;
+  
+  eR = 255;
+  eG = 98;
+  eB = 31;
 }
 
 //Display the graphics 
 void draw() {
-  int sR = 78;
-  int sG = 22;
-  int sB = 91;
   
-  int eR = 255;
-  int eG = 98;
-  int eB = 31;
-  
-  background(sR + (sCountdown - countdown) * ((eR - sR) / sCountdown), 
-  sG + (sCountdown - countdown) * ((eG - sG) / sCountdown), 
-  sB + (sCountdown - countdown) * ((eB - sB) / sCountdown));
+  background(sR + (sCountdown - countdown) * (eR - sR) / sCountdown, 
+  sG + (sCountdown - countdown) * (eG - sG) / sCountdown, 
+  sB - (sCountdown - countdown) * (sB - eB) / sCountdown);
 
   fill(0);
   rect(0, 0, 5, 600);
