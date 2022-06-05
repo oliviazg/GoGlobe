@@ -30,7 +30,7 @@ void setup() {
   maze = new Maze(difficulty);
   
   frameRate(60); //default frame; 60 frames will be displayed every second
-  sCountdown = 10000;
+  sCountdown = 5000;
   countdown = sCountdown;
   
   
@@ -152,7 +152,7 @@ void levelUp (){
   maze = new Maze(difficulty);
   
   difficulty++;
-  sCountdown = 10000 - 1000 * (difficulty - 1);
+  sCountdown = 5000 - 1000 * (difficulty - 1);
   countdown = sCountdown;
     
   player.setHealth((difficulty - 1) * 100);
