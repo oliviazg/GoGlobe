@@ -190,10 +190,13 @@ void die(Ball ball){
 void keyPressed() {
   if (key == '1') {
     player = new Droplet();
+    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   } else if (key == '2') {
     player = new Snitch();
+    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   } else if (key == '3') {
     player = new Stone();
+    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   } else if (key==32) {
     player.setGravity(!player.getGravity());
   } else if (keyCode==LEFT) {

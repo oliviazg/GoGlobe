@@ -10,6 +10,7 @@ public class Obstacle{
   private float vertical;
     
   public Obstacle(){
+    type = "Original";
     horizontal = 2;
     vertical = 2;
     color_ = color(255, 255, 255);

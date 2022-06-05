@@ -136,7 +136,6 @@ public class Droplet extends Ball{
   } 
     
     //public void display(){
-      //super();
       //image = loadImage("Droplet.png");
       //image(image, xPos, yPos);
       //image.resize((int)size, (int)size);
