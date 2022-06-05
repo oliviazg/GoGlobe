@@ -47,7 +47,7 @@ public class Ball{
     
   public void display(){
     noStroke();
-    fill(color_, 100);
+    fill(color_, 255);
     ellipse(xPos, yPos, size * 2, size * 2);
   }
   

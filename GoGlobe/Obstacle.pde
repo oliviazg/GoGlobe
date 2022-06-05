@@ -39,7 +39,7 @@ public class Obstacle{
   
   public void display(){
     noStroke();
-    fill(color_, 100);
+    fill(color_, 255);
     if (orientation){
       vertical = size;
     }

@@ -1,6 +1,7 @@
 static int endX = 500; //Portal will be centered at this x-coordinate.
 static int endY = 500; //Portal will be centered at this y-coordinate.
 static int difficulty; //the percentage of maze (impenetrable) compared to open space 
+int sCountdown;
 int countdown;
 Ball player;
 ArrayList<Obstacle> obsList = new ArrayList<Obstacle>();
@@ -21,7 +22,8 @@ void setup() {
   maze = new Maze(difficulty);
   
   frameRate(60); //default frame; 60 frames will be displayed every second
-  countdown = 10000;
+  sCountdown = 10000;
+  countdown = sCountdown;
   
   
   player = new Ball();
@@ -62,7 +64,9 @@ void draw() {
   int eG = 98;
   int eB = 31;
   
-  background(sR, sG, sB);
+  background(sR + (sCountdown - countdown) * ((eR - sR) / sCountdown), 
+  sG + (sCountdown - countdown) * ((eG - sG) / sCountdown), 
+  sB + (sCountdown - countdown) * ((eB - sB) / sCountdown));
 
   fill(0);
   rect(0, 0, 5, 600);
@@ -139,7 +143,8 @@ void levelUp (){
   maze = new Maze(difficulty);
   
   difficulty++;
-  countdown = 10000 - 1000 * (difficulty - 1);
+  sCountdown = 10000 - 1000 * (difficulty - 1);
+  countdown = sCountdown;
     
   player.setHealth((difficulty - 1) * 100);
   
