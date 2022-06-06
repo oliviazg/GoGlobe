@@ -35,14 +35,14 @@ D3: I hand-sketched Ball and Obstacle designs.
 
 D4: I added pngs to Ball and Obstacle display() methods.
 
-<<<<<<< HEAD
-D5 - 8: Got Maze to function properly; added maze, ball, and obstacles to setup and draw; got the maze and the ball to function for the MVP.
+D5 - 8: Met with Evelyn online: worked out Maze generator and level advancement; added Ball, Obstacle, and Maze to setup and draw in GoGlobe; got Ball and Maze generator to work for our MVP.
 
 D9 - I edited the Obstacle class-still doesn't work.
 
 D10 - I got the Obstacle class to show up in the maze and to move. I also created an Obstacle ArrayList in GoGlobe to generate numerous Obstacles (doesn't work yet).
 
 D11 - Decremented health when jump toggled
-=======
-D5 - 8: Met with Evelyn online: worked out Maze generator and level advancement; added Ball, Obstacle, and Maze to setup and draw in GoGlobe; got Ball and Maze generator to work for our MVP.
->>>>>>> origin
+
+D12 - 14: Animated background to change color as countdown decrements. Made it possible to customize Ball.
+
+D13: Added randomly generated Obstacle classes.
