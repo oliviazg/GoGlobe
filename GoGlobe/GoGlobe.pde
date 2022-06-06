@@ -38,7 +38,14 @@ void setup() {
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
   for (int i = 0; i <= difficulty; i++){
-    obsList.add(new Obstacle());
+    int obsType = (int)(Math.random() * 3);
+    if (obsType % 3 == 0){
+      obsList.add(new Ice());
+    } else if (obsType % 2 == 0){
+      obsList.add(new Gold());
+    } else {
+      obsList.add(new Granite());
+    }
   }
   
   int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
@@ -160,7 +167,14 @@ void levelUp (){
   obsList = new ArrayList<Obstacle>();
     
   for (int i = 0; i <= difficulty; i++){
-    obsList.add(new Obstacle());
+    int obsType = (int)(Math.random() * 3);
+    if (obsType % 3 == 0){
+      obsList.add(new Ice());
+    } else if (obsType % 2 == 0){
+      obsList.add(new Gold());
+    } else {
+      obsList.add(new Granite());
+    }
   }
   
   for (int i = 0; i <= obsList.size() - 1; i++){

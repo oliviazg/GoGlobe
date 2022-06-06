@@ -1,13 +1,13 @@
 public class Obstacle{
-  private String type;
-  private double speed;
-  private int xPos;
-  private int yPos;
-  private float size;
-  private color color_;
-  private boolean orientation;
-  private float horizontal;
-  private float vertical;
+  String type;
+  double speed;
+  int xPos;
+  int yPos;
+  float size;
+  color color_;
+  boolean orientation;
+  float horizontal;
+  float vertical;
     
   public Obstacle(){
     type = "Original";
@@ -63,6 +63,7 @@ public class Obstacle{
       return false;
     }
   }
+}
   
   
   // ----------------------------------------------------------------
@@ -73,7 +74,7 @@ public class Obstacle{
   public class Ice extends Obstacle{
     
     public Ice(){
-      super();
+      //super();
       type = "Ice";
       color_ = color(143, 165, 255);
     }
@@ -90,7 +91,7 @@ public class Obstacle{
   public class Gold extends Obstacle{
     
     public Gold(){
-      super();
+      //super();
       type = "Gold";
       color_ = color(255, 231, 112);
     }
@@ -107,7 +108,7 @@ public class Obstacle{
   public class Granite extends Obstacle{
     
     public Granite(){
-      super();
+      //super();
       type = "Granite";
       color_ = color(192, 178, 175);
     }
@@ -118,6 +119,4 @@ public class Obstacle{
     //  image.resize((int)horizontal, (int)vertical);
     //  image(image, xPos, yPos);
     //}
-    
-}
-}
+  }

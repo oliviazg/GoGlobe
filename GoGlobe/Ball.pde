@@ -122,7 +122,7 @@ public class Ball{
   
 // ----------------------------------------------------------------
   
-PImage image;
+//PImage image;
 
 public class Droplet extends Ball{
   Droplet(){
