@@ -43,10 +43,27 @@ public class Maze {
     }
   }
 
-  void display() {
-    fill(204, 65, 37);
-    rect(endX, endY, 30, 50);
-    for (int i = 0; i < mazeCoordinates.size(); i+=2) {
+  
+//A portal will be created, centered at the given x- and y- coordinates. 
+//void makePortal(int endX, int endY) { 
+//void makePortal(int endX, int endY) { 
+  //color c = color(0, 255, 0); 
+  //mazeCoordinates.add(-1*endX);
+  //mazeCoordinates.add(-1*endY);
+  //set(c, endX, endY); //set the pixel at coordinates endX and endY green
+//}
+
+void display() {
+  fill(204, 65, 37);
+  rect(endX, endY, 30, 50);
+  for (int i = 0; i < mazeCoordinates.size(); i+=2) {
+    //if (mazeCoordinates.get(i) < 0) {
+    //  fill(0, 255, 0);
+    //  rect(-1 * mazeCoordinates.get(i), -1 * mazeCoordinates.get(i+1), 100, 5);
+    //} else {
+    //  fill(0);
+    //  rect(mazeCoordinates.get(i), mazeCoordinates.get(i + 1), 100, 5);
+    //}
       fill(0);
       rect(mazeCoordinates.get(i), mazeCoordinates.get(i+1), 100, 2);
     }

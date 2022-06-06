@@ -5,7 +5,7 @@ Stevia: EVelyn Chen, OliVIA Zheng
 
 PROTOTYPE GOOGLE DOC: https://docs.google.com/document/d/1NGRB7z_XVNwCPRK_Wa_Kt4WWyce9qffFvhmzbMjOj_Q/edit?usp=sharing
 
-Compile/Run instructions:
+Compile/Run instructions: Run normally! Hit UP, LEFT, and RIGHT arrow keys to navigate ball to the portal; hit space to toggle jump ability.
 
 --------------------------------
 Development Log for Evelyn Chen:
@@ -17,6 +17,12 @@ D2: I continued working on GoGlobe, updating setup and the configuration with ke
 D3: I added Time configuration and continued to work on the mazeGenerator and Portal in the main class.
 
 D4: I created the Controller class and updated the main GoGlobe class.
+
+D5 - D8: I worked with Olivia via live coding to fix mazeGenerator, portal, ball movement, difficulty levels, timer, borders, keyPressed and keyReleased.
+
+D9: I worked on the Wind class, but bumped into Processing.app errors that I could not solve on my own.
+
+D10: I continued to work on displaying the Wind element in the main and adding the effects to the Ball.
 
 ----------------------------------
 Development Log for Olivia Zheng:

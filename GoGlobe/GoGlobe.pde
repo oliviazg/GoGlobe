@@ -3,6 +3,9 @@ static int endY = 500; //Portal will be centered at this y-coordinate.
 static int difficulty; //the percentage of maze (impenetrable) compared to open space 
 int sCountdown;
 int countdown;
+
+int countdownHelper;
+
 Ball player;
 ArrayList<Obstacle> obsList = new ArrayList<Obstacle>();
 Obstacle obs;
@@ -11,6 +14,7 @@ Maze maze;
 float xDir;
 float yDir;
 ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
+Wind wind;
 
 int xCoor;
 int yCoor;
@@ -47,6 +51,9 @@ void setup() {
       obsList.add(new Granite());
     }
   }
+
+  wind = new Wind();
+  wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
   
   int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
   for (int i = 0; i <= obsList.size() - 1; i++){
@@ -104,7 +111,12 @@ void draw() {
   }
   if (countdown > 0){
     countdown--;
+  } else {
+    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+    wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
+    countdown = countdownHelper;
   }
+  textSize(12);
   text("COUNTDOWN: ", 20, 20);
   text(countdown / 100, 110, 20);
   
@@ -152,6 +164,27 @@ void draw() {
 
 // move to next level
 void levelUp (){    
+  wind.display();
+  
+  /**
+  if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())) {
+    player.speed += 10;
+    color background = color(255, 242, 204);
+    set(background, wind.getX(), wind.getY());
+  }**/
+  
+  if (player.withinPortal()){
+    //clear();
+    difficulty++;
+    maze = new Maze(difficulty);
+    countdown = 1000 - 100 * (difficulty - 1);
+    countdownHelper = countdown;
+    text(countdown / 100, 110, 20);
+    text(difficulty, 100, 35);
+    
+    player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+    
+    wind.setPos(maze.getCoor(24)+1, maze.getCoor(25)-10);
   
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   player.setGravity(true);
@@ -189,7 +222,7 @@ void levelUp (){
     }
     obs.setPos(xCoor, yCoor);
   }
-  
+  }
 }
 
 void die(Ball ball){
