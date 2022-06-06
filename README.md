@@ -41,7 +41,7 @@ D9 - I edited the Obstacle class, but it still doesn't work.
 
 D10 - I got the Obstacle class to show up in the maze and to move. I also created an Obstacle ArrayList in GoGlobe to generate numerous Obstacles (doesn't work yet).
 
-D11 - I decremented health when jump toggled
+D11 - I decremented health when gravity is turned off.
 
 D12 - 14: I animated the maze background so that it changes color as countdown decrements. I also made it possible for the player to customize their Ball type.
 
