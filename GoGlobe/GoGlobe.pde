@@ -83,6 +83,7 @@ void draw() {
   if (countdown > 0){
     countdown--;
   } else {
+    //if counter hits zero
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
     countdown = countdownHelper;
@@ -96,6 +97,9 @@ void draw() {
   
   text("JUMP ABILITY: ", 20, 50);
   text(" "+!player.getGravity(), 100, 50);
+  
+  text("WIND COUNT: ", 20, 65);
+  text(" "+player.windCount, 100, 65);
   
   int time = 59;
   if (difficulty == 1) {
@@ -124,8 +128,7 @@ void draw() {
   player.touchingObs(obs3, obs3.getX(), obs3.getY());
   
   wind.touchingBall(player, (int) player.getX(), (int) player.getY());
-  
-  
+ 
   if (player.withinPortal()){
     //clear();
     difficulty++;

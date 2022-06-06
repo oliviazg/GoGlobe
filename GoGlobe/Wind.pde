@@ -34,15 +34,13 @@ public class Wind{
     if (!touchingBall(player, (int)player.getX(), (int)player.getY()) && !windReceived){
       text("W", xPos, yPos);
     }
-    
   }
   
   public boolean touchingBall(Ball ball, int xBall, int yBall){
     if (xBall == xPos && yBall == yPos){
-      color background = color(255, 242, 204);
+      text("", 50,50);
       windReceived = true;
-      xPos = xBall;
-      yPos = yBall;
+      player.windCount++;
       return true;
     } else {
       return false;

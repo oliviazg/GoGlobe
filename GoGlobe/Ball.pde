@@ -20,7 +20,7 @@ public class Ball{
   public Ball(){
     type = "Original";
     health = 1000;
-    windCount = 1;
+    windCount = 0;
     speed = 5;
     
     size = 10;
@@ -74,6 +74,9 @@ public class Ball{
     if (yPos <= 20) {
       xDir = 0;
       yDir *= -1;
+    }
+    if (windCount > 0) {
+      speed += 2;
     }
     if (get((int)(xPos), (int)(yPos + 11)) != color(0)){
       if (gravity){
