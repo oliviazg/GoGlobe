@@ -1,18 +1,19 @@
 public class Obstacle{
-  private String type;
-  private double speed;
-  private int xPos;
-  private int yPos;
-  private float size;
-  private color color_;
-  private boolean orientation;
-  private float horizontal;
-  private float vertical;
+  String type;
+  double speed;
+  int xPos;
+  int yPos;
+  float size;
+  color color_;
+  boolean orientation;
+  float horizontal;
+  float vertical;
     
   public Obstacle(){
+    type = "Original";
     horizontal = 2;
     vertical = 2;
-    color_ = color(0, 0, 255);
+    color_ = color(255, 255, 255);
   }
   
   public String getType(){
@@ -39,18 +40,19 @@ public class Obstacle{
   
   public void display(){
     noStroke();
-    fill(color_, 100);
+    fill(color_, 255);
     if (orientation){
       vertical = size;
     }
-    rect(xPos, yPos, horizontal, vertical);
+    rect(xPos, yPos, 20, 10);
   }
   
   public void move(){
-    xPos += speed * horizontal;
-    yPos += speed * vertical;
-    xPos -= speed * horizontal;
-    yPos -= speed * vertical;
+    if ((millis() / 100) % 2 == 0){
+      xPos += 1;
+    } else {
+      xPos -= 1;
+    }
   }
   
   public boolean touchingBall(Ball ball, int xBall, int yBall){
@@ -61,6 +63,7 @@ public class Obstacle{
       return false;
     }
   }
+}
   
   
   // ----------------------------------------------------------------
@@ -71,51 +74,49 @@ public class Obstacle{
   public class Ice extends Obstacle{
     
     public Ice(){
-      super();
+      //super();
       type = "Ice";
-      //color_ = (201, 218, 248);
+      color_ = color(143, 165, 255);
     }
     
-    public void display(){
-      //super();
-      image = loadImage("Ice.png");
-      image.resize((int)horizontal, (int)vertical);
-      image(image, xPos, yPos);
-    }
+    //public void display(){
+    //  //super();
+    //  image = loadImage("Ice.png");
+    //  image.resize((int)horizontal, (int)vertical);
+    //  image(image, xPos, yPos);
+    //}
     
   }
   
   public class Gold extends Obstacle{
     
     public Gold(){
-      super();
+      //super();
       type = "Gold";
-      //color_ = (241, 194, 50);
+      color_ = color(255, 231, 112);
     }
     
-    public void display(){
-      //super();
-      image = loadImage("Gold.png");
-      image.resize((int)horizontal, (int)vertical);
-      image(image, xPos, yPos);
-    }
+    //public void display(){
+    //  //super();
+    //  image = loadImage("Gold.png");
+    //  image.resize((int)horizontal, (int)vertical);
+    //  image(image, xPos, yPos);
+    //}
     
   }
   
   public class Granite extends Obstacle{
     
     public Granite(){
-      super();
-      type = "Granite";
-      //color_ = (204, 204, 204);
-    }
-    
-    public void display(){
       //super();
-      image = loadImage("Granite.png");
-      image.resize((int)horizontal, (int)vertical);
-      image(image, xPos, yPos);
+      type = "Granite";
+      color_ = color(192, 178, 175);
     }
     
-}
-}
+    //public void display(){
+    //  //super();
+    //  image = loadImage("Granite.png");
+    //  image.resize((int)horizontal, (int)vertical);
+    //  image(image, xPos, yPos);
+    //}
+  }

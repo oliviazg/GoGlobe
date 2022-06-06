@@ -7,6 +7,7 @@ public class Wind{
   
   public Wind(){
     speed = 10;
+    size = 15;
   }
   
   public int getX(){
@@ -27,7 +28,7 @@ public class Wind{
   }
   
   public void display(){
-    fill(255, 255, 255);
+    fill(255,0,0);
     textSize(size);
     text("W", xPos, yPos);
   }
