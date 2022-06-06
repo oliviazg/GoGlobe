@@ -39,7 +39,7 @@ D5 - 8: I met with Evelyn over Zoom. We worked out Maze generator and level adva
 
 D9 - I edited the Obstacle class, but it still doesn't work.
 
-D10 - I got the Obstacle class to show up in the maze and to move. I also created an Obstacle ArrayList in GoGlobe to generate numerous Obstacles (doesn't work yet).
+D10 - I got the Obstacle class to show up in the maze and to move. I also created an Obstacle ArrayList in GoGlobe to generate numerous Obstacles, but it still doesn't work.
 
 D11 - I decremented health when gravity is turned off.
 
