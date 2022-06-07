@@ -146,7 +146,11 @@ void draw() {
   }
   
   if (player.touchingObs(obs, obs.getX(), obs.getY())){
-    player.changeHealth(-2);
+    if (player.getType().equals("Original")){
+      player.changeHealth(-2);
+    } else {
+      player.changeHealth(-4);
+    }
   }
   
   if (!player.getGravity()){
