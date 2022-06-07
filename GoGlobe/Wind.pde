@@ -4,6 +4,7 @@ public class Wind{
   private int xPos;
   private int yPos;
   private float size;
+  private boolean windReceived;
   
   public Wind(){
     speed = 10;
@@ -30,16 +31,21 @@ public class Wind{
   public void display(){
     fill(255,0,0);
     textSize(size);
-    text("W", xPos, yPos);
+    if (!touchingBall(player, (int)player.getX(), (int)player.getY()) && !windReceived){
+      text("W", xPos, yPos);
+    }
   }
   
   public boolean touchingBall(Ball ball, int xBall, int yBall){
-    if (xBall - xPos <= size || yBall - yPos <= size){
-      size = 0;
+    if (xBall == xPos && yBall == yPos){
+      text("", 50,50);
+      windReceived = true;
+      player.windCount++;
       return true;
     } else {
       return false;
     }
   }
+  
   
 }
