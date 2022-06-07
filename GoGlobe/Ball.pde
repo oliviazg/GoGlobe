@@ -158,7 +158,6 @@ public class Droplet extends Ball{
   public class Snitch extends Ball{
     
      Snitch(){
-      //super();
       type = "Snitch";
       health = 1000;
     windCount = 1;
@@ -171,7 +170,6 @@ public class Droplet extends Ball{
     } 
     
     //public void display(){
-      //super();
       //image = loadImage("Snitch.png");
       //image(image, xPos, yPos);
       //image.resize((int)size, (int)size);
@@ -194,7 +192,6 @@ public class Droplet extends Ball{
   public class Stone extends Ball{
     
      Stone(){
-      //super();
       type = "Stone";
       health = 1000;
     windCount = 1;
@@ -207,7 +204,6 @@ public class Droplet extends Ball{
     } 
      
     //public void display(){
-      //super();
       //image = loadImage("Stone.png");
       //image(image, xPos, yPos);
       //image.resize((int)size, (int)size);

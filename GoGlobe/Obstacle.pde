@@ -65,13 +65,11 @@ public class Obstacle{
   public class Ice extends Obstacle{
     
     public Ice(){
-      //super();
       type = "Ice";
       color_ = color(143, 165, 255);
     }
     
     //public void display(){
-    //  //super();
     //  image = loadImage("Ice.png");
     //  image.resize((int)horizontal, (int)vertical);
     //  image(image, xPos, yPos);
@@ -82,13 +80,11 @@ public class Obstacle{
   public class Gold extends Obstacle{
     
     public Gold(){
-      //super();
       type = "Gold";
       color_ = color(255, 231, 112);
     }
     
     //public void display(){
-    //  //super();
     //  image = loadImage("Gold.png");
     //  image.resize((int)horizontal, (int)vertical);
     //  image(image, xPos, yPos);
@@ -99,13 +95,11 @@ public class Obstacle{
   public class Granite extends Obstacle{
     
     public Granite(){
-      //super();
       type = "Granite";
       color_ = color(192, 178, 175);
     }
     
     //public void display(){
-    //  //super();
     //  image = loadImage("Granite.png");
     //  image.resize((int)horizontal, (int)vertical);
     //  image(image, xPos, yPos);
