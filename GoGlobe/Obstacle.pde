@@ -55,14 +55,14 @@ public class Obstacle{
     }
   }
   
-  public boolean touchingBall(Ball ball, int xBall, int yBall){
-    if (xBall - xPos <= horizontal || yBall - yPos <= vertical){
-      color_ = color(255, 0, 0, 10);
-      return true;
-    } else {
-      return false;
-    }
-  }
+  //public boolean touchingBall(Ball ball, int xBall, int yBall){
+  //  if (xBall - xPos <= horizontal || yBall - yPos <= vertical){
+  //    color_ = color(255, 0, 0, 10);
+  //    return true;
+  //  } else {
+  //    return false;
+  //  }
+  //}
 }
   
   

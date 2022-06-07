@@ -143,10 +143,11 @@ public class Droplet extends Ball{
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getType().equals("Ice")){
-          health -= 40;
+        if (!obs.getType().equals("Ice")){
+          return true;
+        } else {
+          return false;
         }
-        return true;
       } else {
         return false;
       }
@@ -178,10 +179,11 @@ public class Droplet extends Ball{
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getType().equals("Gold")){
-          health -= 40;
+        if (!obs.getType().equals("Gold")){
+          return true;
+        } else {
+          return false;
         }
-        return true;
       } else {
         return false;
       }
@@ -213,10 +215,11 @@ public class Droplet extends Ball{
     
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getType().equals("Granite")){
-          health -= 40;
+        if (!obs.getType().equals("Granite")){
+          return true;
+        } else {
+          return false;
         }
-        return true;
       } else {
         return false;
       }
