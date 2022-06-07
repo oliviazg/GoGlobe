@@ -39,7 +39,7 @@ void setup() {
   countdown = sCountdown;
 
   
-  player = new Ball();
+  player = new Droplet();
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
   for (int i = 0; i <= difficulty; i++){
@@ -118,6 +118,7 @@ void draw() {
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
     countdown = countdownHelper;
   }
+  fill(255);
   textSize(12);
   text("COUNTDOWN: ", 20, 20);
   text(countdown / 100, 110, 20);
@@ -125,11 +126,11 @@ void draw() {
   text("DIFFICULTY: ", 20, 35);
   text(difficulty, 100, 35);
   
-  text("JUMP ABILITY: ", 20, 50);
-  text(" " + !player.getGravity(), 100, 50);
+  //text("JUMP ABILITY: ", 20, 50);
+  //text(" " + !player.getGravity(), 100, 50);
   
-  text("HEALTH: ", 20, 65);
-  text(" " + player.getHealth(), 70, 65);
+  text("HEALTH: ", 20, 50);
+  text(" " + player.getHealth(), 70, 50);
   
   text("WIND COUNT: ", 20, 65);
   text(" "+player.windCount, 100, 65);
@@ -151,17 +152,7 @@ void draw() {
   }
   
   wind.display();
- 
-  obs1.display();
-  obs2.display();
-  obs3.display();
-  obs1.move();
-  obs2.move();
-  obs3.move();
-  
-  player.touchingObs(obs1, obs1.getX(), obs1.getY());
-  player.touchingObs(obs2, obs2.getX(), obs2.getY());
-  player.touchingObs(obs3, obs3.getX(), obs3.getY());
+
   
   if (player.touchingObs(obs, obs.getX(), obs.getY())){
     player.changeHealth(-2);
@@ -264,8 +255,8 @@ void keyPressed() {
   } else if (key == '3') {
     player = new Stone();
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-  } else if (key==32) {
-    player.setGravity(!player.getGravity());
+  //} else if (key==32) {
+    //player.setGravity(!player.getGravity());
   } else if (keyCode==LEFT) {
     xDir = -2;
     yDir = 0;
@@ -273,10 +264,10 @@ void keyPressed() {
     xDir = 2;
     yDir = 0;
   } else if (keyCode==UP) {
-    if (!player.getGravity()){
+    //if (!player.getGravity()){
       xDir = 0;
       yDir = -2;
-    }
+    //}
   } else {
     xDir = 0;
     yDir = 0;

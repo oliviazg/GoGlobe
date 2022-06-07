@@ -1,6 +1,6 @@
 public class Maze {
-  int endX = 570; //Portal will be centered at this x-coordinate.
-  int endY = 550; //Portal will be centered at this y-coordinate.
+  int endX; //Portal will be centered at this x-coordinate.
+  int endY; //Portal will be centered at this y-coordinate.
   int startX = 50;
   int startY = 100;
   int numOfPixels;
@@ -54,8 +54,10 @@ public class Maze {
 //}
 
 void display() {
+  int lastCoor = mazeCoordinates.size()-1;
+  
   fill(204, 65, 37);
-  rect(endX, endY, 30, 50);
+  rect(mazeCoordinates.get(lastCoor-1)-30, mazeCoordinates.get(lastCoor)-40, 30, 40);
   for (int i = 0; i < mazeCoordinates.size(); i+=2) {
     //if (mazeCoordinates.get(i) < 0) {
     //  fill(0, 255, 0);

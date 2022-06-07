@@ -19,7 +19,7 @@ public class Ball{
     
     size = 10;
     
-    gravity = true;
+    gravity = false;
     color_ = color(255, 255, 255);
     
   }
