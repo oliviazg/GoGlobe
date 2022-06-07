@@ -69,9 +69,7 @@ public class Ball{
       xDir = 0;
       yDir *= -1;
     }
-    if (windCount > 0) {
-      speed += 2;
-    }
+    
     if (get((int)(xPos), (int)(yPos + 11)) != color(0)){
       if (gravity){
         xDir = 0;

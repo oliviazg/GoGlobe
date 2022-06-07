@@ -3,6 +3,7 @@ static int endY = 500; //Portal will be centered at this y-coordinate.
 static int difficulty; //the percentage of maze (impenetrable) compared to open space 
 int sCountdown;
 int countdown;
+boolean paused;
 
 int countdownHelper;
 
@@ -32,6 +33,7 @@ void setup() {
   difficulty = 1;
   size(600, 600);
   maze = new Maze(difficulty);
+  paused = false;
   
 
   frameRate(60); //default frame; 60 frames will be displayed every second
@@ -87,8 +89,8 @@ void setup() {
 
 //Display the graphics 
 void draw() {
-  
-  background(sR + (sCountdown - countdown) * (eR - sR) / sCountdown, 
+  if (!paused) {
+    background(sR + (sCountdown - countdown) * (eR - sR) / sCountdown, 
   sG + (sCountdown - countdown) * (eG - sG) / sCountdown, 
   sB - (sCountdown - countdown) * (sB - eB) / sCountdown);
 
@@ -169,6 +171,7 @@ void draw() {
   if (player.withinPortal()){
     levelUp();
   }
+  }
 }
 
 // move to next level
@@ -238,6 +241,7 @@ void levelUp (){
 
 void die(Ball ball){
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+  wind.setPos(maze.getCoor(0)+1, maze.getCoor(1)-10);
   player.setHealth(0);
   player.setGravity(true);
   sCountdown = 4000 - 500 * (difficulty - 1);
@@ -255,8 +259,14 @@ void keyPressed() {
   } else if (key == '3') {
     player = new Stone();
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-  //} else if (key==32) {
-    //player.setGravity(!player.getGravity());
+  } else if (key==32) {
+    if (paused) {
+      paused = false;
+    } else {
+      paused = true;
+    }
+    textSize(50);
+    text("GAME PAUSED", 150, 300);
   } else if (keyCode==LEFT) {
     xDir = -2;
     yDir = 0;
