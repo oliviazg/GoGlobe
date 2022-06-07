@@ -153,7 +153,7 @@ void draw() {
     player.changeHealth(-0.25);
   }
   
-  if (player.getY() + 16 >= 600 || player.getHealth() == 0 || countdown == 0){
+  if (player.getY() + 16 >= 600 || player.getHealth() <= 0 || countdown == 0){
     die(player);
   }
   
