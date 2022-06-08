@@ -33,10 +33,11 @@ void setup() {
   size(600, 600);
   maze = new Maze(difficulty);
   
+
   frameRate(60); //default frame; 60 frames will be displayed every second
   sCountdown = 4000;
   countdown = sCountdown;
-  
+
   
   player = new Ball();
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
@@ -53,7 +54,7 @@ void setup() {
   }
 
   wind = new Wind();
-  wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
+  wind.setPos(maze.getCoor(60)+1,maze.getCoor(61)-10);
   
   int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
   for (int i = 0; i <= obsList.size() - 1; i++){
@@ -112,6 +113,7 @@ void draw() {
   if (countdown > 0){
     countdown--;
   } else {
+    //if counter hits zero
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
     countdown = countdownHelper;
@@ -129,6 +131,9 @@ void draw() {
   text("HEALTH: ", 20, 65);
   text(" " + player.getHealth(), 70, 65);
   
+  text("WIND COUNT: ", 20, 65);
+  text(" "+player.windCount, 100, 65);
+  
   int time = 59;
   if (difficulty == 1) {
     println("Choose your avatar!");
@@ -144,6 +149,8 @@ void draw() {
     obs.display();
     obs.move();
   }
+  
+  wind.display();
   
   if (player.touchingObs(obs, obs.getX(), obs.getY())){
     if (player.getType().equals("Original")){
@@ -177,18 +184,20 @@ void levelUp (){
     set(background, wind.getX(), wind.getY());
   }**/
   
+  wind.touchingBall(player, (int) player.getX(), (int) player.getY());
+ 
   if (player.withinPortal()){
     //clear();
     difficulty++;
     maze = new Maze(difficulty);
-    countdown = 1000 - 100 * (difficulty - 1);
+    countdown = 10000 - 1000 * (difficulty - 1);
     countdownHelper = countdown;
     text(countdown / 100, 110, 20);
     text(difficulty, 100, 35);
     
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
     
-    wind.setPos(maze.getCoor(24)+1, maze.getCoor(25)-10);
+    wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
   
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   player.setGravity(true);
