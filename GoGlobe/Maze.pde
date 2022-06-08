@@ -2,7 +2,7 @@ public class Maze {
   int endX; //Portal will be centered at this x-coordinate.
   int endY; //Portal will be centered at this y-coordinate.
   int startX = 50;
-  int startY = 100;
+  int startY = 110;
   int numOfPixels;
   int xDirection;
   ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
