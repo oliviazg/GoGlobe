@@ -128,14 +128,14 @@ void draw() {
   text("DIFFICULTY: ", 20, 35);
   text(difficulty, 100, 35);
   
-  //text("JUMP ABILITY: ", 20, 50);
-  //text(" " + !player.getGravity(), 100, 50);
+  text("JUMP ABILITY: ", 20, 50);
+  text(" " + !player.getGravity(), 100, 50);
   
-  text("HEALTH: ", 20, 50);
-  text(" " + player.getHealth(), 70, 50);
+  text("HEALTH: ", 20, 65);
+  text(" " + player.getHealth(), 70, 65);
   
-  text("WIND COUNT: ", 20, 65);
-  text(" "+player.windCount, 100, 65);
+  text("WIND COUNT: ", 20, 80);
+  text(" "+player.windCount, 100, 80);
   
   int time = 59;
   if (difficulty == 1) {
@@ -277,10 +277,16 @@ void keyPressed() {
     xDir = 2;
     yDir = 0;
   } else if (keyCode==UP) {
-    //if (!player.getGravity()){
+    if (!player.getGravity()){
       xDir = 0;
       yDir = -2;
-    //}
+    }
+  } else if (keyCode=='G' || keyCode == 'g') {
+    if (player.gravity) {
+      player.gravity = false;
+    } else {
+      player.gravity = true;
+    }
   } else {
     xDir = 0;
     yDir = 0;
