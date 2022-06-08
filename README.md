@@ -57,4 +57,7 @@ D11 - I decremented health when gravity is turned off.
 D12 - 14: I animated the maze background so that it changes color as countdown decrements. I also made it possible for the player to customize their Ball type.
 
 D13: I added randomly generated Obstacle classes for each maze.
+
+D14: I redrew and added Ball subclass graphics to Ball display(). 
+
 >>>>>>> 1e1be7dda06e30941fddd2fe310107ab282c2234
