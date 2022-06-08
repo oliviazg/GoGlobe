@@ -154,17 +154,20 @@ void draw() {
   }
   
   wind.display();
-
   
   if (player.touchingObs(obs, obs.getX(), obs.getY())){
-    player.changeHealth(-2);
+    if (player.getType().equals("Original")){
+      player.changeHealth(-2);
+    } else {
+      player.changeHealth(-4);
+    }
   }
   
   if (!player.getGravity()){
     player.changeHealth(-0.25);
   }
   
-  if (player.getY() + 16 >= 600 || player.getHealth() == 0 || countdown == 0){
+  if (player.getY() + 16 >= 600 || player.getHealth() <= 0 || countdown == 0){
     die(player);
   }
   

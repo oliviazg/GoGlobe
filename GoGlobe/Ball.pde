@@ -131,23 +131,31 @@ public class Droplet extends Ball{
     health = 1000;
     windCount = 1;
     speed = 5;
-    size = 10;
+    size = 20;
     gravity = true;
     color_ = color(143, 165, 255);
   } 
     
-    //public void display(){
-      //image = loadImage("Droplet.png");
-      //image(image, xPos, yPos);
-      //image.resize((int)size, (int)size);
-    //}
+    public void display(){
+      if (millis() % 2 == 0){
+        image = loadImage("Droplet 1.png");
+      image.resize((int)size, (int)size);
+      image(image, xPos - 10, yPos - 10);
+      } else {
+        image = loadImage("Droplet 1.png");
+      image.resize((int)size, (int)size);
+      image(image, xPos - 10, yPos - 12);
+      }
+      
+    }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
-      if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getType().equals("Ice")){
-          health -= 40;
+      if (xObs - xPos <= size * 2 && yObs - yPos <= size * 2){
+        if (!obs.getType().equals("Ice")){
+          return true;
+        } else {
+          return false;
         }
-        return true;
       } else {
         return false;
       }
@@ -158,31 +166,36 @@ public class Droplet extends Ball{
   public class Snitch extends Ball{
     
      Snitch(){
-      //super();
       type = "Snitch";
       health = 1000;
     windCount = 1;
     speed = 5;
     
-    size = 10;
+    size = 20;
     
     gravity = true;
       color_ = color(255, 231, 112);
     } 
     
-    //public void display(){
-      //super();
-      //image = loadImage("Snitch.png");
-      //image(image, xPos, yPos);
-      //image.resize((int)size, (int)size);
-    //}
+    public void display(){
+      if (millis() % 2 == 0){
+        image = loadImage("Snitch 1.png");
+        image.resize((int)size + 20, (int)size);
+        image(image, xPos - 10, yPos - 10);
+      } else {
+        image = loadImage("Snitch 2.png");
+        image.resize((int)size + 20, (int)size);
+        image(image, xPos - 10, yPos - 11);
+      }
+    }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
-      if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getType().equals("Gold")){
-          health -= 40;
+      if (xObs - xPos <= size * 2 && yObs - yPos <= size * 2){
+        if (!obs.getType().equals("Gold")){
+          return true;
+        } else {
+          return false;
         }
-        return true;
       } else {
         return false;
       }
@@ -192,32 +205,38 @@ public class Droplet extends Ball{
   
   public class Stone extends Ball{
     
-     Stone(){
-      //super();
+    Stone(){
       type = "Stone";
       health = 1000;
     windCount = 1;
     speed = 5;
     
-    size = 10;
+    size = 20;
     
     gravity = true;
       color_ = color(192, 178, 175);
     } 
      
-    //public void display(){
-      //super();
-      //image = loadImage("Stone.png");
-      //image(image, xPos, yPos);
-      //image.resize((int)size, (int)size);
-    //}
+    public void display(){
+      if (millis() % 2 == 0){
+        image = loadImage("Stone 1.png");
+      image.resize((int)size, (int)size);
+      image(image, xPos -10, yPos - 10);
+      } else {
+        image = loadImage("Stone 2.png");
+      image.resize((int)size, (int)size);
+      image(image, xPos -10, yPos - 10);
+      }
+      
+    }
     
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
-      if (xObs - xPos <= size * 2 || yObs - yPos <= size * 2){
-        if (obs.getType().equals("Granite")){
-          health -= 40;
+      if (xObs - xPos <= size * 2 && yObs - yPos <= size * 2){
+        if (!obs.getType().equals("Granite")){
+          return true;
+        } else {
+          return false;
         }
-        return true;
       } else {
         return false;
       }
