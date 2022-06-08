@@ -268,6 +268,9 @@ void keyPressed() {
     } else {
       paused = true;
     }
+    fill(220,220,220, 80);
+    rect(10,10, 580, 580);
+    fill(255,0,0);
     textSize(50);
     text("GAME PAUSED", 150, 300);
   } else if (keyCode==LEFT) {

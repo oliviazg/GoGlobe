@@ -38,8 +38,11 @@ public class Wind{
   
   public boolean touchingBall(Ball ball, int xBall, int yBall){
     if (xBall == xPos && yBall == yPos){
-      windReceived = true;
-      player.windCount++;
+      if (!windReceived) {
+        windReceived = true; 
+        player.windCount++;
+        player.speed+=1;
+      }
       return true;
     } else {
       return false;
