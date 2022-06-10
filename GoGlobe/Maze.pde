@@ -67,7 +67,7 @@ void display() {
     //  rect(mazeCoordinates.get(i), mazeCoordinates.get(i + 1), 100, 5);
     //}
       fill(0);
-      rect(mazeCoordinates.get(i), mazeCoordinates.get(i+1), 100, 2);
+      rect(mazeCoordinates.get(i), mazeCoordinates.get(i+1), 100, 4);
     }
   } 
   int getCoor(int ind){
