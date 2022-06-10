@@ -41,7 +41,7 @@ public class Wind{
       if (!windReceived) {
         windReceived = true; 
         player.windCount++;
-        player.speed+=1;
+        player.speed = 10;
       }
       return true;
     } else {

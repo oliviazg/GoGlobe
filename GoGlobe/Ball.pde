@@ -129,7 +129,7 @@ public class Droplet extends Ball{
   Droplet(){
     type = "Droplet";
     health = 1000;
-    windCount = 1;
+    windCount = 0;
     speed = 5;
     size = 20;
     gravity = true;
@@ -168,7 +168,7 @@ public class Droplet extends Ball{
      Snitch(){
       type = "Snitch";
       health = 1000;
-    windCount = 1;
+    windCount = 0;
     speed = 5;
     
     size = 20;
@@ -208,7 +208,7 @@ public class Droplet extends Ball{
     Stone(){
       type = "Stone";
       health = 1000;
-    windCount = 1;
+    windCount = 0;
     speed = 5;
     
     size = 20;

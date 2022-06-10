@@ -4,6 +4,7 @@ static int difficulty; //the percentage of maze (impenetrable) compared to open 
 int sCountdown;
 int countdown;
 boolean paused;
+boolean instructions;
 
 int countdownHelper;
 
@@ -32,6 +33,28 @@ float eB;
 void setup() {
   difficulty = 1;
   size(600, 600);
+  instructions = true;
+
+if (instructions) {
+  fill(220,220,220, 80);
+  rect(10,10, 580, 580);
+  fill(0);
+  text("Welcome to GoGlobe! Please press your ENTER/RETURN key to begin the game.", 50, 50);
+  textSize(15);
+  text("INSTRUCTIONS: ", 50, 70);
+  textSize(12);
+  text("Navigate the ball to the portal before the timer runs out! ", 50, 90);
+  text("Collect wind powerups to increase speed and avoid the borders! ", 50, 105);
+  text("Avoid certain obstacles: ice kills Droplet, gold kills Snitch, and granite kills stone!", 50, 120);
+  text("Press 1 to switch your ball to Droplet avatar", 50, 135);
+  text("Press 2 to switch your ball to Golden Snitch avatar", 50, 150);
+  text("Press 3 to switch your ball to Stone avatar", 50, 165);
+  text("Press g to toggle jump ability off and on!", 50, 180);
+  text("Press space to pause the game.", 50, 195);
+  
+}
+ 
+  fill(0);
   maze = new Maze(difficulty);
   paused = false;
   
@@ -267,7 +290,7 @@ void keyPressed() {
       paused = false;
     } else {
       paused = true;
-    }
+    } 
     fill(220,220,220, 80);
     rect(10,10, 580, 580);
     fill(255,0,0);
@@ -283,8 +306,11 @@ void keyPressed() {
     if (!player.getGravity()){
       xDir = 0;
       yDir = -2;
-    }
-  } else if (keyCode=='G' || keyCode == 'g') {
+    } 
+  } else if (key == RETURN) {
+    instructions = false;
+  }
+  else if (keyCode=='G' || keyCode == 'g') {
     if (player.gravity) {
       player.gravity = false;
     } else {
