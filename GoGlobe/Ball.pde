@@ -96,9 +96,9 @@ public class Ball{
   }
   
   public void setHealth(float num){
-    health = 1000 - num;
+    health = 100 - num;
   }
-    
+    /**
   public boolean touchingWind(Wind wind, int xWind, int yWind){
     if (xWind - xPos <= size * 2 || yWind - yPos <= size * 2){
       windCount++;
@@ -106,7 +106,7 @@ public class Ball{
     } else {
       return false;
     }
-  }
+  }**/
   
   public void setGravity(boolean g){
     gravity = g;
@@ -128,7 +128,7 @@ public class Ball{
 public class Droplet extends Ball{
   Droplet(){
     type = "Droplet";
-    health = 1000;
+    health = 100;
     windCount = 0;
     speed = 5;
     size = 20;
@@ -167,7 +167,7 @@ public class Droplet extends Ball{
     
      Snitch(){
       type = "Snitch";
-      health = 1000;
+      health = 100;
     windCount = 0;
     speed = 5;
     
@@ -207,7 +207,7 @@ public class Droplet extends Ball{
     
     Stone(){
       type = "Stone";
-      health = 1000;
+      health = 100;
     windCount = 0;
     speed = 5;
     

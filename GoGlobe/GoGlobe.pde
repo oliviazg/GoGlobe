@@ -76,6 +76,14 @@ void setup() {
   wind = new Wind();
   wind.setPos(maze.getCoor(60)+1,maze.getCoor(61)-10);
   
+  if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
+    if (!wind.windReceived) {
+        wind.windReceived = true; 
+        player.windCount++;
+        player.speed = 10;
+      }
+  }
+  
   //set the obstacles at a random point
   int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
   for (int i = 0; i <= obsList.size() - 1; i++){
@@ -144,18 +152,14 @@ void draw() {
     background(sR + (sCountdown - countdown) * (eR - sR) / sCountdown, 
   sG + (sCountdown - countdown) * (eG - sG) / sCountdown, 
   sB - (sCountdown - countdown) * (sB - eB) / sCountdown);
-
+  
+  //borders
   fill(0);
   rect(0, 0, 5, 600);
   rect(0, 0, 600, 5);
   rect(0, 595, 600, 5);
   rect(595, 0, 5, 600);
   maze.display();
-  fill(0);
-  rect(0, 0, 5, 600);
-  rect(0, 0, 600, 5);
-  rect(0, 595, 600, 5);
-  rect(595, 0, 5, 600);
   
   //counter
   if (countdown > 0){ //decrement counter
@@ -213,12 +217,20 @@ void draw() {
     }
   }
   
+  if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
+    if (!wind.windReceived) {
+        wind.windReceived = true; 
+        player.windCount++;
+        player.speed = 10;
+      }
+  }
+  
   //if jump ability is true, decrement health
   if (!player.getGravity()){
     player.changeHealth(-0.25);
   } 
   
-  //if player hits the borders or if timer runs out, the player dies
+  //if player hits the borders or if health hits zero or if timer runs out, the player dies
   if (player.getY() + 16 >= 600 || player.getHealth() <= 0 || countdown == 0){
     die(player);
   }
@@ -234,10 +246,7 @@ void draw() {
   
 // move to next level
 void levelUp (){    
-  wind.display(); //display wind
-  
-  wind.touchingBall(player, (int) player.getX(), (int) player.getY());
- 
+  //wind.display(); //display wind
   if (player.withinPortal()){
     //clear();
     difficulty++;
@@ -252,6 +261,18 @@ void levelUp (){
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
     
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
+    wind.windReceived = false;
+    player.speed = 5;
+    player.windCount = 0;
+    wind.display();
+    
+    if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
+    if (!wind.windReceived) {
+        wind.windReceived = true; 
+        player.windCount++;
+        player.speed = 10;
+      }
+  }
   
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   player.setGravity(true);
@@ -294,8 +315,14 @@ void levelUp (){
 //ball dies
 void die(Ball ball){
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+  wind.windReceived = false;
+  player.speed = 5;
   wind.setPos(maze.getCoor(0)+1, maze.getCoor(1)-10);
   player.windCount = 0;
+  fill(255,0,0);
+    textSize(15);
+   
+      text("W", wind.xPos, wind.yPos);
   player.setHealth(0);
   player.setGravity(true);
   sCountdown = 4000 - 500 * (difficulty - 1);
