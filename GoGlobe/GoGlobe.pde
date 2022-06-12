@@ -143,7 +143,7 @@ void draw() {
   }
   
   image = loadImage(player.display());
-  image.resize((int)size, (int)size);
+  image.resize((int)player.getSize(), (int)player.getSize());
   image(image, player.getX() - 10, player.getY() - 10);
   
   player.move(xDir, yDir);
