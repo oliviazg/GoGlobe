@@ -143,7 +143,13 @@ void draw() {
   }
   
   image = loadImage(player.display());
-  image.resize((int)player.getSize(), (int)player.getSize());
+  
+  float xSize = player.getSize();
+  if (player.getType().equals("Snitch")){
+    xSize += 15;
+  }
+  
+  image.resize((int)xSize, (int)player.getSize());
   image(image, player.getX() - 10, player.getY() - 10);
   
   player.move(xDir, yDir);
@@ -151,8 +157,10 @@ void draw() {
   yDir = 0;
   
   for (int i = 0; i < obsList.size() - 1; i++){
-    obs = obsList.get(i);
-    obs.display();
+    obs = obsList.get(i);    
+    image = loadImage(obs.display());
+    image.resize(40, 10);
+    image(image, obs.getX() - 20, obs.getY());
     obs.move();
   }
   
