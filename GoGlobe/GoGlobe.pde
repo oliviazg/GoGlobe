@@ -112,6 +112,7 @@ void drawMenu() {
   text("Press 3 to switch your ball to Stone avatar", 50, 165);
   text("Press g to toggle jump ability off and on!", 50, 180);
   text("Press space to pause the game.", 50, 195);
+  text("Press your ENTER/RETURN key to return to instructions in the game!", 50, 210);
 }
 
 //Display the graphics 
@@ -317,7 +318,11 @@ void keyPressed() {
       yDir = -2;
     } 
   } else if (keyCode == ENTER || keyCode == RETURN) {
-    screenMode = gameScreen;
+    if (screenMode == menuScreen) {
+      screenMode = gameScreen;
+    } else {
+      screenMode = menuScreen;
+    }
   }
   else if (keyCode=='G' || keyCode == 'g') {
     if (player.gravity) {
