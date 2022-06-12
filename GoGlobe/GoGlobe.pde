@@ -3,6 +3,7 @@ static int endY = 500; //Portal will be centered at this y-coordinate.
 static int difficulty; //the percentage of maze (impenetrable) compared to open space 
 int sCountdown;
 int countdown;
+boolean paused;
 
 int countdownHelper;
 
@@ -32,6 +33,7 @@ void setup() {
   difficulty = 1;
   size(600, 600);
   maze = new Maze(difficulty);
+  paused = false;
   
 
   frameRate(60); //default frame; 60 frames will be displayed every second
@@ -39,7 +41,7 @@ void setup() {
   countdown = sCountdown;
 
   
-  player = new Ball();
+  player = new Droplet();
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
   for (int i = 0; i <= difficulty; i++){
@@ -87,8 +89,8 @@ void setup() {
 
 //Display the graphics 
 void draw() {
-  
-  background(sR + (sCountdown - countdown) * (eR - sR) / sCountdown, 
+  if (!paused) {
+    background(sR + (sCountdown - countdown) * (eR - sR) / sCountdown, 
   sG + (sCountdown - countdown) * (eG - sG) / sCountdown, 
   sB - (sCountdown - countdown) * (sB - eB) / sCountdown);
 
@@ -118,6 +120,7 @@ void draw() {
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
     countdown = countdownHelper;
   }
+  fill(255);
   textSize(12);
   text("COUNTDOWN: ", 20, 20);
   text(countdown / 100, 110, 20);
@@ -125,11 +128,11 @@ void draw() {
   text("DIFFICULTY: ", 20, 35);
   text(difficulty, 100, 35);
   
-  text("JUMP ABILITY: ", 20, 50);
-  text(" " + !player.getGravity(), 100, 50);
+  //text("JUMP ABILITY: ", 20, 50);
+  //text(" " + !player.getGravity(), 100, 50);
   
-  text("HEALTH: ", 20, 65);
-  text(" " + player.getHealth(), 70, 65);
+  text("HEALTH: ", 20, 50);
+  text(" " + player.getHealth(), 70, 50);
   
   text("WIND COUNT: ", 20, 65);
   text(" "+player.windCount, 100, 65);
@@ -139,14 +142,25 @@ void draw() {
     println("Choose your avatar!");
   }
   
-  player.display();
+  image = loadImage(player.display());
+  
+  float xSize = player.getSize();
+  if (player.getType().equals("Snitch")){
+    xSize += 15;
+  }
+  
+  image.resize((int)xSize, (int)player.getSize());
+  image(image, player.getX() - 10, player.getY() - 10);
+  
   player.move(xDir, yDir);
   xDir = 0;
   yDir = 0;
   
   for (int i = 0; i < obsList.size() - 1; i++){
-    obs = obsList.get(i);
-    obs.display();
+    obs = obsList.get(i);    
+    image = loadImage(obs.display());
+    image.resize(40, 10);
+    image(image, obs.getX() - 20, obs.getY());
     obs.move();
   }
   
@@ -170,6 +184,7 @@ void draw() {
   
   if (player.withinPortal()){
     levelUp();
+  }
   }
 }
 
@@ -240,6 +255,7 @@ void levelUp (){
 
 void die(Ball ball){
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+  wind.setPos(maze.getCoor(0)+1, maze.getCoor(1)-10);
   player.setHealth(0);
   player.setGravity(true);
   sCountdown = 4000 - 500 * (difficulty - 1);
@@ -258,7 +274,13 @@ void keyPressed() {
     player = new Stone();
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   } else if (key==32) {
-    player.setGravity(!player.getGravity());
+    if (paused) {
+      paused = false;
+    } else {
+      paused = true;
+    }
+    textSize(50);
+    text("GAME PAUSED", 150, 300);
   } else if (keyCode==LEFT) {
     xDir = -2;
     yDir = 0;
@@ -266,10 +288,10 @@ void keyPressed() {
     xDir = 2;
     yDir = 0;
   } else if (keyCode==UP) {
-    if (!player.getGravity()){
+    //if (!player.getGravity()){
       xDir = 0;
       yDir = -2;
-    }
+    //}
   } else {
     xDir = 0;
     yDir = 0;

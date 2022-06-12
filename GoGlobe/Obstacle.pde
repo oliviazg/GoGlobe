@@ -3,7 +3,7 @@ public class Obstacle{
   double speed;
   int xPos;
   int yPos;
-  float size;
+  //float size;
   color color_;
   boolean orientation;
   float horizontal;
@@ -38,13 +38,8 @@ public class Obstacle{
     yPos = y;
   }
   
-  public void display(){
-    noStroke();
-    fill(color_, 255);
-    if (orientation){
-      vertical = size;
-    }
-    rect(xPos, yPos, 20, 10);
+  public String display(){
+    return "Ice.png";
   }
   
   public void move(){
@@ -69,11 +64,9 @@ public class Obstacle{
       color_ = color(143, 165, 255);
     }
     
-    //public void display(){
-    //  image = loadImage("Ice.png");
-    //  image.resize((int)horizontal, (int)vertical);
-    //  image(image, xPos, yPos);
-    //}
+    public String display(){
+    return "Ice.png";
+  }
     
   }
   
@@ -84,11 +77,9 @@ public class Obstacle{
       color_ = color(255, 231, 112);
     }
     
-    //public void display(){
-    //  image = loadImage("Gold.png");
-    //  image.resize((int)horizontal, (int)vertical);
-    //  image(image, xPos, yPos);
-    //}
+    public String display(){
+    return "Gold.png";
+  }
     
   }
   
@@ -99,9 +90,7 @@ public class Obstacle{
       color_ = color(192, 178, 175);
     }
     
-    //public void display(){
-    //  image = loadImage("Granite.png");
-    //  image.resize((int)horizontal, (int)vertical);
-    //  image(image, xPos, yPos);
-    //}
+    public String display(){
+    return "Granite.png";
+  }
   }
