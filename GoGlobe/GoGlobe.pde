@@ -4,7 +4,6 @@ static int difficulty; //the percentage of maze (impenetrable) compared to open 
 int sCountdown;
 int countdown;
 boolean paused;
-boolean instructions;
 int screenMode = 0;
 int menuScreen = 0;
 int gameScreen = 1;
@@ -36,7 +35,6 @@ float eB;
 void setup() {
   difficulty = 1;
   size(600, 600);
-  instructions = true;
   
   screenMode = 0;
   
@@ -45,7 +43,7 @@ void setup() {
   paused = false;
   
 
-  frameRate(60); //default frame; 60 frames will be displayed every second
+  frameRate(200); //default frame; 60 frames will be displayed every second
   sCountdown = 4000;
   countdown = sCountdown;
 
