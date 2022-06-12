@@ -192,16 +192,31 @@ void draw() {
   text("WIND COUNT: ", 20, 80);
   text(" "+player.windCount, 100, 80);
   
+
   //display character and move
   player.display();
+
+  image = loadImage(player.display());
+  
+  float xSize = player.getSize();
+  if (player.getType().equals("Snitch")){
+    xSize += 15;
+  }
+  
+  image.resize((int)xSize, (int)player.getSize());
+  image(image, player.getX() - 10, player.getY() - 10);
+  
+
   player.move(xDir, yDir);
   xDir = 0;
   yDir = 0;
   
   //animate obstacles
   for (int i = 0; i < obsList.size() - 1; i++){
-    obs = obsList.get(i);
-    obs.display();
+    obs = obsList.get(i);    
+    image = loadImage(obs.display());
+    image.resize(40, 10);
+    image(image, obs.getX() - 20, obs.getY());
     obs.move();
   }
   
