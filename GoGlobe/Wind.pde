@@ -40,6 +40,7 @@ public class Wind{
     if (xBall == xPos && yBall == yPos){
       windReceived = true;
       player.windCount++;
+      player.speed+=5;
       return true;
     } else {
       return false;

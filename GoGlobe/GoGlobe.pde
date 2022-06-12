@@ -1,49 +1,61 @@
-static int endX = 500; //Portal will be centered at this x-coordinate.
-static int endY = 500; //Portal will be centered at this y-coordinate.
-static int difficulty; //the percentage of maze (impenetrable) compared to open space 
-int sCountdown;
+//level
+static int difficulty;  
+
+//timer
+int sCountdown; //countdownHelper
 int countdown;
-boolean paused;
 
 int countdownHelper;
 
+//screens
+int screenMode = 0; //mode of screen (toggled between menuScreen and gameScreen with ENTER/RETURN key)
+boolean paused; //pause feature (toggled with space key)
+int menuScreen = 0; //intro screen with instructions at the beginning of the game
+int gameScreen = 1; //normal gameScreen
+
+//Player ball features
 Ball player;
-ArrayList<Obstacle> obsList = new ArrayList<Obstacle>();
 Obstacle obs;
 int win;
 Maze maze;
-float xDir;
-float yDir;
-ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 Wind wind;
 
 int xCoor;
 int yCoor;
+float xDir;
+float yDir;
 
+//background RGB values
+//start
 float sR;
 float sG;
 float sB;
-  
+//end
 float eR;
 float eG;
 float eB;
-
+ArrayList<Obstacle> obsList = new ArrayList<Obstacle>();
+ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
-  difficulty = 1;
+  difficulty = 1; //set level to 1
   size(600, 600);
-  maze = new Maze(difficulty);
-  paused = false;
+  screenMode = 0; //display menuScreen initially
+  paused = false; //set the game mode to "not paused" initially
   
-
-  frameRate(60); //default frame; 60 frames will be displayed every second
+  fill(0);
+  maze = new Maze(difficulty);
+  
+  
+  frameRate(200); //default frame; 60 frames will be displayed every second
   sCountdown = 4000;
   countdown = sCountdown;
 
-  
+  //initial player is Droplet
   player = new Droplet();
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   
+  //add obstacles randomly
   for (int i = 0; i <= difficulty; i++){
     int obsType = (int)(Math.random() * 3);
     if (obsType % 3 == 0){
@@ -55,9 +67,11 @@ void setup() {
     }
   }
 
+//add wind powerup
   wind = new Wind();
   wind.setPos(maze.getCoor(60)+1,maze.getCoor(61)-10);
   
+  //set the obstacles at a random point
   int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
   for (int i = 0; i <= obsList.size() - 1; i++){
     obs = obsList.get(i);
@@ -78,6 +92,7 @@ void setup() {
     ind = ind1;
   }
   
+  //values for RGB (background)
   sR = 78;
   sG = 22;
   sB = 91;
@@ -86,10 +101,38 @@ void setup() {
   eG = 148;
   eB = 71;
 }
+//draw the menuScreen
+void drawMenu() {
+  //gray screen with black text
+  fill(220,220,220, 80);
+  rect(10,10, 580, 580);
+  fill(0);
+
+  //instructions to be displayed
+  text("Welcome to GoGlobe! Please press your ENTER/RETURN key to begin the game.", 50, 50);
+  textSize(15);
+  text("INSTRUCTIONS: ", 50, 70);
+   textSize(12);
+  text("Navigate the ball to the portal before the timer runs out! ", 50, 90);
+  text("Collect wind powerups to increase speed and avoid the borders! ", 50, 105);
+  text("Avoid certain obstacles: ice kills Droplet, gold kills Snitch, and granite kills stone!", 50, 120);
+  text("Press 1 to switch your ball to Droplet avatar", 50, 135);
+  text("Press 2 to switch your ball to Golden Snitch avatar", 50, 150);
+  text("Press 3 to switch your ball to Stone avatar", 50, 165);
+  text("Press g to toggle jump ability off and on!", 50, 180);
+  text("Press space to pause the game.", 50, 195);
+  text("Press your ENTER/RETURN key to return to instructions in the game!", 50, 210);
+}
 
 //Display the graphics 
 void draw() {
+  //determine whether to display menuMode or gameMode
+  if (screenMode == menuScreen) {
+    drawMenu();
+  } else {
+    //if pause feature is NOT activated (so normal game mode)...
   if (!paused) {
+    //background colors
     background(sR + (sCountdown - countdown) * (eR - sR) / sCountdown, 
   sG + (sCountdown - countdown) * (eG - sG) / sCountdown, 
   sB - (sCountdown - countdown) * (sB - eB) / sCountdown);
@@ -106,42 +149,39 @@ void draw() {
   rect(0, 595, 600, 5);
   rect(595, 0, 5, 600);
   
-  if(player.getX() == endX && player.getY() == endY){
-    win=1;
-  }
-  if (win==1) { //if player is successful in the level
-    difficulty++; //increase difficulty to generate a larger maze with more pixels
-  }
+  //counter
   if (countdown > 0){
     countdown--;
   } else {
     //if counter hits zero
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
-    countdown = countdownHelper;
+    //countdown = countdownHelper;
   }
+  //display
   fill(255);
   textSize(12);
+  //countdown display
   text("COUNTDOWN: ", 20, 20);
   text(countdown / 100, 110, 20);
+
+  //level display
+  text("LEVEL: ", 20, 35);
+  text(difficulty, 60, 35);
+
+  //jump ability display, to be toggled with g key
+  text("JUMP ABILITY: ", 20, 50);
+  text(" " + !player.getGravity(), 100, 50);
+
+  //health display
+  text("HEALTH: ", 20, 65);
+  text(" " + player.getHealth(), 70, 65);
+
+  //wind count display
+  text("WIND COUNT: ", 20, 80);
+  text(" "+player.windCount, 100, 80);
   
-  text("DIFFICULTY: ", 20, 35);
-  text(difficulty, 100, 35);
-  
-  //text("JUMP ABILITY: ", 20, 50);
-  //text(" " + !player.getGravity(), 100, 50);
-  
-  text("HEALTH: ", 20, 50);
-  text(" " + player.getHealth(), 70, 50);
-  
-  text("WIND COUNT: ", 20, 65);
-  text(" "+player.windCount, 100, 65);
-  
-  int time = 59;
-  if (difficulty == 1) {
-    println("Choose your avatar!");
-  }
-  
+
   image = loadImage(player.display());
   
   float xSize = player.getSize();
@@ -156,6 +196,8 @@ void draw() {
   xDir = 0;
   yDir = 0;
   
+  
+  //animate obstacles
   for (int i = 0; i < obsList.size() - 1; i++){
     obs = obsList.get(i);    
     image = loadImage(obs.display());
@@ -174,16 +216,20 @@ void draw() {
     }
   }
   
+  //if jump ability is true, decrement health
   if (!player.getGravity()){
     player.changeHealth(-0.25);
   }
   
+  //if player hits the borders or health runs down or if timer runs out, the player dies
   if (player.getY() + 16 >= 600 || player.getHealth() <= 0 || countdown == 0){
     die(player);
   }
   
+  //if player hits the portal, level up
   if (player.withinPortal()){
     levelUp();
+  }
   }
   }
 }
@@ -192,37 +238,30 @@ void draw() {
 void levelUp (){    
   wind.display();
   
-  /**
-  if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())) {
-    player.speed += 10;
-    color background = color(255, 242, 204);
-    set(background, wind.getX(), wind.getY());
-  }**/
   
-  wind.touchingBall(player, (int) player.getX(), (int) player.getY());
  
   if (player.withinPortal()){
     //clear();
     difficulty++;
     maze = new Maze(difficulty);
-    countdown = 10000 - 1000 * (difficulty - 1);
-    countdownHelper = countdown;
+    //countdown = 10000 - 1000 * (difficulty - 1);
+    //countdownHelper = countdown;
     text(countdown / 100, 110, 20);
     text(difficulty, 100, 35);
     
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
     
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
+    
+  if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())) {
+    wind.windReceived = true;
+    player.windCount++;
+  }
   
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   player.setGravity(true);
   
-  maze = new Maze(difficulty);
-  
-  difficulty++;
-  sCountdown = 4000 - 500 * (difficulty - 1);
-  countdown = sCountdown;
-    
+
   player.setHealth((difficulty - 1) * 100);
   
   obsList = new ArrayList<Obstacle>();
@@ -253,9 +292,12 @@ void levelUp (){
   }
 }
 
+//ball dies
 void die(Ball ball){
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   wind.setPos(maze.getCoor(0)+1, maze.getCoor(1)-10);
+  player.windCount = 0;
+  wind.windReceived = false;
   player.setHealth(0);
   player.setGravity(true);
   sCountdown = 4000 - 500 * (difficulty - 1);
@@ -278,7 +320,10 @@ void keyPressed() {
       paused = false;
     } else {
       paused = true;
-    }
+    } 
+    fill(220,220,220, 80);
+    rect(10,10, 580, 580);
+    fill(255,0,0);
     textSize(50);
     text("GAME PAUSED", 150, 300);
   } else if (keyCode==LEFT) {
@@ -288,10 +333,19 @@ void keyPressed() {
     xDir = 2;
     yDir = 0;
   } else if (keyCode==UP) {
-    //if (!player.getGravity()){
+    if (!player.getGravity()){
       xDir = 0;
       yDir = -2;
-    //}
+    } 
+  } else if (keyCode == ENTER || keyCode == RETURN) {
+    screenMode = gameScreen;
+  }
+  else if (keyCode=='G' || keyCode == 'g') {
+    if (player.gravity) {
+      player.gravity = false;
+    } else {
+      player.gravity = true;
+    }
   } else {
     xDir = 0;
     yDir = 0;

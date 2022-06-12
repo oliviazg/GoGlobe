@@ -13,7 +13,7 @@ public class Ball{
     
   public Ball(){
     type = "Original";
-    health = 1000;
+    health = 100;
     windCount = 0;
     speed = 5;
     
@@ -93,16 +93,7 @@ public class Ball{
   }
   
   public void setHealth(float num){
-    health = 1000 - num;
-  }
-    
-  public boolean touchingWind(Wind wind, int xWind, int yWind){
-    if (xWind - xPos <= size * 2 || yWind - yPos <= size * 2){
-      windCount++;
-      return true;
-    } else {
-      return false;
-    }
+    health = 100 - num;
   }
   
   public void setGravity(boolean g){
@@ -114,7 +105,7 @@ public class Ball{
   }
   
   public boolean withinPortal(){
-    return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37) || xPos > 570 && xPos < 600 && yPos > 550 && yPos < 600);
+     return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
   }
   
   public String display(){
@@ -134,8 +125,8 @@ public class Ball{
 public class Droplet extends Ball{
   Droplet(){
     type = "Droplet";
-    health = 1000;
-    windCount = 1;
+    health = 100;
+    windCount = 0;
     speed = 5;
     size = 20;
     gravity = true;
@@ -169,8 +160,8 @@ public class Droplet extends Ball{
     
      Snitch(){
       type = "Snitch";
-      health = 1000;
-    windCount = 1;
+      health = 100;
+    windCount = 0;
     speed = 5;
     
     size = 20;
@@ -205,8 +196,8 @@ public class Droplet extends Ball{
     
     Stone(){
       type = "Stone";
-      health = 1000;
-    windCount = 1;
+      health = 100;
+    windCount = 0;
     speed = 5;
     
     size = 20;
