@@ -13,7 +13,7 @@ public class Ball{
     
   public Ball(){
     type = "Original";
-    health = 1000;
+    health = 100;
     windCount = 0;
     speed = 5;
     
@@ -95,6 +95,7 @@ public class Ball{
   public void setHealth(float num){
     health = 100 - num;
   }
+
     /**
   public boolean touchingWind(Wind wind, int xWind, int yWind){
     if (xWind - xPos <= size * 2 || yWind - yPos <= size * 2){
@@ -104,6 +105,7 @@ public class Ball{
       return false;
     }
   }**/
+
   
   public void setGravity(boolean g){
     gravity = g;
@@ -114,8 +116,9 @@ public class Ball{
   }
   
   public boolean withinPortal(){
+
     return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
-  }
+
   
   public String display(){
       if (millis() % 2 == 0){

@@ -43,6 +43,7 @@ public class Maze {
     }
   }
 
+
 void display() {
   int lastCoor = mazeCoordinates.size()-1;
   
