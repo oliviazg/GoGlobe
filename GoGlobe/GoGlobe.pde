@@ -142,7 +142,10 @@ void draw() {
     println("Choose your avatar!");
   }
   
-  player.display();
+  image = loadImage(player.display());
+  image.resize((int)size, (int)size);
+  image(image, player.getX() - 10, player.getY() - 10);
+  
   player.move(xDir, yDir);
   xDir = 0;
   yDir = 0;

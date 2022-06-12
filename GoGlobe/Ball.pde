@@ -43,13 +43,6 @@ public class Ball{
   public float getY(){
       return yPos;
   }
-    
-    
-  public void display(){
-    noStroke();
-    fill(color_, 255);
-    ellipse(xPos, yPos, size * 2, size * 2);
-  }
   
   // Selects coordinate from arraylist of arrays 
   // containing coordinates where the maze has 
@@ -75,7 +68,7 @@ public class Ball{
         xDir = 0;
         yDir = 0.25;
       } else {
-        yDir += 0.125;
+        yDir += 0.5;
       }
     } else if (gravity) {
       yDir = 0;
@@ -136,15 +129,11 @@ public class Droplet extends Ball{
     color_ = color(143, 165, 255);
   } 
     
-    public void display(){
+    public String display(){
       if (millis() % 2 == 0){
-        image = loadImage("Droplet 1.png");
-      image.resize((int)size, (int)size);
-      image(image, xPos - 10, yPos - 10);
+        return "Droplet 1.png";
       } else {
-        image = loadImage("Droplet 1.png");
-      image.resize((int)size, (int)size);
-      image(image, xPos - 10, yPos - 12);
+       return "Droplet 2.png";
       }
       
     }
@@ -177,15 +166,11 @@ public class Droplet extends Ball{
       color_ = color(255, 231, 112);
     } 
     
-    public void display(){
+    public String display(){
       if (millis() % 2 == 0){
-        image = loadImage("Snitch 1.png");
-        image.resize((int)size + 20, (int)size);
-        image(image, xPos - 10, yPos - 10);
+        return "Snitch 1.png";
       } else {
-        image = loadImage("Snitch 2.png");
-        image.resize((int)size + 20, (int)size);
-        image(image, xPos - 10, yPos - 11);
+         return "Snitch 2.png";
       }
     }
      
@@ -217,15 +202,11 @@ public class Droplet extends Ball{
       color_ = color(192, 178, 175);
     } 
      
-    public void display(){
+    public String display(){
       if (millis() % 2 == 0){
-        image = loadImage("Stone 1.png");
-      image.resize((int)size, (int)size);
-      image(image, xPos -10, yPos - 10);
+        return "Stone 1.png";
       } else {
-        image = loadImage("Stone 2.png");
-      image.resize((int)size, (int)size);
-      image(image, xPos -10, yPos - 10);
+       return "Stone 2.png";
       }
       
     }
