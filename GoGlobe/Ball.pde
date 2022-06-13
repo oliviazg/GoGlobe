@@ -120,13 +120,13 @@ public class Ball{
     return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
   }
 
-  public String display(){
-      if (millis() % 2 == 0){
-        return "Droplet 1.png";
-      } else {
-       return "Droplet 2.png";
-      }
-     
+  public void display(){
+      //if (millis() % 2 == 0){
+      //  return "Droplet 1.png";
+      //} else {
+      // return "Droplet 2.png";
+      //}
+     image(image, player.getX() - 10, player.getY() - 10);
 }
 }
   
@@ -145,12 +145,13 @@ public class Droplet extends Ball{
     color_ = color(143, 165, 255);
   } 
     
-    public String display(){
-      if (millis() % 2 == 0){
-        return "Droplet 1.png";
-      } else {
-       return "Droplet 2.png";
-      }
+    public void display(){
+      //if (millis() % 2 == 0){
+      //  return "Droplet 1.png";
+      //} else {
+      // return "Droplet 2.png";
+      //}
+      image(image, player.getX() - 10, player.getY() - 10);
       
     }
      
@@ -182,12 +183,13 @@ public class Droplet extends Ball{
       color_ = color(255, 231, 112);
     } 
     
-    public String display(){
-      if (millis() % 2 == 0){
-        return "Snitch 1.png";
-      } else {
-         return "Snitch 2.png";
-      }
+    public void display(){
+      //if (millis() % 2 == 0){
+      //  return "Snitch 1.png";
+      //} else {
+      //   return "Snitch 2.png";
+      //}
+      image(image, player.getX() - 10, player.getY() - 10);
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
@@ -218,12 +220,13 @@ public class Droplet extends Ball{
       color_ = color(192, 178, 175);
     } 
      
-    public String display(){
-      if (millis() % 2 == 0){
-        return "Stone 1.png";
-      } else {
-       return "Stone 2.png";
-      }
+    public void display(){
+      //if (millis() % 2 == 0){
+      //  return "Stone 1.png";
+      //} else {
+      // return "Stone 2.png";
+      //}
+      image(image, player.getX() - 10, player.getY() - 10);
       
     }
     

@@ -214,9 +214,8 @@ void draw() {
   
 
   //display character and move
-  player.display();
-
-  image = loadImage(player.display());
+  
+  image = loadImage("Droplet 1.png");
   
   float xSize = player.getSize();
   if (player.getType().equals("Snitch")){
@@ -224,8 +223,7 @@ void draw() {
   }
   
   image.resize((int)xSize, (int)player.getSize());
-  image(image, player.getX() - 10, player.getY() - 10);
-  
+  player.display();
 
   player.move(xDir, yDir);
   xDir = 0;
@@ -235,9 +233,9 @@ void draw() {
   //animate obstacles
   for (int i = 0; i < obsList.size() - 1; i++){
     obs = obsList.get(i);    
-    image = loadImage(obs.display());
+    image = loadImage("" + obs.getType() + ".png");
     image.resize(40, 10);
-    image(image, obs.getX() - 20, obs.getY());
+    obs.display();
     obs.move();
   }
   
@@ -383,12 +381,15 @@ void keyPressed() {
   if (key == '1') {
     player = new Droplet();
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+    image = loadImage("Droplet 1.png");
   } else if (key == '2') {
     player = new Snitch();
+    image = loadImage("Snitch 1.png");
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   } else if (key == '3') {
     player = new Stone();
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
+    image = loadImage("Stone 1.png");
   } else if (key==32) {
     if (paused) {
       paused = false;

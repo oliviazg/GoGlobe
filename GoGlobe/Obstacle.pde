@@ -38,8 +38,8 @@ public class Obstacle{
     yPos = y;
   }
   
-  public String display(){
-    return "Ice.png";
+  public void display(){
+    image(image, obs.getX() - 20, obs.getY());
   }
   
   public void move(){
@@ -64,8 +64,8 @@ public class Obstacle{
       color_ = color(143, 165, 255);
     }
     
-    public String display(){
-    return "Ice.png";
+    public void display(){
+    image(image, obs.getX() - 20, obs.getY());
   }
     
   }
@@ -77,8 +77,8 @@ public class Obstacle{
       color_ = color(255, 231, 112);
     }
     
-    public String display(){
-    return "Gold.png";
+    public void display(){
+    image(image, obs.getX() - 20, obs.getY());
   }
     
   }
@@ -90,7 +90,7 @@ public class Obstacle{
       color_ = color(192, 178, 175);
     }
     
-    public String display(){
-    return "Granite.png";
+    public void display(){
+    image(image, obs.getX() - 20, obs.getY());
   }
   }
