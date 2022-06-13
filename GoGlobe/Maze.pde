@@ -6,7 +6,6 @@ public class Maze {
   int numOfPixels;
   int xDirection;
   ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
-  color c;
   
   
   //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
