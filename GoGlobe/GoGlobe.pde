@@ -239,12 +239,12 @@ void draw() {
     }
   }
   
-  println("ballPos: "+player.getX(), player.getY());
-  println("windPos: "+wind.getX(), wind.getY());
+  //println("ballPos: "+player.getX(), player.getY());
+  //println("windPos: "+wind.getX(), wind.getY());
   if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
-    println("WORKS");
+    //println("WORKS");
     if (!wind.windReceived) {
-      println("works but wind received is true for some reason");
+      //println("works but wind received is true for some reason");
         wind.windReceived = true; 
         player.windCount++;
         player.speed = 10;
@@ -275,6 +275,9 @@ void levelUp (){
     difficulty++;
     maze = new Maze(difficulty);
     countdownHelper = 600 - 40 * (difficulty - 1);
+    if (countdownHelper <= 20) {
+      countdownHelper = 20;
+    }
     countdown = countdownHelper;
     text(countdown / 10, 110, 20);
     text(difficulty, 100, 35);
@@ -338,6 +341,9 @@ void die(Ball ball){
   player.setHealth((difficulty - 1)*10);
   player.setGravity(true);
   countdownHelper = 600 - 40 * (difficulty - 1);
+  if (countdownHelper <= 20) {
+      countdownHelper = 20;
+    }
   countdown = countdownHelper;
 }
 //movement of ball using arrow keys
