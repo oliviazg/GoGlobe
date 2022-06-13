@@ -226,11 +226,7 @@ void draw() {
   
   //if player is touching the obstacle, more damage is dealt depending on player Type
   if (player.touchingObs(obs, obs.getX(), obs.getY())){
-    if (player.getType().equals("Original")){
-      player.changeHealth(-2); 
-    } else {
-      player.changeHealth(-4);
-    }
+    player.changeHealth(-4);
   }
   
   if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
