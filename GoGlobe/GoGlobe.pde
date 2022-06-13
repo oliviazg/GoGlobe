@@ -223,11 +223,11 @@ void draw() {
   //if player is touching the obstacle, more damage is dealt depending on player Type
   if (player.touchingObs(obs, obs.getX(), obs.getY())){
     //println("WORKS but not original for some reason");
-    if (player.getType().equals("Original")){
+    if (player.getType().equals(obs.getCompareType())){
       //println("WORKS");
-      player.changeHealth(-2); 
+      player.changeHealth(-4); 
     } else {
-      player.changeHealth(-4);
+      player.changeHealth(-1);
     }
   }
   
