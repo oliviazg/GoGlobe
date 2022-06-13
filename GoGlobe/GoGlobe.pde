@@ -41,9 +41,9 @@ void setup() {
   fill(0); //black pixels
   maze = new Maze(difficulty); //create the new maze based on the difficulty level
   
-  frameRate(200); //default frame; 200 frames will be displayed every second
+  frameRate(60); //default frame; 200 frames will be displayed every second
   
-  countdownHelper = 40; //set initial timer
+  countdownHelper = 600; //set initial timer
   countdown = countdownHelper;
   //initial player is Droplet
   player = new Droplet(); 
@@ -164,7 +164,7 @@ void draw() {
   textSize(12);
   //countdown display
   text("COUNTDOWN: ", 20, 20);
-  text(countdown, 110, 20);
+  text(countdown / 10, 110, 20);
   //level display
   text("LEVEL: ", 20, 35);
   text(difficulty, 60, 35);
@@ -268,9 +268,9 @@ void levelUp (){
     maze = new Maze(difficulty);
     //countdown = 10000 - 1000 * (difficulty - 1);
     //countdownHelper = countdown;
-    countdownHelper = 40 - 5 * (difficulty - 1);
+    countdownHelper = 600 - 40 * (difficulty - 1);
     countdown = countdownHelper;
-    text(countdown / 100, 110, 20);
+    text(countdown / 10, 110, 20);
     text(difficulty, 100, 35);
     
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
@@ -297,7 +297,7 @@ void levelUp (){
   //difficulty++;
   
     
-  player.setHealth((difficulty - 1) * 100);
+  player.setHealth((difficulty - 1)*100);
   
   obsList = new ArrayList<Obstacle>();
     
@@ -339,7 +339,7 @@ void die(Ball ball){
       text("W", wind.xPos, wind.yPos);
   player.setHealth(0);
   player.setGravity(true);
-  countdownHelper = 40 - 5 * (difficulty - 1);
+  countdownHelper = 600 - 40 * (difficulty - 1);
   countdown = countdownHelper;
 }
 //movement of ball using arrow keys
