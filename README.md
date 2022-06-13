@@ -7,10 +7,11 @@ PROTOTYPE GOOGLE DOC: https://docs.google.com/document/d/1NGRB7z_XVNwCPRK_Wa_Kt4
 
 Compile/Run instructions: Our game requires the loading of PNG files (provided in Github as PNG files). When the game is run...<br />
 -) press ENTER/RETURN to switch between the Instructions page and game screen.<br />
--) The goal is to navigate the ball to the portal before the timer runs out using UP, LEFT, RIGHT arrow keys! You can only use the UP arrow key is Jump Ability is on (displayed on top left of the screen). The Jump Ability mode can be toggled on and off using the G key. Collect wind powerups to increase speed. <br />
--) Avoid the bottom border (border kills the ball). Avoid obstacles (ice obstacles deal more damage to Droplet ball, gold obstacles deal more damage to Golden Snitch ball, granite obstacles deal more damage to Stone ball). Your ball dies and the level is reset when your health reaches 0, the timer runs out, or if you hit the ground.<br />
--) To switch between avatars, press 1 on your keyboard to switch your ball to Droplet avatar, press 2 to switch your ball to Golden Snitch avatar", press 3 to switch your ball to Stone avatar.<br />
--) Press SPACE to pause the game.<br />
+-) The goal is to navigate the ball to the portal before the timer runs out using UP, LEFT, RIGHT arrow keys! You can only use the UP arrow key is Jump Ability is on (displayed on top left of the screen). The Jump Ability mode can be toggled on and off using the G key. Health will decrement when Jump Ability is on. 
+-) Collect wind powerups to increase speed. The timer will get shorter as the level increases. <br />
+-) Avoid the bottom border (ground kills the ball). Avoid obstacles (ice obstacles deal more damage to Droplet ball, gold obstacles deal more damage to Golden Snitch ball, granite obstacles deal more damage to Stone ball). The number of obstacles will increase as the level increases. Your ball dies and the level is reset when your health reaches 0, the timer runs out, or if you hit the ground. <br />
+-) To switch between balls, press 1 on your keyboard to switch your ball to Droplet avatar, press 2 to switch your ball to Golden Snitch avatar, press 3 to switch your ball to Stone avatar.<br />
+-) Press SPACE to pause or unpause the game.<br />
 
 --------------------------------
 Development Log for Evelyn Chen:
@@ -71,4 +72,3 @@ D13: I added randomly generated Obstacle classes for each maze.
 D14: I redrew and added Ball subclass graphics to Ball display().
 
 D15-19: I moved the Ball graphics loading into the GoGlobe class instead of Ball. I redrew the Obstacle graphics and also moved the loading method for the Obstacle subclasses into GoGlobe. 
->>>>>>> 1e1be7dda06e30941fddd2fe310107ab282c2234
