@@ -16,7 +16,6 @@ int gameScreen = 1; //normal gameScreen
 //Player ball features
 Ball player;
 Obstacle obs;
-int win;
 Maze maze;
 Wind wind;
 int xCoor;
