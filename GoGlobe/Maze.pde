@@ -2,11 +2,10 @@ public class Maze {
   int endX; //Portal will be centered at this x-coordinate.
   int endY; //Portal will be centered at this y-coordinate.
   int startX = 50;
-  int startY = 100;
+  int startY = 110;
   int numOfPixels;
   int xDirection;
   ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>();
-  color c;
   
   
   //Generate the maze walls and ledges based on the given density. Total percentage of the maze area will equal the density.
@@ -43,31 +42,17 @@ public class Maze {
     }
   }
 
-  
-//A portal will be created, centered at the given x- and y- coordinates. 
-//void makePortal(int endX, int endY) { 
-//void makePortal(int endX, int endY) { 
-  //color c = color(0, 255, 0); 
-  //mazeCoordinates.add(-1*endX);
-  //mazeCoordinates.add(-1*endY);
-  //set(c, endX, endY); //set the pixel at coordinates endX and endY green
-//}
 
 void display() {
   int lastCoor = mazeCoordinates.size()-1;
   
   fill(204, 65, 37);
+  stroke(204, 65, 37);
   rect(mazeCoordinates.get(lastCoor-1)-30, mazeCoordinates.get(lastCoor)-40, 30, 40);
   for (int i = 0; i < mazeCoordinates.size(); i+=2) {
-    //if (mazeCoordinates.get(i) < 0) {
-    //  fill(0, 255, 0);
-    //  rect(-1 * mazeCoordinates.get(i), -1 * mazeCoordinates.get(i+1), 100, 5);
-    //} else {
-    //  fill(0);
-    //  rect(mazeCoordinates.get(i), mazeCoordinates.get(i + 1), 100, 5);
-    //}
       fill(0);
-      rect(mazeCoordinates.get(i), mazeCoordinates.get(i+1), 100, 2);
+      stroke(0);
+      rect(mazeCoordinates.get(i), mazeCoordinates.get(i+1), 100, 4);
     }
   } 
   int getCoor(int ind){
@@ -82,23 +67,5 @@ void display() {
 int coorSize(){
   return mazeCoordinates.size();
 }
-/**
-int getMiddleCoor() {
-  if (mazeCoordinates.get(mazeCoordinates.size()) % 2 == 0) {
-    return mazeCoordinates.get(mazeCoordinates.size()/2);
-  } else {
-    return (mazeCoordinates.get(mazeCoordinates.size()/2+1));
-  }
-}
-
-int indexOfMiddleCoor() {
-  if (mazeCoordinates.size() % 2 == 0) {
-    return mazeCoordinates.size()/2;
-  } else {
-    return mazeCoordinates.size()/2+1;
-  }
-    
-}
-  **/
 
 }

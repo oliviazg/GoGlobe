@@ -13,13 +13,13 @@ public class Ball{
     
   public Ball(){
     type = "Original";
-    health = 1000;
+    health = 100;
     windCount = 0;
     speed = 5;
     
     size = 10;
     
-    gravity = false;
+    gravity = true;
     color_ = color(255, 255, 255);
     
   }
@@ -72,7 +72,7 @@ public class Ball{
         xDir = 0;
         yDir = 0.25;
       } else {
-        yDir += 0.5;
+        yDir += 0.125;
       }
     } else if (gravity) {
       yDir = 0;
@@ -93,17 +93,9 @@ public class Ball{
   }
   
   public void setHealth(float num){
-    health = 1000 - num;
+    health = 100 - num;
   }
-    
-  public boolean touchingWind(Wind wind, int xWind, int yWind){
-    if (xWind - xPos <= size * 2 || yWind - yPos <= size * 2){
-      windCount++;
-      return true;
-    } else {
-      return false;
-    }
-  }
+
   
   public void setGravity(boolean g){
     gravity = g;
@@ -114,17 +106,13 @@ public class Ball{
   }
   
   public boolean withinPortal(){
-    return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37) || xPos > 570 && xPos < 600 && yPos > 550 && yPos < 600);
+
+    return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
   }
-  
-  public String display(){
-      if (millis() % 2 == 0){
-        return "Droplet 1.png";
-      } else {
-       return "Droplet 2.png";
-      }
-      
-    }
+
+  public void display(){
+     image(image, player.getX() - 10, player.getY() - 10);
+}
 }
   
 // ----------------------------------------------------------------
@@ -134,21 +122,29 @@ public class Ball{
 public class Droplet extends Ball{
   Droplet(){
     type = "Droplet";
-    health = 1000;
-    windCount = 1;
+    health = 100;
+    windCount = 0;
     speed = 5;
     size = 20;
     gravity = true;
     color_ = color(143, 165, 255);
   } 
     
+<<<<<<< HEAD
+    public void display(){
+      image(image, player.getX() - 10, player.getY() - 10);
+      
+=======
     public String display(){
       if (millis() % 2 == 0){
         return "Droplet 1.png";
       } else {
        return "Droplet 2.png";
       }
-      
+      //noStroke();
+    //fill(color_, 100);
+    //ellipse(xPos, yPos, size * 2, size * 2);
+>>>>>>> 8622f98c1fa7662b27703c12c4f3bf05edfde452
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
@@ -162,15 +158,15 @@ public class Droplet extends Ball{
         return false;
       }
     }
+}
   
-  }
   
   public class Snitch extends Ball{
     
      Snitch(){
       type = "Snitch";
-      health = 1000;
-    windCount = 1;
+      health = 100;
+    windCount = 0;
     speed = 5;
     
     size = 20;
@@ -179,12 +175,8 @@ public class Droplet extends Ball{
       color_ = color(255, 231, 112);
     } 
     
-    public String display(){
-      if (millis() % 2 == 0){
-        return "Snitch 1.png";
-      } else {
-         return "Snitch 2.png";
-      }
+    public void display(){
+      image(image, player.getX() - 10, player.getY() - 10);
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
@@ -205,8 +197,8 @@ public class Droplet extends Ball{
     
     Stone(){
       type = "Stone";
-      health = 1000;
-    windCount = 1;
+      health = 100;
+    windCount = 0;
     speed = 5;
     
     size = 20;
@@ -215,12 +207,8 @@ public class Droplet extends Ball{
       color_ = color(192, 178, 175);
     } 
      
-    public String display(){
-      if (millis() % 2 == 0){
-        return "Stone 1.png";
-      } else {
-       return "Stone 2.png";
-      }
+    public void display(){
+      image(image, player.getX() - 10, player.getY() - 10);
       
     }
     
@@ -234,6 +222,6 @@ public class Droplet extends Ball{
       } else {
         return false;
       }
-    }
   
   }
+}
