@@ -118,7 +118,6 @@ void setup() {
   eB = 71;
 }
 
-
 //draw the menuScreen
 void drawMenu() {
   //gray screen with black text

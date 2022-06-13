@@ -120,15 +120,14 @@ public class Ball{
     return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
   }
 
-  
   public String display(){
       if (millis() % 2 == 0){
         return "Droplet 1.png";
       } else {
        return "Droplet 2.png";
       }
-      
-    }
+     
+}
 }
   
 // ----------------------------------------------------------------
@@ -166,8 +165,8 @@ public class Droplet extends Ball{
         return false;
       }
     }
+}
   
-  }
   
   public class Snitch extends Ball{
     
@@ -238,6 +237,6 @@ public class Droplet extends Ball{
       } else {
         return false;
       }
-    }
   
   }
+}
