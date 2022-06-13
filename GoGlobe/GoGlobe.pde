@@ -43,7 +43,7 @@ void setup() {
   
   frameRate(60); //default frame; 200 frames will be displayed every second
   
-  countdownHelper = 600; //set initial timer
+  countdownHelper = 1000; //set initial timer
   countdown = countdownHelper;
   //initial player is Droplet
   player = new Droplet(); 
@@ -257,13 +257,9 @@ void draw() {
   
 // move to next level
 void levelUp (){    
-  //wind.display(); //display wind
   if (player.withinPortal()){
-    //clear();
     difficulty++;
     maze = new Maze(difficulty);
-    //countdown = 10000 - 1000 * (difficulty - 1);
-    //countdownHelper = countdown;
     countdownHelper = 600 - 40 * (difficulty - 1);
     countdown = countdownHelper;
     text(countdown / 10, 110, 20);
@@ -286,14 +282,9 @@ void levelUp (){
   }
   
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-  player.setGravity(true);
-  
- // maze = new Maze(difficulty);
-  
-  //difficulty++;
-  
+  player.setGravity(true);  
     
-  player.setHealth((difficulty - 1)*100);
+  player.setHealth((difficulty - 1)*10);
   
   obsList = new ArrayList<Obstacle>();
     
@@ -330,7 +321,7 @@ void die(Ball ball){
   wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
   player.windCount = 0;
    wind.display();
-  player.setHealth(0);
+  player.setHealth((difficulty - 1)*10);
   player.setGravity(true);
   countdownHelper = 600 - 40 * (difficulty - 1);
   countdown = countdownHelper;
