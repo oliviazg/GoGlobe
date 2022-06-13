@@ -134,7 +134,7 @@ public class Droplet extends Ball{
       image(image, player.getX() - 10, player.getY() - 10);
       
     }
-     
+     /**
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 && yObs - yPos <= size * 2){
         if (!obs.getType().equals("Ice")){
@@ -145,7 +145,7 @@ public class Droplet extends Ball{
       } else {
         return false;
       }
-    }
+    }**/
 }
   
   
@@ -166,7 +166,7 @@ public class Droplet extends Ball{
     public void display(){
       image(image, player.getX() - 10, player.getY() - 10);
     }
-     
+     /**
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 && yObs - yPos <= size * 2){
         if (!obs.getType().equals("Gold")){
@@ -177,7 +177,7 @@ public class Droplet extends Ball{
       } else {
         return false;
       }
-    }
+    }**/
   
   }
   
@@ -199,7 +199,7 @@ public class Droplet extends Ball{
       image(image, player.getX() - 10, player.getY() - 10);
       
     }
-    
+    /**
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
       if (xObs - xPos <= size * 2 && yObs - yPos <= size * 2){
         if (!obs.getType().equals("Granite")){
@@ -211,5 +211,5 @@ public class Droplet extends Ball{
         return false;
       }
   
-  }
+  }**/
 }
