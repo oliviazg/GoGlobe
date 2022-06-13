@@ -30,6 +30,7 @@ float eB;
 //List
 ArrayList<Obstacle> obsList = new ArrayList<Obstacle>(); //list of obstacles
 ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>(); //list of mazeCoordinates/pixels
+
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
   difficulty = 1; //set level to 1
@@ -153,10 +154,10 @@ void draw() {
   maze.display();
   
   //counter
-  if (countdownHelper > 0){ //decrement counter
-    countdownHelper--;
-    countdown = countdownHelper;
-    //countdown--;
+  if (countdown > 0){ //decrement counter
+    //countdownHelper--;
+    //countdown = countdownHelper;
+    countdown--;
   } else { //if counter hits zero
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10); //reset the player Ball
     wind.windReceived = false;
@@ -203,12 +204,12 @@ void draw() {
   
   //display character and move
   
-  image = loadImage("Droplet.png");
+  image = loadImage("" + player.getType() + ".png");
 
   
   float xSize = player.getSize();
   if (player.getType().equals("Snitch")){
-    xSize += 15;
+    xSize += 20;
   }
   
   image.resize((int)xSize, (int)player.getSize());
@@ -342,15 +343,12 @@ void keyPressed() {
   if (key == '1') {
     player = new Droplet();
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-    image = loadImage("Droplet.png");
   } else if (key == '2') {
     player = new Snitch();
-    image = loadImage("Snitch.png");
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   } else if (key == '3') {
     player = new Stone();
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-    image = loadImage("Stone.png");
   } else if (key==32) {
     if (paused) {
       paused = false;
