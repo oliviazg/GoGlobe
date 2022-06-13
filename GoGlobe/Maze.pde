@@ -47,9 +47,11 @@ void display() {
   int lastCoor = mazeCoordinates.size()-1;
   
   fill(204, 65, 37);
+  stroke(204, 65, 37);
   rect(mazeCoordinates.get(lastCoor-1)-30, mazeCoordinates.get(lastCoor)-40, 30, 40);
   for (int i = 0; i < mazeCoordinates.size(); i+=2) {
       fill(0);
+      stroke(0);
       rect(mazeCoordinates.get(i), mazeCoordinates.get(i+1), 100, 4);
     }
   } 
