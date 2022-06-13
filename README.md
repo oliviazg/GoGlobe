@@ -5,7 +5,12 @@ Stevia: EVelyn Chen, OliVIA Zheng
 
 PROTOTYPE GOOGLE DOC: https://docs.google.com/document/d/1NGRB7z_XVNwCPRK_Wa_Kt4WWyce9qffFvhmzbMjOj_Q/edit?usp=sharing
 
-Compile/Run instructions: Run normally! Hit UP, LEFT, and RIGHT arrow keys to navigate ball to the portal; hit space to toggle jump ability.
+Compile/Run instructions: Our game requires the loading of PNG files (provided in Github's GoGlobe main file). When the game is run...
+-) press ENTER/RETURN to switch between the Instructions page and game screen.
+-) The goal is to navigate the ball to the portal before the timer runs out using UP, LEFT, RIGHT arrow keys! You can only use the UP arrow key is Jump Ability is on (displayed on top left of the screen). The Jump Ability mode can be toggled on and off using the G key. Collect wind powerups to increase speed. 
+-) Avoid the bottom border (border kills the ball). Avoid obstacles (ice obstacles deal more damage to Droplet ball, gold obstacles deal more damage to Golden Snitch ball, granite obstacles deal more damage to Stone ball). Your ball dies and the level is reset when your health reaches 0, the timer runs out, or if you hit the ground.
+-) To switch between avatars, press 1 on your keyboard to switch your ball to Droplet avatar, press 2 to switch your ball to Golden Snitch avatar", press 3 to switch your ball to Stone avatar", 50, 165);
+-) Press space to pause the game.
 
 --------------------------------
 Development Log for Evelyn Chen:
