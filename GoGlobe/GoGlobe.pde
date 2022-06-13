@@ -96,8 +96,6 @@ void setup() {
   eG = 148;
   eB = 71;
 }
-
-
 //draw the menuScreen
 void drawMenu() {
   //gray screen with black text
@@ -154,7 +152,7 @@ void draw() {
   maze.display();
   
   //counter
-  if (countdown > 0){ //decrement counter
+   if (countdown > 0){ //decrement counter
     //countdownHelper--;
     //countdown = countdownHelper;
     countdown--;
@@ -201,21 +199,19 @@ void draw() {
   //wind count display
   text("WIND COUNT: ", 20, 80);
   text(" "+player.windCount, 100, 80);
-  
+
   //display character and move
-  
+
   image = loadImage("" + player.getType() + ".png");
 
-  
+
   float xSize = player.getSize();
   if (player.getType().equals("Snitch")){
     xSize += 20;
   }
-  
+
   image.resize((int)xSize, (int)player.getSize());
   player.display();
-
-
   player.move(xDir, yDir);
   xDir = 0;
   yDir = 0;
@@ -234,15 +230,21 @@ void draw() {
   
   //if player is touching the obstacle, more damage is dealt depending on player Type
   if (player.touchingObs(obs, obs.getX(), obs.getY())){
-    player.changeHealth(-4);
+    //println("WORKS but not original for some reason");
+    if (player.getType().equals(obs.getCompareType())){
+      //println("WORKS");
+      player.changeHealth(-4); 
+    } else {
+      player.changeHealth(-1);
+    }
   }
   
-  //println("ballPos: "+player.getX(), player.getY());
-  //println("obstaclePos: "+obs.getX(), obs.getY());
+  println("ballPos: "+player.getX(), player.getY());
+  println("windPos: "+wind.getX(), wind.getY());
   if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
-    //println("WORKS");
+    println("WORKS");
     if (!wind.windReceived) {
-      //println("works but wind received is true for some reason");
+      println("works but wind received is true for some reason");
         wind.windReceived = true; 
         player.windCount++;
         player.speed = 10;

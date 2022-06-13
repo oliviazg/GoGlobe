@@ -107,7 +107,13 @@ public class Ball{
   
   public boolean withinPortal(){
 
-    return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
+    return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37) || 
+    get((int)(xPos+1), (int)(yPos)) == color(204, 65, 37) ||
+    get((int)(xPos+1), (int)(yPos)+1) == color(204, 65, 37) ||
+    get((int)(xPos), (int)(yPos)+1) == color(204, 65, 37) ||
+    get((int)(xPos)-1, (int)(yPos)+1) == color(204, 65, 37) ||
+    get((int)(xPos)-1, (int)(yPos)-1) == color(204, 65, 37) ||
+    get((int)(xPos)-1, (int)(yPos)) == color(204, 65, 37));
   }
 
   public void display(){

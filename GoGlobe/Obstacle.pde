@@ -20,11 +20,11 @@ public class Obstacle{
   public String getType(){
       return type;
   }
-  
+
   public String getCompareType(){
       return compareType;
   }
-  
+
   public int getX(){
       return xPos;
   }
@@ -58,18 +58,17 @@ public class Obstacle{
   
   
   // ----------------------------------------------------------------
-
   
   PImage image;
   
   public class Ice extends Obstacle{
-    
+
     public Ice(){
       type = "Ice";
       compareType = "Droplet";
       color_ = color(143, 165, 255);
     }
-    
+
     public void display(){
     image(image, obs.getX() - 20, obs.getY());
   }
@@ -77,13 +76,13 @@ public class Obstacle{
   }
   
   public class Gold extends Obstacle{
-    
+
     public Gold(){
       type = "Gold";
       compareType = "Snitch";
       color_ = color(255, 231, 112);
     }
-    
+
     public void display(){
     image(image, obs.getX() - 20, obs.getY());
   }
@@ -91,13 +90,13 @@ public class Obstacle{
   }
   
   public class Granite extends Obstacle{
-    
+
     public Granite(){
       type = "Granite";
       compareType = "Stone";
       color_ = color(192, 178, 175);
     }
-    
+
     public void display(){
     image(image, obs.getX() - 20, obs.getY());
   }
