@@ -5,7 +5,7 @@ public class Wind{
   private int yPos;
   private float size;
   private boolean windReceived = false;
-  
+
   public Wind(){
     speed = 10;
     size = 15;
@@ -35,9 +35,13 @@ public class Wind{
       text("W", xPos, yPos);
     }
   }
-  
+
   public boolean touchingBall(Ball ball, int xBall, int yBall){
-    return xBall == xPos && yBall == yPos;
+    if (Math.abs(xBall-xPos) <= size && Math.abs(yBall-yPos) <= size){
+      return true;
+    } else {
+      return false;
+    }
   }
   
 }

@@ -1,4 +1,4 @@
-public class Ball{
+ public class Ball{
   String type;
   float health;
   int windCount;
@@ -70,7 +70,7 @@ public class Ball{
     if (get((int)(xPos), (int)(yPos + 11)) != color(0)){
       if (gravity){
         xDir = 0;
-        yDir = 0.25;
+        yDir = 0.35;
       } else {
         yDir += 0.125;
       }
@@ -107,7 +107,13 @@ public class Ball{
   
   public boolean withinPortal(){
 
-    return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
+    return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37) || 
+    get((int)(xPos+1), (int)(yPos)) == color(204, 65, 37) ||
+    get((int)(xPos+1), (int)(yPos)+1) == color(204, 65, 37) ||
+    get((int)(xPos), (int)(yPos)+1) == color(204, 65, 37) ||
+    get((int)(xPos)-1, (int)(yPos)+1) == color(204, 65, 37) ||
+    get((int)(xPos)-1, (int)(yPos)-1) == color(204, 65, 37) ||
+    get((int)(xPos)-1, (int)(yPos)) == color(204, 65, 37));
   }
 
   public void display(){
