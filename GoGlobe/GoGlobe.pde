@@ -65,14 +65,6 @@ void setup() {
   wind = new Wind();
   wind.setPos(maze.getCoor(60)+1,maze.getCoor(61)-10);
   
-  if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
-    if (!wind.windReceived) {
-        wind.windReceived = true; 
-        player.windCount++;
-        player.speed = 10;
-      }
-  }
-  
   //set the obstacles at a random point
   int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
   for (int i = 0; i <= obsList.size() - 1; i++){
@@ -156,8 +148,12 @@ void draw() {
     //countdown--;
   } else { //if counter hits zero
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10); //reset the player Ball
+    wind.windReceived = false;
+    player.speed = 5;
+    player.windCount = 0;
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10); //reset the Wind powerup
-    countdown = countdownHelper; 
+    
+    //countdown = countdownHelper; 
   }
   //display
   fill(255);
@@ -229,8 +225,12 @@ void draw() {
     player.changeHealth(-4);
   }
   
+  //println("ballPos: "+player.getX(), player.getY());
+  //println("obstaclePos: "+obs.getX(), obs.getY());
   if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
+    //println("WORKS");
     if (!wind.windReceived) {
+      //println("works but wind received is true for some reason");
         wind.windReceived = true; 
         player.windCount++;
         player.speed = 10;
@@ -327,12 +327,9 @@ void die(Ball ball){
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   wind.windReceived = false;
   player.speed = 5;
-  wind.setPos(maze.getCoor(0)+1, maze.getCoor(1)-10);
+  wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
   player.windCount = 0;
-  fill(255,0,0);
-    textSize(15);
-   
-      text("W", wind.xPos, wind.yPos);
+   wind.display();
   player.setHealth(0);
   player.setGravity(true);
   countdownHelper = 600 - 40 * (difficulty - 1);
