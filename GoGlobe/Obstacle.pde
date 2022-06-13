@@ -1,5 +1,6 @@
 public class Obstacle{
   String type;
+  String compareType;
   double speed;
   int xPos;
   int yPos;
@@ -18,6 +19,10 @@ public class Obstacle{
   
   public String getType(){
       return type;
+  }
+  
+  public String getCompareType(){
+      return compareType;
   }
   
   public int getX(){
@@ -61,6 +66,7 @@ public class Obstacle{
     
     public Ice(){
       type = "Ice";
+      compareType = "Droplet";
       color_ = color(143, 165, 255);
     }
     
@@ -74,6 +80,7 @@ public class Obstacle{
     
     public Gold(){
       type = "Gold";
+      compareType = "Snitch";
       color_ = color(255, 231, 112);
     }
     
@@ -87,6 +94,7 @@ public class Obstacle{
     
     public Granite(){
       type = "Granite";
+      compareType = "Stone";
       color_ = color(192, 178, 175);
     }
     

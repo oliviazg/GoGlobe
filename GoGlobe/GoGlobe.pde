@@ -41,9 +41,9 @@ void setup() {
   fill(0); //black pixels
   maze = new Maze(difficulty); //create the new maze based on the difficulty level
   
-  frameRate(200); //default frame; 200 frames will be displayed every second
+  frameRate(60); //default frame; 200 frames will be displayed every second
   
-  countdownHelper = 40; //set initial timer
+  countdownHelper = 1000; //set initial timer
   countdown = countdownHelper;
   //initial player is Droplet
   player = new Droplet(); 
@@ -64,14 +64,6 @@ void setup() {
   //add Wind powerup 
   wind = new Wind();
   wind.setPos(maze.getCoor(60)+1,maze.getCoor(61)-10);
-  
-  if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
-    if (!wind.windReceived) {
-        wind.windReceived = true; 
-        player.windCount++;
-        player.speed = 10;
-      }
-  }
   
   //set the obstacles at a random point
   int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
@@ -156,15 +148,19 @@ void draw() {
     //countdown--;
   } else { //if counter hits zero
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10); //reset the player Ball
+    wind.windReceived = false;
+    player.speed = 5;
+    player.windCount = 0;
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10); //reset the Wind powerup
-    countdown = countdownHelper; 
+    
+    //countdown = countdownHelper; 
   }
   //display
   fill(255);
   textSize(12);
   //countdown display
   text("COUNTDOWN: ", 20, 20);
-  text(countdown, 110, 20);
+  text(countdown / 10, 110, 20);
   //level display
   text("LEVEL: ", 20, 35);
   text(difficulty, 60, 35);
@@ -226,15 +222,15 @@ void draw() {
   
   //if player is touching the obstacle, more damage is dealt depending on player Type
   if (player.touchingObs(obs, obs.getX(), obs.getY())){
-    if (player.getType().equals("Original")){
-      player.changeHealth(-2); 
-    } else {
-      player.changeHealth(-4);
-    }
+    player.changeHealth(-4);
   }
   
+  //println("ballPos: "+player.getX(), player.getY());
+  //println("obstaclePos: "+obs.getX(), obs.getY());
   if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
+    //println("WORKS");
     if (!wind.windReceived) {
+      //println("works but wind received is true for some reason");
         wind.windReceived = true; 
         player.windCount++;
         player.speed = 10;
@@ -261,16 +257,12 @@ void draw() {
   
 // move to next level
 void levelUp (){    
-  //wind.display(); //display wind
   if (player.withinPortal()){
-    //clear();
     difficulty++;
     maze = new Maze(difficulty);
-    //countdown = 10000 - 1000 * (difficulty - 1);
-    //countdownHelper = countdown;
-    countdownHelper = 40 - 5 * (difficulty - 1);
+    countdownHelper = 600 - 40 * (difficulty - 1);
     countdown = countdownHelper;
-    text(countdown / 100, 110, 20);
+    text(countdown / 10, 110, 20);
     text(difficulty, 100, 35);
     
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
@@ -290,14 +282,9 @@ void levelUp (){
   }
   
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-  player.setGravity(true);
-  
- // maze = new Maze(difficulty);
-  
-  //difficulty++;
-  
+  player.setGravity(true);  
     
-  player.setHealth((difficulty - 1) * 100);
+  player.setHealth((difficulty - 1)*10);
   
   obsList = new ArrayList<Obstacle>();
     
@@ -331,15 +318,12 @@ void die(Ball ball){
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   wind.windReceived = false;
   player.speed = 5;
-  wind.setPos(maze.getCoor(0)+1, maze.getCoor(1)-10);
+  wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
   player.windCount = 0;
-  fill(255,0,0);
-    textSize(15);
-   
-      text("W", wind.xPos, wind.yPos);
-  player.setHealth(0);
+   wind.display();
+  player.setHealth((difficulty - 1)*10);
   player.setGravity(true);
-  countdownHelper = 40 - 5 * (difficulty - 1);
+  countdownHelper = 600 - 40 * (difficulty - 1);
   countdown = countdownHelper;
 }
 //movement of ball using arrow keys
