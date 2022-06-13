@@ -105,19 +105,30 @@ void drawMenu() {
   fill(0);
   
   //instructions to be displayed
-  text("Welcome to GoGlobe! Please press your ENTER/RETURN key to begin the game.", 50, 50);
+  text("Welcome to GoGlobe! Please press your ENTER/RETURN key to begin the game.", 40, 50);
   textSize(15);
-  text("INSTRUCTIONS: ", 50, 70);
+  text("INSTRUCTIONS: ", 40, 80);
   textSize(12);
-  text("Navigate the ball to the portal before the timer runs out! ", 50, 90);
-  text("Collect wind powerups to increase speed and avoid the borders! ", 50, 105);
-  text("Avoid certain obstacles: ice kills Droplet, gold kills Snitch, and granite kills stone!", 50, 120);
-  text("Press 1 to switch your ball to Droplet avatar", 50, 135);
-  text("Press 2 to switch your ball to Golden Snitch avatar", 50, 150);
-  text("Press 3 to switch your ball to Stone avatar", 50, 165);
-  text("Press g to toggle jump ability off and on!", 50, 180);
-  text("Press space to pause the game.", 50, 195);
-  text("Press your ENTER/RETURN key to return to instructions in the game!", 50, 210);
+  text("Navigate the ball to the portal before the timer runs out using your UP, LEFT, RIGHT ", 40, 110);
+  text("arrow keys! You can only use the UP arrow key is Jump Ability is on. ", 40, 125);
+  text("The Jump Ability mode can be toggled on and off using the G key.", 40, 140);
+  text("Health will decrement when Jump Ability is on. ", 40, 155);
+  text("Collect wind powerups to increase speed. The timer will get shorter as the level increases.", 40, 170);
+  text("Avoid the bottom border (ground kills the ball). ", 40, 200);
+  text("Avoid certain obstacles:", 40, 215);
+  text("ice obstacles deal more damage to Droplet ball", 40, 230);
+  text("gold obstacles deal more damage to Golden Snitch ball", 40, 245);
+  text("granite obstacles deal more damage to Stone ball", 40, 260);
+  text("Your ball dies and the level is reset when:", 40, 275);
+  text("1.) your health reaches 0", 40, 290);
+  text("2.) the timer runs out ", 40, 305);
+  text("3.) if you hit the ground.", 40, 320);
+  text("To switch between balls:", 40, 350);
+  text("Press 1 to switch your ball to Droplet avatar", 40, 365);
+  text("Press 2 to switch your ball to Golden Snitch avatar", 40, 380);
+  text("Press 3 to switch your ball to Stone avatar", 40, 395);
+  text("Press SPACE to pause or unpause the game.", 40, 425);
+  text("Press your ENTER/RETURN key to return to instructions in the game!", 40, 440);
 }
 //Display the graphics 
 void draw() {
