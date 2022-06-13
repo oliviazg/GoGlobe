@@ -1,18 +1,14 @@
 //level
 static int difficulty;  
-
-
 //timer
-int sCountdown; //countdownHelper
+//int sCountdown; //countdownHelper
 int countdown;
 int countdownHelper;
-
 //screens
 int screenMode = 0; //mode of screen (toggled between menuScreen and gameScreen with ENTER/RETURN key)
 boolean paused; //pause feature (toggled with space key)
 int menuScreen = 0; //intro screen with instructions at the beginning of the game
 int gameScreen = 1; //normal gameScreen
-
 //Player ball features
 Ball player;
 Obstacle obs;
@@ -22,8 +18,6 @@ int xCoor;
 int yCoor;
 float xDir;
 float yDir;
-
-
 //background RGB values
 //start
 float sR;
@@ -33,12 +27,9 @@ float sB;
 float eR;
 float eG;
 float eB;
-
 //List
 ArrayList<Obstacle> obsList = new ArrayList<Obstacle>(); //list of obstacles
 ArrayList<Integer> mazeCoordinates = new ArrayList<Integer>(); //list of mazeCoordinates/pixels
-
-
 //Generate the maze walls and make the Portal by calling generateMaze(double difficulty) and makePortal(int x, int y)
 void setup() {
   difficulty = 1; //set level to 1
@@ -46,17 +37,14 @@ void setup() {
   screenMode = 0; //display menuScreen initially
   paused = false; //set the game mode to "not paused" initially
   
-
   
   fill(0); //black pixels
   maze = new Maze(difficulty); //create the new maze based on the difficulty level
   
-
   frameRate(200); //default frame; 200 frames will be displayed every second
   
-  sCountdown = 4000; //set initial timer
-  countdown = sCountdown;
-
+  countdownHelper = 40; //set initial timer
+  countdown = countdownHelper;
   //initial player is Droplet
   player = new Droplet(); 
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
@@ -72,7 +60,6 @@ void setup() {
       obsList.add(new Granite());
     }
   }
-
   
   //add Wind powerup 
   wind = new Wind();
@@ -86,7 +73,6 @@ void setup() {
       }
   }
   
-
   //set the obstacles at a random point
   int ind = (int)(Math.random() * (maze.coorSize() - 1) + 40);
   for (int i = 0; i <= obsList.size() - 1; i++){
@@ -118,6 +104,7 @@ void setup() {
   eB = 71;
 }
 
+
 //draw the menuScreen
 void drawMenu() {
   //gray screen with black text
@@ -140,7 +127,6 @@ void drawMenu() {
   text("Press space to pause the game.", 50, 195);
   text("Press your ENTER/RETURN key to return to instructions in the game!", 50, 210);
 }
-
 //Display the graphics 
 void draw() {
   //determine whether to display menuMode or gameMode
@@ -151,9 +137,9 @@ void draw() {
     if (!paused) {
       
       //background colors
-    background(sR + (sCountdown - countdown) * (eR - sR) / sCountdown, 
-  sG + (sCountdown - countdown) * (eG - sG) / sCountdown, 
-  sB - (sCountdown - countdown) * (sB - eB) / sCountdown);
+    background(sR + (countdownHelper - countdown) * (eR - sR) / countdownHelper, 
+  sG + (countdownHelper - countdown) * (eG - sG) / countdownHelper, 
+  sB - (countdownHelper - countdown) * (sB - eB) / countdownHelper);
   
   //borders
   fill(0);
@@ -164,38 +150,34 @@ void draw() {
   maze.display();
   
   //counter
-
-  if (countdown > 0){ //decrement counter
-    countdown--;
+  if (countdownHelper > 0){ //decrement counter
+    countdownHelper--;
+    countdown = countdownHelper;
+    //countdown--;
   } else { //if counter hits zero
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10); //reset the player Ball
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10); //reset the Wind powerup
-    //countdown = countdownHelper; 
+    countdown = countdownHelper; 
   }
   //display
   fill(255);
   textSize(12);
   //countdown display
   text("COUNTDOWN: ", 20, 20);
-  text(countdown / 100, 110, 20);
-
+  text(countdown, 110, 20);
   //level display
   text("LEVEL: ", 20, 35);
   text(difficulty, 60, 35);
-
   //jump ability display, to be toggled with g key
   text("JUMP ABILITY: ", 20, 50);
   text(" " + !player.getGravity(), 100, 50);
-
   //health display
   text("HEALTH: ", 20, 65);
   text(" " + player.getHealth(), 70, 65);
-
   //wind count display
   text("WIND COUNT: ", 20, 80);
   text(" "+player.windCount, 100, 80);
   
-
   //level display
   text("LEVEL: ", 20, 35);
   text(difficulty, 60, 35);
@@ -212,10 +194,8 @@ void draw() {
   text("WIND COUNT: ", 20, 80);
   text(" "+player.windCount, 100, 80);
   
-
   //display character and move
   player.display();
-
   image = loadImage(player.display());
   
   float xSize = player.getSize();
@@ -226,12 +206,10 @@ void draw() {
   image.resize((int)xSize, (int)player.getSize());
   image(image, player.getX() - 10, player.getY() - 10);
   
-
   player.move(xDir, yDir);
   xDir = 0;
   yDir = 0;
   
-
   //animate obstacles
   for (int i = 0; i < obsList.size() - 1; i++){
     obs = obsList.get(i);    
@@ -253,7 +231,6 @@ void draw() {
     }
   }
   
-
   if (wind.touchingBall(player, (int) player.getX(), (int) player.getY())){
     if (!wind.windReceived) {
         wind.windReceived = true; 
@@ -262,15 +239,12 @@ void draw() {
       }
   }
   
-
   //if jump ability is true, decrement health
   if (!player.getGravity()){
     player.changeHealth(-0.25);
   } 
   
-
   //if player hits the borders or if health hits zero or if timer runs out, the player dies
-
   if (player.getY() + 16 >= 600 || player.getHealth() <= 0 || countdown == 0){
     die(player);
   }
@@ -281,12 +255,10 @@ void draw() {
   }
   }
   }
-
 }
   
 // move to next level
 void levelUp (){    
-
   //wind.display(); //display wind
   if (player.withinPortal()){
     //clear();
@@ -294,17 +266,14 @@ void levelUp (){
     maze = new Maze(difficulty);
     //countdown = 10000 - 1000 * (difficulty - 1);
     //countdownHelper = countdown;
-
-    sCountdown = 4000 - 500 * (difficulty - 1);
-    countdown = sCountdown;
-
+    countdownHelper = 40 - 5 * (difficulty - 1);
+    countdown = countdownHelper;
     text(countdown / 100, 110, 20);
     text(difficulty, 100, 35);
     
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
     
     wind.setPos(maze.getCoor(60)+1, maze.getCoor(61)-10);
-
     wind.windReceived = false;
     player.speed = 5;
     player.windCount = 0;
@@ -316,19 +285,16 @@ void levelUp (){
         player.windCount++;
         player.speed = 10;
       }
-
   }
   
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   player.setGravity(true);
   
-
  // maze = new Maze(difficulty);
   
   //difficulty++;
   
     
-
   player.setHealth((difficulty - 1) * 100);
   
   obsList = new ArrayList<Obstacle>();
@@ -358,7 +324,6 @@ void levelUp (){
   }
   }
 }
-
 //ball dies
 void die(Ball ball){
   player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
@@ -366,18 +331,15 @@ void die(Ball ball){
   player.speed = 5;
   wind.setPos(maze.getCoor(0)+1, maze.getCoor(1)-10);
   player.windCount = 0;
-
   fill(255,0,0);
     textSize(15);
    
       text("W", wind.xPos, wind.yPos);
-
   player.setHealth(0);
   player.setGravity(true);
-  sCountdown = 4000 - 500 * (difficulty - 1);
-  countdown = sCountdown;
+  countdownHelper = 40 - 5 * (difficulty - 1);
+  countdown = countdownHelper;
 }
-
 //movement of ball using arrow keys
 void keyPressed() {
   if (key == '1') {
@@ -412,13 +374,11 @@ void keyPressed() {
       yDir = -2;
     } 
   } else if (keyCode == ENTER || keyCode == RETURN) {
-
     if (screenMode == menuScreen) {
       screenMode = gameScreen;
     } else {
       screenMode = menuScreen;
     }
-
   }
   else if (keyCode=='G' || keyCode == 'g') {
     if (player.gravity) {

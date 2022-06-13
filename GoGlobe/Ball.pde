@@ -151,7 +151,9 @@ public class Droplet extends Ball{
       } else {
        return "Droplet 2.png";
       }
-      
+      //noStroke();
+    //fill(color_, 100);
+    //ellipse(xPos, yPos, size * 2, size * 2);
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
