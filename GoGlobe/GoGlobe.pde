@@ -215,7 +215,7 @@ void draw() {
 
   //display character and move
   
-  image = loadImage("Droplet 1.png");
+  image = loadImage("Droplet.png");
   
   float xSize = player.getSize();
   if (player.getType().equals("Snitch")){
@@ -381,15 +381,15 @@ void keyPressed() {
   if (key == '1') {
     player = new Droplet();
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-    image = loadImage("Droplet 1.png");
+    image = loadImage("Droplet.png");
   } else if (key == '2') {
     player = new Snitch();
-    image = loadImage("Snitch 1.png");
+    image = loadImage("Snitch.png");
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
   } else if (key == '3') {
     player = new Stone();
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10);
-    image = loadImage("Stone 1.png");
+    image = loadImage("Stone.png");
   } else if (key==32) {
     if (paused) {
       paused = false;

@@ -72,7 +72,7 @@ public class Ball{
         xDir = 0;
         yDir = 0.25;
       } else {
-        yDir += 0.5;
+        yDir += 0.125;
       }
     } else if (gravity) {
       yDir = 0;
@@ -96,16 +96,6 @@ public class Ball{
     health = 100 - num;
   }
 
-    /**
-  public boolean touchingWind(Wind wind, int xWind, int yWind){
-    if (xWind - xPos <= size * 2 || yWind - yPos <= size * 2){
-      windCount++;
-      return true;
-    } else {
-      return false;
-    }
-  }**/
-
   
   public void setGravity(boolean g){
     gravity = g;
@@ -121,11 +111,6 @@ public class Ball{
   }
 
   public void display(){
-      //if (millis() % 2 == 0){
-      //  return "Droplet 1.png";
-      //} else {
-      // return "Droplet 2.png";
-      //}
      image(image, player.getX() - 10, player.getY() - 10);
 }
 }
@@ -146,11 +131,6 @@ public class Droplet extends Ball{
   } 
     
     public void display(){
-      //if (millis() % 2 == 0){
-      //  return "Droplet 1.png";
-      //} else {
-      // return "Droplet 2.png";
-      //}
       image(image, player.getX() - 10, player.getY() - 10);
       
     }
@@ -184,11 +164,6 @@ public class Droplet extends Ball{
     } 
     
     public void display(){
-      //if (millis() % 2 == 0){
-      //  return "Snitch 1.png";
-      //} else {
-      //   return "Snitch 2.png";
-      //}
       image(image, player.getX() - 10, player.getY() - 10);
     }
      
@@ -221,11 +196,6 @@ public class Droplet extends Ball{
     } 
      
     public void display(){
-      //if (millis() % 2 == 0){
-      //  return "Stone 1.png";
-      //} else {
-      // return "Stone 2.png";
-      //}
       image(image, player.getX() - 10, player.getY() - 10);
       
     }
