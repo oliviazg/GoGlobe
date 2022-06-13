@@ -118,6 +118,7 @@ public class Ball{
   public boolean withinPortal(){
 
     return (get((int)(xPos), (int)(yPos)) == color(204, 65, 37));
+  }
 
   
   public String display(){
