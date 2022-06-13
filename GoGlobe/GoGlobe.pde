@@ -143,10 +143,10 @@ void draw() {
   maze.display();
   
   //counter
-  if (countdownHelper > 0){ //decrement counter
-    countdownHelper--;
-    countdown = countdownHelper;
-    //countdown--;
+  if (countdown > 0){ //decrement counter
+    //countdownHelper--;
+    //countdown = countdownHelper;
+    countdown--;
   } else { //if counter hits zero
     player.setStartPos(maze.getCoor(0) + 1, maze.getCoor(1) - 10); //reset the player Ball
     wind.windReceived = false;
