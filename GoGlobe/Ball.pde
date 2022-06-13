@@ -130,9 +130,21 @@ public class Droplet extends Ball{
     color_ = color(143, 165, 255);
   } 
     
+<<<<<<< HEAD
     public void display(){
       image(image, player.getX() - 10, player.getY() - 10);
       
+=======
+    public String display(){
+      if (millis() % 2 == 0){
+        return "Droplet 1.png";
+      } else {
+       return "Droplet 2.png";
+      }
+      //noStroke();
+    //fill(color_, 100);
+    //ellipse(xPos, yPos, size * 2, size * 2);
+>>>>>>> 8622f98c1fa7662b27703c12c4f3bf05edfde452
     }
      
     public boolean touchingObs(Obstacle obs, int xObs, int yObs){
