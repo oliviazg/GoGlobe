@@ -37,15 +37,7 @@ public class Wind{
   }
   
   public boolean touchingBall(Ball ball, int xBall, int yBall){
-<<<<<<< HEAD
     return xBall == xPos && yBall == yPos;
-=======
-    if (Math.abs(xBall-xPos) <= size && Math.abs(yBall-yPos) <= size){
-      return true;
-    } else {
-      return false;
-    }
->>>>>>> f58e7d7c35d6c7abfeaac3902626707c479aabd7
   }
   
 }
